@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Delegation in JavaScript</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+      background: #f4f7fb;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(90deg, #1e3c72, #2a5298);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 5px solid #0d47a1;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    main {
+      max-width: 900px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #0d47a1;
+      margin-top: 30px;
+    }
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+    code {
+      background: #e3f2fd;
+      padding: 2px 6px;
+      border-radius: 5px;
+      color: #0d47a1;
+      font-weight: bold;
+    }
+    pre {
+      background: #272822;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 20px 0;
+      font-size: 0.95rem;
+    }
+    pre code {
+      background: none;
+      color: inherit;
+      padding: 0;
+    }
+    .demo {
+      margin-top: 20px;
+      padding: 20px;
+      background: #f1f8e9;
+      border: 2px solid #aed581;
+      border-radius: 10px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      padding: 10px 15px;
+      margin: 5px 0;
+      background: #bbdefb;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+    li:hover {
+      background: #64b5f6;
+      color: white;
+      transform: translateX(5px);
+    }
+    .note {
+      background: #fff3cd;
+      color: #856404;
+      padding: 10px 15px;
+      border-left: 5px solid #ffecb5;
+      border-radius: 5px;
+      margin: 15px 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🔥 Event Delegation in JavaScript</h1>
+  </header>
+  <main>
+    <p>
+      <strong>Event Delegation</strong> হলো জাভাস্ক্রিপ্টের একটি টেকনিক যেখানে আমরা
+      <em>child element</em> এর জন্য আলাদা আলাদা event listener না বসিয়ে,
+      <em>parent element</em> এ একটি মাত্র event listener বসাই।
+      তারপর <code>event.target</code> ব্যবহার করে নির্দিষ্ট child element কে সনাক্ত করি।
+    </p>
+
+    <h2>❌ Without Event Delegation</h2>
+    <pre><code>&lt;script&gt;
+const items = document.querySelectorAll('.item');
+items.forEach(item =&gt; {
+  item.addEventListener('click', function() {
+    console.log("You clicked:", this.innerText);
+  });
+});
+&lt;/script&gt;</code></pre>
+
+    <div class="note">
+      এখানে প্রতিটি <code>&lt;li&gt;</code> তে আলাদা listener বসানো হয়েছে। অনেক element থাকলে performance কমে যাবে।
+    </div>
+
+    <h2>✅ With Event Delegation</h2>
+    <pre><code>&lt;script&gt;
+const list = document.getElementById('item-list');
+list.addEventListener('click', function(event) {
+  if (event.target && event.target.matches("li.item")) {
+    console.log("You clicked:", event.target.innerText);
+  }
+});
+&lt;/script&gt;</code></pre>
+
+    <div class="note">
+      এখানে শুধু <code>&lt;ul&gt;</code> parent এ একটি listener বসানো হয়েছে।
+      নতুন child এলেও কাজ করবে।
+    </div>
+
+    <h2>🎯 Live Demo</h2>
+    <div class="demo">
+      <ul id="item-list">
+        <li class="item">Item 1</li>
+        <li class="item">Item 2</li>
+        <li class="item">Item 3</li>
+        <li class="item">Item 4</li>
+        <li class="item">Item 5</li>
+      </ul>
+      <p><strong>👉 Console খুলুন (F12) এবং কোনো আইটেমে ক্লিক করুন।</strong></p>
+    </div>
+  </main>
+
+  <script>
+    const list = document.getElementById('item-list');
+    list.addEventListener('click', function(event) {
+      if (event.target && event.target.matches("li.item")) {
+        console.log("You clicked:", event.target.innerText);
+        alert("You clicked: " + event.target.innerText);
+      }
+    });
+  </script>
+</body>
+</html>

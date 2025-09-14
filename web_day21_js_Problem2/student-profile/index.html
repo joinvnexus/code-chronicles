@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Profile App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="card">
+      <h1>🎓 Student Profile</h1>
+      <div id="profile"></div>
+
+      <h2>👥 Friends</h2>
+      <div id="friends" class="list"></div>
+
+      <h2>🎬 Favorite Movies</h2>
+      <div id="movies" class="stack"></div>
+
+      <h2>⭐ Best Friend</h2>
+      <div id="bestFriend" class="card nested"></div>
+    </section>
+
+    <section class="card">
+      <h1>🔎 Explore Data</h1>
+      <div class="btns">
+        <button id="btn-hobby">Best Friend’s Hobby</button>
+        <button id="btn-actress">2nd Movie’s Actress</button>
+        <button id="btn-firstMovie">Show 1st Movie Info</button>
+        <button id="btn-friendCount">How Many Friends?</button>
+        <button id="btn-summary">Full Profile Summary</button>
+      </div>
+      <h2>📤 Output</h2>
+      <pre id="output" class="output">// results will appear here</pre>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

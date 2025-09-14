@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feedbacks</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+  <h1 class="text-3xl font-bold mb-6">All Feedback</h1>
+  <div id="feedbackList" class="space-y-4"></div>
+
+  <script>
+    async function loadFeedback() {
+      const res = await fetch('/api/feedback');
+      const data = await res.json();
+
+      const list = document.getElementById('feedbackList');
+      list.innerHTML = data.map(f => `
+        <div class="bg-white p-4 shadow rounded">
+          <p><strong>${f.name}</strong> (${f.email})</p>
+          <p>${f.message}</p>
+          <p class="text-xs text-gray-500">${new Date(f.createdAt).toLocaleString()}</p>
+        </div>
+      `).join('');
+    }
+
+    loadFeedback();
+  </script>
+</body>
+</html>

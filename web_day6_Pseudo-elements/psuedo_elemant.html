@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       /* ::before adds content before an element */
+h1::before {
+  content: "★ ";
+  color: gold;
+}
+
+/* ::after adds content after an element */
+h1::after {
+  content: " ✓";
+  color: green;
+}
+
+/* ::first-letter styles the first letter of a paragraph */
+p::first-line {
+  font-size: 2rem;
+  color: red;
+}
+p::first-letter{
+    font-weight: bold;
+    color: green;
+    font-size: 2em;
+}
+
+/* ::selection changes the style when text is selected */
+::selection {
+  background: yellow;
+  color: black;
+}
+
+    </style>
+</head>
+<body>
+    <h1>After before heading text </h1>
+   <h2>Learn Pseudo-elements</h2>
+<p>This is a practice paragraph to learn how pseudo-elements work.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+</p>
+
+
+<script>
+    alert("Hello World ")
+    console.log("hello world");
+    console.error( "you get error")
+    console.warn("you get warning ")
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+nav ul{
+    display: flex;
+}
+nav li{
+    list-style: none;
+    margin: 10px;
+
+}
+nav li a {
+    text-decoration: none;
+    font-size: 2em;
+    color: #000;
+    
+}
+nav li:hover{
+background-color: blueviolet;
+}

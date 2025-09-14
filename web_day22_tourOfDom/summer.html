@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom summery</title>
+</head>
+<body>
+    <main>
+        <section class="section-item">
+            <h2 id="first-title">section- 1</h2>
+            <ul>
+                <li>item- 1</li>
+                <li>item- 2</li>
+                <li>item- 3</li>
+                <li>item- 4</li>
+            </ul>
+        </section>
+        <section class="section-item">
+            <h2>section- 2</h2>
+            <ul>
+                <li>item- 1</li>
+                <li>item- 2</li>
+                <li>item- 3</li>
+                <li>item- 4</li>
+            </ul>
+        </section>
+        <section class="section-item">
+            <h2>section- 3</h2>
+            <ul class="ul-list">
+                <li>item- 1</li>
+                <li>item- 2</li>
+                <li>item- 3</li>
+                <li>item- 4</li>
+            </ul>
+        </section>
+    </main>
+    <script>
+       // console.log('Hello world');
+        const allSections = document.getElementsByTagName('section');
+        //console.log(allSections);
+        const firstTitle = document.getElementById('first-title')
+      //  console.log(firstTitle.innerText ='first title updated');
+        const allItems = document.getElementsByClassName('section-item');
+        // console.log(allItems);
+
+        // querySelector
+        const ulList = document.querySelector('.ul-list');
+        console.log(ulList);
+        const li = document.createElement('li');
+        li.innerHTML = 'new item';
+        ulList.appendChild(li);
+    </script>
+</body>
+</html>

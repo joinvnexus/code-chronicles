@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css position</title>
+    <style>
+      .box {
+        border: 2px solid rgb(50, 53, 50);
+        width: 300px;
+        /* background-color: red; */
+      }
+      .swim-container {
+        position: relative;
+        border: 1px solid;
+      }
+
+      /* relative css */
+
+      /* .ring{
+            position: relative;
+            left: 50px;
+            top: -350px;
+        } */
+
+      /* absulate css */
+
+      /* .ring{
+            position: absolute;
+            top: 40px;
+            left: 150px;
+            
+         } */
+
+      /* sticky class  */
+
+      /* .ring{
+            position: sticky;
+            top: 0px;
+          } */
+
+      /* fixed css */
+
+      .ring {
+        position: fixed;
+        top: 200px;
+        left: 50px;
+      }
+      .dummy {
+        border: 1px solid purple;
+        width: 200px;
+        height: 200px;
+      }
+      .another {
+        border: 2px silid chocolate;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- css posations type -->
+    <h3>Css Positions</h3>
+    <ol>
+      <!-- Flow related -->
+      <li>Static</li>
+      <li>
+        Relative:
+        <small
+          >current position realtive how much changes , and will not leave the
+          current spot</small
+        >
+      </li>
+      <li>
+        Absolute:
+        <small
+          >will lose its own position and will move based on the root</small
+        >
+      </li>
+
+      <!-- Scroll related -->
+      <li>Fixed</li>
+      <li>Sticky</li>
+    </ol>
+
+    <!-- pratice  -->
+    <div class="swim-container">
+      <div class="box boy">
+        <img
+          style="width: 200px"
+          src="image/cute-little-kid-boy-swim.jpg"
+          alt=""
+        />
+      </div>
+      <div class="box ring">
+        <img
+          style="width: 100px; height: 100px"
+          src="image/gental_boy.jpeg"
+          alt=""
+        />
+      </div>
+      <div class="box water">
+        <img
+          style="width: 100px; height: 100px"
+          src="image/cute_boy.jpg"
+          alt=""
+        />
+      </div>
+
+      <!-- duumy box -->
+      <div class="dummy"></div>
+      <div class="dummy"></div>
+      <div class="dummy"></div>
+      <div class="dummy"></div>
+      <div class="dummy"></div>
+      <div class="dummy"></div>
+      <div class="dummy"></div>
+      <div class="dummy"></div>
+      <div class="dummy"></div>
+      <div class="dummy"></div>
+      <div class="dummy"></div>
+      <div class="dummy"></div>
+      <div class="dummy"></div>
+      <div class="dummy"></div>
+      <div class="dummy"></div>
+    </div>
+    <div class="another">
+      <div class="dummy"></div>
+      <div class="dummy"></div>
+      <div class="dummy"></div>
+      <div class="dummy"></div>
+      <div class="dummy"></div>
+    </div>
+  </body>
+</html>

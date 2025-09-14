@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>css varable</title>
+    </head>
+    <style>
+        :root{
+            --primary-color:rgb(0, 255, 0);
+            --secondary-color:rgb(255, 153, 0);
+            --text-color:rgb(238, 238, 231);
+            --sidebar-color:rgb(238, 118, 118);
+            --main-color: skyblue;
+        }
+        body{
+            text-transform: capitalize;
+        }
+        h2{
+            /* color: red; */
+            background: var(--secondary-color);
+            color: var(--text-color);
+        }
+        p{
+            background: green;
+            color: var(--text-color);
+        }
+        .box{
+            background: var(--primary-color);
+            width: 300px;
+            padding: 25px;
+            margin: 10px;
+            /* color: var(--text-color); */
+
+        }
+        .container{
+            width: 70vh;
+            /* background-color: red; */
+            display: grid;
+            gap: 20px;
+            grid-template-columns:200px calc(100% - 200px)  1fr ;
+            margin: 10px;
+        }
+        .sidebar{
+            height: 300px;
+            background-color: var(--sidebar-color);
+        }
+        .main-content{
+            background-color: var(--main-color);
+        }
+    </style>
+
+    <body>
+        <h2> my custom varable prpetys</h2>
+        </h2>
+        <h4> also commenly called css varable</h4>
+        <div class="box">
+            <h3> this is a h3 text </h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur quis alias ducimus at nulla,
+                exercitationem sit voluptas totam? Culpa, labore?</p>
+        </div>
+
+        <div class="container">
+           <div class="sidebar"></div>
+           <div class="main-content"></div>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <title>tailwind css learning</title>
+    </head>
+
+    <body>
+
+        <h1 class="text-3xl font-bold underline">
+            Hello world!
+        </h1>
+        <h2 class="underline text-3xl font-bold text-right mb-4"> this text is underlined</h2>
+        <p class="text-center text-5xl font-large">i am explore tailwind</p>
+
+        <div class="bg-red-300 h-50 w-50 rounded-full flex items-center justify-center ml-10">
+            <p class="text-1xl font-bold ">This is a red circle</p>
+        </div>
+        <div class="bg-blue-300 h-10 w-50 rounded-full flex items-center justify-center ml-10 ">
+            <p class="text-1xl font-bold text-gray-800">This is a blue circle</p>
+        </div>
+
+        <div class="border-2 border-blue-300 w-100 h-100 ml-30 mb-30 rounded-3xl p-4">
+            <img class="w-100 h-50 object-cover "
+                src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80"
+                alt="">
+            <h2 class="text-2xl font-bold mt-3 capitalize">this is image heading</h2>
+            <p class="text-1xl font-normal mt-2 text-gray-800 capitalize">this is image paragraph Lorem ipsum dolor sit
+                amet, consectetur adipisicing elit.</p>
+            <button
+                class="bg-blue-300 px-4 py-2 mt-3 rounded-3xl border-2 border-blue-600 text-white text-1xl font-bold capitalize hover:bg-white hover:text-black">
+                image button</button>
+        </div>
+        </div>
+
+        <section class="max-w-2xl mx-auto  border-2 border-blue-300 p-4">
+            <h2 class="border-2 border-blue-300 text-2xl font-bold">this is heading</h2>
+            <p class="border-1 border-blue-300  p-12 text-red-900">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur facere quasi labore, corrupti, sit et
+                consequatur molestias ipsa cumque odit voluptas quod alias nobis dolorum?</p>
+
+        </section>
+
+
+        <section class=" sm:bg-blue-300 md:bg-green-300 lg:bg-yellow-300 bg-red-300 p-4 mt-2">
+            <h2 class="">screen resize see the result</h2>
+            <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur facere quasi labore, corrupti, sit et
+            consequatur molestias ipsa cumque odit voluptas quod alias nobis dolorum?
+           </p>
+        </section>
+        <br>
+
+        <!-- flex layout -->
+
+        <section class="lg:flex lg:space-x-4 ">
+            <div class=" w-96 h-32 text-3xl font-bold capitalize bg-purple-300 p-4 border-2 border-purple-700">item one</div>
+            <div class=" w-96 h-32 text-3xl font-bold capitalize bg-purple-300 p-4 border-2 border-purple-700">item two</div>
+            <div class=" w-96 h-32 text-3xl font-bold capitalize bg-purple-300 p-4 border-2 border-purple-700">item three</div>
+            <div class=" w-96 h-32 text-3xl font-bold capitalize bg-purple-300 p-4 border-2 border-purple-700">item four</div>
+            <div class=" w-96 h-32 text-3xl font-bold capitalize bg-purple-300 p-4 border-2 border-purple-700">item five</div>
+        </section>
+         
+        <section class="flex justify-center gap-40 mt-3">
+            <div class=" w-35 h-32 text-3xl font-bold capitalize bg-purple-300 p-4 border-2 border-purple-700">item ten</div>
+            <div class=" w-35 h-32 text-3xl font-bold capitalize bg-purple-300 p-4 border-2 border-purple-700">item eleven</div>
+            <div class=" w-35 h-32 text-3xl font-bold capitalize bg-purple-300 p-4 border-2 border-purple-700">item twelve</div>
+        </section>
+
+        <!-- grid layout -->
+         <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-2 gap-y-2">
+            <div class="bg-pink-500 text-2xl">box-1</div>
+            <div class="bg-pink-300 text-2xl">box-1</div>
+            <div class="bg-pink-300 text-2xl">box-2</div>
+            <div class="bg-pink-300 text-2xl">box-3</div>
+            <div class="bg-pink-300 text-2xl xl:row-span-4">box-4</div>
+            <div class="bg-pink-300 text-2xl col-span-2">box-5</div>
+            <div class="bg-pink-300 text-2xl">box-6</div>
+            <div class="bg-pink-300 text-2xl">box-7</div>
+            <div class="bg-pink-300 text-2xl lg:col-span-3">box-8</div>
+            <div class="bg-pink-300 text-2xl">box-9</div>
+            <div class="bg-pink-300 text-2xl">box-10</div>
+            <div class="bg-pink-300 text-2xl">box-11</div>
+            <div class="bg-pink-300 text-2xl">box-12</div>
+         </section>
+<h1 class="bg-linear-600">some text here </h1>
+    </body>
+
+</html>

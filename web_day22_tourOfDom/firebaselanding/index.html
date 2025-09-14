@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContractFlow - From Handshake to Project Start, Instantly.</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- AOS (Animate on Scroll) Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- Swiper.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ======== HEADER ======== -->
+    <header class="main-header" id="main-header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="logo-icon" data-feather="file-text"></i>
+                    ContractFlow
+                </a>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <!-- Mock links for demo -->
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#" class="btn-secondary signup-trigger">Log In</a></li>
+                </ul>
+                <div class="menu-toggle" id="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ======== HERO SECTION ======== -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <h1>From Handshake to Project Start, Instantly.</h1>
+                <p>
+                    Stop waiting for signed paperwork. Onboard new clients in minutes with secure, integrated contracts right after sign-up.
+                </p>
+                <a href="#" class="btn btn-primary signup-trigger">Create Your First Contract Free</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== HOW IT WORKS SECTION ======== -->
+    <section id="how-it-works">
+        <div class="container">
+            <h2 data-aos="fade-up">Get Started in 3 Simple Steps</h2>
+            <div class="steps-grid">
+                <div class="step-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="step-icon floating" data-feather="user-plus"></i>
+                    <h3>Create Your Secure Account</h3>
+                    <p>Sign up in seconds with Google, Facebook, or email using our secure Firebase-powered login.</p>
+                </div>
+                <div class="step-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="step-icon floating" data-feather="file-plus"></i>
+                    <h3>Generate Your Contract</h3>
+                    <p>Your client's details are auto-filled into your saved template. Just add the project scope and terms.</p>
+                </div>
+                <div class="step-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="step-icon floating" data-feather="send"></i>
+                    <h3>Invite & E-Sign</h3>
+                    <p>Send a secure link for your client to review and sign digitally. Get notified the moment it's done.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== FEATURES SECTION ======== -->
+    <section id="features">
+        <div class="container">
+            <h2 data-aos="fade-up">Everything You Need to Onboard with Confidence</h2>
+            <div class="features-grid">
+                <div class="features-list" data-aos="fade-right">
+                    <div class="feature-item">
+                        <i class="feature-icon" data-feather="shield"></i>
+                        <div>
+                            <h4>Firebase-Powered Security</h4>
+                            <p>Your data and your clients' information are protected with industry-leading authentication and security.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon" data-feather="edit-3"></i>
+                        <div>
+                            <h4>Dynamic Contract Templates</h4>
+                            <p>Create reusable templates that automatically populate with new client data, saving you hours of admin work.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon" data-feather="check-square"></i>
+                        <div>
+                            <h4>Legally Binding E-Signatures</h4>
+                            <p>Secure and compliant digital signatures mean your agreements are official without the need for printers or scanners.</p>
+                        </div>
+                    </div>
+                     <div class="feature-item">
+                        <i class="feature-icon" data-feather="bell"></i>
+                        <div>
+                            <h4>Instant Notifications & PDF Downloads</h4>
+                            <p>Get real-time alerts when a contract is viewed and signed. Both parties automatically receive a final PDF copy.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="features-image" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?q=80&w=2400&auto=format&fit=crop" alt="Dashboard Preview" class="feature-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== TESTIMONIALS SECTION ======== -->
+    <section id="testimonials">
+        <div class="container">
+            <h2 data-aos="fade-up">What Our Users Say</h2>
+            <!-- Slider main container -->
+            <div class="swiper testimonialsSwiper" data-aos="fade-up">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <div class="testimonial-content">
+                            "ContractFlow has saved me hours of administrative work. The automated templates are a game-changer for my consulting business."
+                        </div>
+                        <div class="testimonial-author">Sarah Johnson</div>
+                        <div class="testimonial-role">Freelance Consultant</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-content">
+                            "The signing process is so smooth for my clients. I've cut my onboarding time from days to just minutes!"
+                        </div>
+                        <div class="testimonial-author">Michael Chen</div>
+                        <div class="testimonial-role">Creative Agency Owner</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-content">
+                            "As a solo entrepreneur, ContractFlow makes me look professional and organized. The notifications keep me on top of every new client."
+                        </div>
+                        <div class="testimonial-author">Jessica Williams</div>
+                        <div class="testimonial-role">Photography Business Owner</div>
+                    </div>
+                </div>
+                <!-- Add pagination -->
+                <div class="swiper-pagination"></div>
+                
+                <!-- Navigation buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== CTA SECTION ======== -->
+    <section id="cta">
+        <div class="container" data-aos="fade-up">
+            <h2>Ready to Eliminate Onboarding Delays?</h2>
+            <p>Start building better client relationships from day one.</p>
+            <a href="#" class="btn btn-primary signup-trigger">Sign Up and Secure Your First Client</a>
+        </div>
+    </section>
+
+    <!-- ======== FOOTER ======== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>ContractFlow</h4>
+                    <p>Streamlining the way you do business.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Security</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="social-icons">
+                    <a href="#"><i data-feather="twitter"></i></a>
+                    <a href="#"><i data-feather="linkedin"></i></a>
+                    <a href="#"><i data-feather="github"></i></a>
+                </div>
+                <p>&copy; 2025 ContractFlow. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- ======== MODAL for Firebase Sign-up ======== -->
+    <div class="modal-overlay" id="signup-modal">
+        <div class="modal-content">
+            <i class="close-btn" data-feather="x" id="close-modal-btn"></i>
+            
+            <div class="form-tabs">
+                <div class="form-tab active" data-tab="login">Log In</div>
+                <div class="form-tab" data-tab="signup">Sign Up</div>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="login-form" class="form-container active">
+                <h3>Welcome Back</h3>
+                <div class="form-group">
+                    <input type="email" placeholder="Email Address" required>
+                    <div class="error-message">Please enter a valid email address</div>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" required>
+                    <div class="error-message">Password is required</div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">
+                    <span class="loader" id="login-loader"></span>
+                    Log In
+                </button>
+            </form>
+            
+            <!-- Sign Up Form -->
+            <form id="signup-form" class="form-container">
+                <h3>Create Your Account</h3>
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" required>
+                    <div class="error-message">Please enter your full name</div>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email Address" required>
+                    <div class="error-message">Please enter a valid email address</div>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Create Password" required>
+                    <div class="error-message">Password must be at least 8 characters</div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">
+                    <span class="loader" id="signup-loader"></span>
+                    Create Account
+                </button>
+            </form>
+            
+            <div class="social-login">
+                <p>or continue with</p>
+                <div class="social-login-icons">
+                     <!-- These buttons would trigger Firebase Google/Facebook Auth -->
+                    <button><i data-feather="chrome"></i></button>
+                    <button><i data-feather="facebook"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to top button -->
+    <div class="back-to-top" id="back-to-top">
+        <i data-feather="arrow-up"></i>
+    </div>
+
+    <!-- Theme toggle -->
+    <div class="theme-toggle" id="theme-toggle">
+        <i data-feather="moon"></i>
+    </div>
+
+
+    <!-- ======== SCRIPTS ======== -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="logic.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

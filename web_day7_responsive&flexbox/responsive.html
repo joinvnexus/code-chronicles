@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>responsive website</title>
+    <style>
+        body{
+            border: 2px solid red;
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+        img{
+            width: 100%;
+        }
+        .tiger-img{
+            display: flex;
+        }
+        .tiger-img img{
+            width: 100%;
+        }
+        .tiger-img div{
+            width: 50%;
+        }
+        /* media query */
+        @media screen and (max-width: 576px) {
+            .tiger-img{
+                flex-direction: column;
+            }
+            .tiger-img div{
+                width: 100%;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>responsive website</h1>
+        <ol>
+            <li>view mete tag</li>
+            <li> css relative unit</li>
+            <li>body max width and horizontal center align </li>
+            <li> img fluid responsive </li>
+            <li> two column word and use media query with flex deriction</li>
+            <li> mult colum : grid lauout</li>
+            <li>menu responsive: useing media query & javascript</li>
+        </ol>
+    </header>
+    <main>
+        <div class="tiger-img">
+            <div>
+                <img src="https://wdmarchitects.com/wp-content/uploads/2023/10/Zoo-Habitat-Architecture-Phoenix-Zoo-Isle-of-the-Tiger-Project-WDM-Architects-3.jpg" alt="">
+            </div>
+            <div>
+
+                <img src="https://media.istockphoto.com/id/1829241109/photo/enjoying-a-brunch-together.jpg?s=612x612&w=is&k=20&c=_WAbcCXxO927NToMhnQ3ERTdGXZVHPzHq7ENvzwFHj8=" alt="">
+            </div>
+        </div>
+    </main>
+</body>
+</html>

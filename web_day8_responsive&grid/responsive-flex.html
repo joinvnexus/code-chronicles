@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>responsive flex layout</title>
+    <style>
+        body{
+            padding: 20px;
+        }
+      .container {
+        display: flex;
+        gap: 10px;
+      }
+      .box {
+        background-color: rgb(218, 110, 218);
+        border: 2px solid rgb(31, 114, 182);
+        padding: 20px;
+        /* margin: 5px; */
+        border-radius: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 1em;
+      }
+      .box h3 {
+        text-align: center;
+        font-size: 22px;
+        color: rgb(236, 230, 236);
+        text-transform: capitalize;
+      }
+      .box p{
+        text-align: justify;
+        color: white;
+        font: optional;
+        font-weight: 400;
+        letter-spacing: 1px;
+        /* word-spacing:1px; */
+      }
+      .container-2{
+        display: flex;
+        /* flex-wrap: wrap */
+        flex-flow: row wrap;
+        gap: 10px;
+      }
+      .item{
+        background-color: rgba(160, 84, 231, 0.747);
+        border: 2px solid rgb(13, 73, 184);
+        padding: 10px;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1em;
+        color: white;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 5px;
+        border-radius: 20px;
+        box-shadow: 10px 20px 20px rgba( 0, 0, 0, 0.5); ;
+      }
+      @media screen and (max-width: 576px) {
+        .container{
+            flex-direction: column;
+        }
+
+
+      }
+    </style>
+  </head>
+  <body>
+    <h1>responsive flex layout</h1>
+
+    <h2>flexable flex</h2>
+
+    <div class="container">
+      <div class="box">
+        <h3>first box</h3>
+        <p>
+          this is the first box Lorem ipsum, dolor sit amet consectetur
+          adipisicing elit. Excepturi nemo nulla velit neque eius cum, ratione
+          deserunt eligendi odio ipsum? Molestias assumenda labore placeat
+          officia. Ducimus facilis est obcaecati magni.
+        </p>
+      </div>
+      <div class="box">
+        <h3>second box</h3>
+        <p>
+          this is the second box Lorem, ipsum dolor sit amet consectetur
+          adipisicing elit. Quis porro nihil animi assumenda amet, enim itaque
+          odit asperiores doloremque non laboriosam ipsa maxime sapiente iure.
+          Deserunt excepturi distinctio quibusdam nisi?
+        </p>
+      </div>
+    </div>
+    <div class="container-2">
+        <div class="item">item-1</div>
+        <div class="item">item-2</div>
+        <div class="item">item-3</div>
+        <div class="item">item-4</div>
+        <div class="item">item-5</div>
+        <div class="item">item-6</div>
+        <div class="item">item-7</div>
+        <div class="item">item-8</div>
+        <div class="item">item-9</div>
+        <div class="item">item-10</div>
+    </div>
+  </body>
+</html>

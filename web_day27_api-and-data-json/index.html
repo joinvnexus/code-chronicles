@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fetch data-api-call</title>
+  </head>
+  <style>
+    body{
+      background-color: #ebebeb;
+      color: #fff;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-weight: 100;
+    }
+    button {
+      background-color: #1d1b1b;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #fff;
+      color: #1d1b1b;
+    }
+    #post-container{
+      max-width: 1200px;
+      margin: 0 auto;
+     display: grid;
+     grid-template-columns: repeat(3,1fr);
+     gap: 20px;
+
+    }
+    .post-item{
+      background-color: #1d1b1b;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      list-style: none;
+    }
+    .post-item:hover{
+      background-color: #fff;
+      color: #1d1b1b;
+      border: 2px solid rgb(16, 143, 194);
+    }
+    .post-item h2{
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    .post-item p{
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+  </style>
+  <body>
+    <button onclick="loadData()">Load data</button>
+
+    <button onclick="loadpost()">load post</button>
+
+    <!-- get conatiner -->
+    <div id="post-container"></div>
+
+
+
+
+
+
+
+
+    <script src="script.js"></script>
+    <script>
+
+             // for loop
+            /** for (const i = 0; i <posts.length; i++){
+               const post = posts[i];
+               console.log(post)
+             } */
+
+             // for of loop
+            /**for (const post of posts){
+             console.log(post)
+            }*/
+
+    </script>
+  </body>
+</html>

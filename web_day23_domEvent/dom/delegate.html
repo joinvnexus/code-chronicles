@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event delegation</title>
+</head>
+<body>
+    <h1>Explore the concept of event delegation</h1>
+    <ol id="item-list">
+        <li class="item">my Awosome item - 1</li>
+        <li class="item">my Awosome item - 2</li>
+        <li class="item">my Awosome item - 3</li>
+        <li class="item">my Awosome item - 4</li>
+        <li class="item">my Awosome item - 5</li>
+        <li class="item">my Awosome item - 6</li>
+    </ol>
+    <button id="add-item">add new item</button>
+    <script>
+        // const item = document.getElementsByClassName('item')
+        // console.log(item);
+        // for(const i of item ){
+        //     //console.log(i);
+        //     i.addEventListener('click',function(active){
+        //        // console.log(active.target.parentNode);
+        //        active.target.parentNode.removeChild(active.target)
+        //     })
+
+        // }
+
+        document.getElementById('item-list')
+        .addEventListener('click',function(event){
+            // console.log(event.target)
+            event.target.parentNode.removeChild(event.target)
+        })
+        // add a new item 
+        document.getElementById('add-item').addEventListener('click', function(){
+            // parent to be added to
+            const ol = document.getElementById('item-list')
+            const li = document.createElement('li')
+            li.classList.add('item')
+            li.innerText = 'Brand New Item added - 7'
+            ol.appendChild(li)
+
+
+        })
+    </script>
+</body>
+</html>

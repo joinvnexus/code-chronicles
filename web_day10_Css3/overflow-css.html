@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>overflow</title>
+    <style>
+      .box {
+        width: 500px;
+        height: 300px;
+        border: 2px solid steelblue;
+        /* overflow: auto; */
+        /* overflow-y: scroll; */
+      }
+      #box-1,
+      #box-2 {
+        overflow-x: scroll;
+      }
+      .ellips {
+        width: 300px;
+        white-space: nowrap;
+        /* overflow: scroll; */
+        overflow: hidden;
+        border: 1px solid red;
+        text-overflow: ellipsis;
+        /* text-overflow: clip; */
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+        <p title="This is a tooltip text" class="ellips">Hover over this paragraph to see the tooltip.</p>
+
+    </header>
+    <div class="box" id="box-1">
+      <h3>my text box 1</h3>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat
+        praesentium hic suscipit placeat nesciunt quidem reprehenderit commodi,
+        harum aperiam error natus voluptatem eveniet totam nemo odit architecto
+        vitae debitis at. Vero, consequuntur quibusdam at ea illum quo vitae
+        quidem aperiam velit minima maiores sed ducimus alias dolor id ut
+        molestias nihil doloribus architecto similique! Rerum culpa porro
+        possimus et nesciunt aspernatur quibusdam, sapiente cum, a natus quis
+        neque odio temporibus praesentium voluptas aperiam placeat magnam.
+        Tenetur magnam suscipit ex, earum accusamus dignissimos vitae eveniet!
+        Provident nam cum sint quis quasi? Doloribus iste facilis minima
+        reprehenderit! Quaerat unde quia tenetur dignissimos recusandae vel,
+        dolorem distinctio beatae assumenda odit mollitia, necessitatibus amet,
+        aut vitae libero atque. Dolorem adipisci possimus harum quia saepe sit
+        et totam, ut ipsam, alias nostrum porro aut laboriosam eveniet aliquam
+        culpa nisi ipsum nihil rerum vitae incidunt dignissimos maxime quaerat.
+        Ducimus quisquam officiis natus facere impedit cumque voluptatem, minima
+        ipsa, aperiam exercitationem numquam sunt harum officia mollitia
+        molestias neque ex animi ipsam id obcaecati aut sed. Nobis quisquam
+        ducimus quia accusamus eum consequatur tenetur illo voluptatum
+        architecto labore perferendis delectus vel fuga dicta aliquam adipisci,
+        magni totam quasi eaque eligendi velit! Possimus sequi ducimus
+        aspernatur optio laudantium ea.
+      </p>
+    </div>
+    <div class="box" id="box-2">
+      <h3>my text box 2</h3>
+      <p>
+        Fuga enim architecto soluta quasi! Numquam hic harum, neque nisi
+        voluptatum eum modi. Atque praesentium placeat dolorum nemo quae
+        perspiciatis est sint rem dicta ab nulla, aut adipisci, illo voluptatem
+        nostrum, optio natus sapiente. Quo accusamus velit provident iure!
+        Ducimus recusandae saepe sit atque ipsum reiciendis provident tempora
+        facilis. Consequuntur sequi quisquam voluptatum. Amet expedita sapiente
+        dolor, unde totam exercitationem esse impedit possimus atque iusto omnis
+        debitis quas placeat quod fuga dolores delectus quidem veritatis id
+        eligendi? Voluptatibus repellendus nobis, delectus debitis aut soluta
+        atque, dignissimos maiores optio eveniet ipsam amet adipisci qui vero
+        sit ut natus doloremque in animi excepturi error! Facere laboriosam
+        dolor enim non nemo beatae repellendus fuga eum dolore cum quod
+        dignissimos nobis qui esse nisi molestias adipisci error obcaecati,
+        earum ea explicabo magni optio veritatis ratione. Rerum fugiat tempora
+        nisi incidunt perspiciatis adipisci explicabo, sint reprehenderit
+        repudiandae eligendi. Nemo ipsum tempore blanditiis aut, magni
+        consequatur eius ad esse nulla. Adipisci, rem. Assumenda magnam velit
+        excepturi asperiores explicabo iste, dignissimos obcaecati. Dicta ad
+        vero, velit error eius dolorem fuga earum laborum quae vel atque,
+        explicabo veritatis doloribus quibusdam esse exercitationem sit. Dolor
+        debitis aliquid, consequuntur asperiores iusto sequi, in temporibus
+        ipsam odit, tempore ad at neque!
+      </p>
+    </div>
+    <div class="box">
+      <h3>text box 3</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate,
+        pariatur consequuntur delectus ullam molestiae quam corrupti qui totam
+        illum repudiandae.
+      </p>
+    </div>
+  </body>
+</html>

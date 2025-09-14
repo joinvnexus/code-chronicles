@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tailwind Layout Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="max-width-7xl mx-auto">
+    <!-- Header -->
+    <header class="bg-gray-300 p-6">
+      <div class="flex justify-between">
+        <h1 class="text-2xl font-bold">Site Logo</h1>
+        <nav class="">
+          <ul class="flex space-x-4">
+            <li><a class="text-1xl hover:text-blue-600" href="#">Home</a></li>
+            <li><a class="text-1xl hover:text-blue-500" href="#">About</a></li>
+            <li>
+              <a class="text-1xl hover:text-blue-500" href="#">Services</a>
+            </li>
+            <li>
+              <a class="text-1xl hover:text-blue-500" href="#">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="flex justify-between items-center p-6 bg-gray-200 h-100">
+      <div class="p-6">
+        <h2 class="text-4xl font-bold mb-4">Welcome to Our Website</h2>
+        <p class="text-1xl mb-6 text-gray-800">
+          This is a short introduction or tagline. You can add more details
+          here.
+        </p>
+        <button
+          class="bg-pink-500 px-4 py-2 rounded-3xl border-2 border-white-600 text-white font-bold hover:bg-white hover:text-black hover:border-pink-500 duration-600"
+        >
+          Get Started
+        </button>
+      </div>
+      <div class="p-6">
+        <img
+          class="w-100 rounded-2xl opacity-60 hover:opacity-100 duration-500 ease-in-out transition-transfrom hover:scale-105"
+          src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80"
+          alt="Hero Image"
+        />
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section
+      class="flex justify-evenly items-center space-x-6 p-6 bg-gray-100 h-100"
+    >
+      <div
+        class="bg-white-300 p-6 rounded-2xl border-2 border-pink-500 shadow-pink-500/90 translate-x-4 translate-y-4 hover:translate-x-0 hover:translate-y-0 hover:shadow-2xl hover:shadow-pink-500 duration-500"
+      >
+        <h3 class="text-2xl font-medium text-pink-500">Feature One</h3>
+        <p class="text-1xl font-normal text-gray-800 text-justify">
+          Description of feature one.
+        </p>
+      </div>
+      <div
+        class="bg-white-300 p-6 rounded-2xl border-2 border-pink-600 shadow-2xl shadow-pink-500 transition-transfrom hover:scale-159 duration-500"
+      >
+        <h3 class="text-2xl font-medium text-pink-500">Feature Two</h3>
+        <p class="text-1xl font-normal text-gray-800 text-justify">
+          Description of feature two.
+        </p>
+      </div>
+      <div
+        class="bg-white-300 p-6 rounded-2xl border-2 border-pink-500 shadow-pink-500/90 translate-x-4 translate-y-4 hover:translate-x-0 hover:translate-y-0 hover:shadow-2xl hover:shadow-pink-500 duration-500  hover:w-[400px] hover:h-[200px] 
+            w-[300px] h-[150px] "
+      >
+        <h3 class="text-2xl font-medium text-pink-500">Feature Three</h3>
+        <p class="text-1xl font-normal text-gray-800 text-justify">
+          Description of feature three.
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-300 p-6">
+      <div class="text-center">
+        <p class="text-1xl font-medium text-gray-800">
+          &copy; 2025 Your Company. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

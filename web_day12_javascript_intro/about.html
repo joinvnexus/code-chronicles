@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Leaders - Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#1d4ed8',
+                        accent: '#7c3aed',
+                        dark: '#0f172a',
+                        light: '#f1f5f9'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to bottom, #f0f4f8, #e6edf7);
+            color: #0f172a;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            transition: height 0.5s ease;
+            z-index: -1;
+        }
+        
+        .service-card:hover::before {
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.25);
+        }
+        
+        .service-card:hover .icon-box {
+            background: white;
+            color: #2563eb;
+            transform: scale(1.1);
+        }
+        
+        .service-card:hover h3,
+        .service-card:hover p {
+            color: white;
+        }
+        
+        .service-card:hover .learn-more {
+            color: white;
+            border-color: white;
+        }
+        
+        .icon-box {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .learn-more {
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .learn-more:hover i {
+            transform: translateX(5px);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, #2563eb, #7c3aed);
+            border-radius: 2px;
+        }
+        
+        .tabs button.active {
+            background: linear-gradient(to right, #2563eb, #7c3aed);
+            color: white;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+            border-radius: 16px;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .process-step {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #cbd5e1;
+            z-index: -1;
+        }
+        
+        .process-step:last-child::after {
+            display: none;
+        }
+        
+        .floating-element {
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        @keyframes highlight-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+        }
+        
+        .highlight-card {
+            animation: highlight-pulse 3s infinite;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center py-10">
+    <div class="max-w-7xl w-full">
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                Our <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">Digital Services</span>
+            </h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                We provide cutting-edge digital solutions that drive growth and transform businesses. 
+                Discover how our services can elevate your brand.
+            </p>
+        </div>
+        
+        <!-- Services Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <!-- Service Card 1 -->
+            <div class="service-card bg-white p-8 shadow-lg">
+                <div class="icon-box bg-blue-100 text-primary mb-6">
+                    <i class="fas fa-code text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Web Development</h3>
+                <p class="text-gray-600 mb-4">
+                    Custom websites built with modern technologies for exceptional performance, 
+                    security, and user experience.
+                </p>
+                <a href="#" class="learn-more text-primary font-medium inline-flex items-center">
+                    Learn more <i class="fas fa-arrow-right ml-2 transition-transform"></i>
+                </a>
+            </div>
+            
+            <!-- Service Card 2 -->
+            <div class="service-card bg-white p-8 shadow-lg">
+                <div class="icon-box bg-purple-100 text-purple-600 mb-6">
+                    <i class="fas fa-mobile-alt text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">App Development</h3>
+                <p class="text-gray-600 mb-4">
+                    Native and cross-platform mobile applications that deliver seamless 
+                    experiences across all devices.
+                </p>
+                <a href="#" class="learn-more text-primary font-medium inline-flex items-center">
+                    Learn more <i class="fas fa-arrow-right ml-2 transition-transform"></i>
+                </a>
+            </div>
+            
+            <!-- Service Card 3 -->
+            <div class="service-card bg-white p-8 shadow-lg">
+                <div class="icon-box bg-pink-100 text-pink-600 mb-6">
+                    <i class="fas fa-paint-brush text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">UI/UX Design</h3>
+                <p class="text-gray-600 mb-4">
+                    Intuitive interfaces and engaging user experiences designed to 
+                    captivate your audience and drive conversions.
+                </p>
+                <a href="#" class="learn-more text-primary font-medium inline-flex items-center">
+                    Learn more <i class="fas fa-arrow-right ml-2 transition-transform"></i>
+                </a>
+            </div>
+            
+            <!-- Service Card 4 -->
+            <div class="service-card bg-white p-8 shadow-lg">
+                <div class="icon-box bg-yellow-100 text-yellow-600 mb-6">
+                    <i class="fas fa-palette text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Graphic Design</h3>
+                <p class="text-gray-600 mb-4">
+                    Creative visual solutions for branding, marketing, and communication 
+                    that make your brand stand out.
+                </p>
+                <a href="#" class="learn-more text-primary font-medium inline-flex items-center">
+                    Learn more <i class="fas fa-arrow-right ml-2 transition-transform"></i>
+                </a>
+            </div>
+            
+            <!-- Service Card 5 -->
+            <div class="service-card bg-white p-8 shadow-lg">
+                <div class="icon-box bg-green-100 text-green-600 mb-6">
+                    <i class="fas fa-bullhorn text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Digital Marketing</h3>
+                <p class="text-gray-600 mb-4">
+                    Comprehensive digital strategies to grow your online presence, 
+                    attract customers, and increase conversions.
+                </p>
+                <a href="#" class="learn-more text-primary font-medium inline-flex items-center">
+                    Learn more <i class="fas fa-arrow-right ml-2 transition-transform"></i>
+                </a>
+            </div>
+            
+            <!-- Service Card 6 -->
+            <div class="service-card bg-white p-8 shadow-lg">
+                <div class="icon-box bg-red-100 text-red-600 mb-6">
+                    <i class="fas fa-search text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">SEO Optimization</h3>
+                <p class="text-gray-600 mb-4">
+                    Improve your website's visibility and organic search rankings 
+                    with our proven SEO strategies.
+                </p>
+                <a href="#" class="learn-more text-primary font-medium inline-flex items-center">
+                    Learn more <i class="fas fa-arrow-right ml-2 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Additional Services Section -->
+        <div class="bg-gradient-to-br from-primary to-accent rounded-3xl p-8 md:p-12 text-white mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Comprehensive Digital Solutions</h2>
+                    <p class="text-blue-100 mb-6 max-w-xl">
+                        Beyond our core services, we offer specialized solutions to address 
+                        your unique business challenges and opportunities in the digital landscape.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="feature-card bg-white/10 backdrop-blur-sm p-4 rounded-xl">
+                            <i class="fas fa-shopping-cart text-xl mb-3"></i>
+                            <h3 class="font-semibold">E-commerce</h3>
+                        </div>
+                        <div class="feature-card bg-white/10 backdrop-blur-sm p-4 rounded-xl">
+                            <i class="fas fa-database text-xl mb-3"></i>
+                            <h3 class="font-semibold">Cloud Solutions</h3>
+                        </div>
+                        <div class="feature-card bg-white/10 backdrop-blur-sm p-4 rounded-xl">
+                            <i class="fas fa-robot text-xl mb-3"></i>
+                            <h3 class="font-semibold">AI Integration</h3>
+                        </div>
+                        <div class="feature-card bg-white/10 backdrop-blur-sm p-4 rounded-xl">
+                            <i class="fas fa-chart-pie text-xl mb-3"></i>
+                            <h3 class="font-semibold">Data Analytics</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <div class="relative">
+                        <div class="floating-element w-64 h-64 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
+                            <div class="w-48 h-48 rounded-full bg-white/15 backdrop-blur-sm flex items-center justify-center">
+                                <div class="w-32 h-32 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                                    <i class="fas fa-lightbulb text-4xl text-yellow-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute -top-6 -right-6 bg-yellow-400 text-dark px-4 py-2 rounded-full font-bold animate-pulse-slow">
+                            <i class="fas fa-star mr-2"></i> New
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Process Section -->
+        <div class="mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 relative inline-block section-title">
+                    Our Working Process
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    We follow a structured approach to ensure every project is delivered on time, 
+                    within budget, and exceeds expectations.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="process-step text-center p-6">
+                    <div class="w-20 h-20 rounded-full bg-blue-100 text-primary flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-lightbulb text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">1. Discover</h3>
+                    <p class="text-gray-600">Understanding your goals and requirements</p>
+                </div>
+                
+                <div class="process-step text-center p-6">
+                    <div class="w-20 h-20 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-pencil-ruler text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">2. Design</h3>
+                    <p class="text-gray-600">Creating solutions and prototypes</p>
+                </div>
+                
+                <div class="process-step text-center p-6">
+                    <div class="w-20 h-20 rounded-full bg-green-100 text-green-600 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-code text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">3. Develop</h3>
+                    <p class="text-gray-600">Building the solution with quality code</p>
+                </div>
+                
+                <div class="process-step text-center p-6">
+                    <div class="w-20 h-20 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-rocket text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">4. Deploy</h3>
+                    <p class="text-gray-600">Launching and maintaining the solution</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 text-center highlight-card">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Business?</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto mb-8">
+                Let's discuss how our digital services can help you achieve your goals and 
+                stay ahead of the competition.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#" class="bg-gradient-to-r from-primary to-accent text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition">
+                    Get Started Today
+                </a>
+                <a href="#" class="bg-white border-2 border-primary text-primary px-8 py-4 rounded-full font-semibold hover:bg-blue-50 transition">
+                    <i class="fas fa-calendar-alt mr-2"></i> Schedule a Call
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt-16 text-center text-gray-600">
+        <p>© 2023 Digital Leaders. All rights reserved.</p>
+    </div>
+    
+    <script>
+        // Animation for service cards when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform = "translateY(0)";
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            serviceCards.forEach(card => {
+                card.style.opacity = "0";
+                card.style.transform = "translateY(20px)";
+                card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

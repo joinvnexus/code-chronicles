@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SynthMind AI: Unlock Your Creative Potential</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        dark: {
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --primary: #0ea5e9;
+            --primary-dark: #0369a1;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        
+        .neural-network {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .neural-node {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(14, 165, 233, 0.4);
+            box-shadow: 0 0 10px rgba(14, 165, 233, 0.6);
+        }
+        
+        .neural-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(14, 165, 233, 0.2), rgba(14, 165, 233, 0.6), rgba(14, 165, 233, 0.2));
+            transform-origin: 0 50%;
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .pricing-card {
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .pricing-card.popular {
+            border: 2px solid #0ea5e9;
+            position: relative;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: flex;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .typing-demo {
+            width: 100%;
+            animation: typing 2s steps(22, end), blink .5s step-end infinite alternate;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+        }
+        
+        @keyframes blink {
+            50% { border-color: transparent }
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .accordion-content.active {
+            max-height: 500px;
+        }
+    </style>
+</head>
+<body class="bg-dark-900 text-white">
+    <!-- Hero Section -->
+    <section class="min-h-screen gradient-bg flex items-center justify-center relative overflow-hidden">
+        <div class="neural-network" id="neuralNetwork"></div>
+        <div class="container mx-auto px-4 md:px-8 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Unleash Your Inner Genius with AI-Powered Creativity</h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-10">SynthMind AI helps you brainstorm, write, design, and innovate faster and smarter.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#" class="bg-primary hover:bg-primary-dark text-white font-medium py-3 px-8 rounded-lg transition duration-300 transform hover:-translate-y-1">Start Your Free Trial</a>
+                    <a href="#" class="border border-gray-600 hover:border-primary text-white font-medium py-3 px-8 rounded-lg transition duration-300" onclick="openDemoModal()">Watch Demo</a>
+                </div>
+                <p class="mt-10 text-gray-400">Trusted by leading creators worldwide</p>
+                <div class="flex justify-center items-center mt-6 space-x-8 opacity-80">
+                    <span>Google</span>
+                    <span>Apple</span>
+                    <span>Microsoft</span>
+                    <span>Netflix</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Feature Showcase -->
+    <section class="py-20 bg-dark-800">
+        <div class="container mx-auto px-4 md:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Powerful Features to Boost Your Creativity</h2>
+            
+            <!-- Feature 1: AI Writing Assistant -->
+            <div class="flex flex-col lg:flex-row items-center justify-between mb-20">
+                <div class="lg:w-1/2 mb-10 lg:mb-0">
+                    <div class="bg-dark-700 p-6 rounded-xl shadow-lg">
+                        <div class="bg-black p-4 rounded-lg">
+                            <div class="flex space-x-2 mb-4">
+                                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div class="font-mono text-sm">
+                                <p class="text-gray-400">> synthmind.generate_blog_post(topic="AI in creativity")</p>
+                                <p class="typing-demo w-64 mt-2">Generating ideas...</p>
+                                <div class="mt-4 text-green-400">
+                                    <p>AI can enhance human creativity by providing</p>
+                                    <p>unexpected connections and inspiration...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 lg:pl-12">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4">Generate Ideas & Draft Content Instantly</h3>
+                    <p class="text-gray-300 text-lg">From blog posts to marketing copy, SynthMind AI provides instant suggestions and rephrases, overcoming writer's block.</p>
+                </div>
+            </div>
+            
+            <!-- Feature 2: Design Inspiration Engine -->
+            <div class="flex flex-col lg:flex-row-reverse items-center justify-between mb-20">
+                <div class="lg:w-1/2 mb-10 lg:mb-0">
+                    <div class="bg-dark-700 p-6 rounded-xl shadow-lg grid grid-cols-2 gap-4">
+                        <div class="bg-blue-500 h-40 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold">Color Palette</span>
+                        </div>
+                        <div class="bg-purple-500 h-40 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold">Typography</span>
+                        </div>
+                        <div class="bg-green-500 h-40 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold">Layouts</span>
+                        </div>
+                        <div class="bg-yellow-500 h-40 rounded-lg flex items-center justify-center">
+                            <span class="text-black font-bold">Components</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 lg:pr-12">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4">Transform Concepts into Visual Masterpieces</h3>
+                    <p class="text-gray-300 text-lg">Input your vision, and our AI will suggest color palettes, typography pairings, and layout ideas tailored to your brand.</p>
+                </div>
+            </div>
+            
+            <!-- Feature 3: Code & Development Co-pilot -->
+            <div class="flex flex-col lg:flex-row items-center justify-between">
+                <div class="lg:w-1/2 mb-10 lg:mb-0">
+                    <div class="bg-dark-700 p-6 rounded-xl shadow-lg">
+                        <div class="bg-black p-4 rounded-lg">
+                            <div class="flex space-x-2 mb-4">
+                                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div class="font-mono text-sm">
+                                <p class="text-gray-400">function calculateDiscount(price, discount) {</p>
+                                <p class="text-blue-400 ml-4">// AI suggests optimized code</p>
+                                <p class="text-green-400 ml-4">return price - (price * (discount / 100));</p>
+                                <p class="text-gray-400">}</p>
+                                <div class="mt-4 bg-blue-900 p-2 rounded">
+                                    <p class="text-white">AI Suggestion: Added input validation</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 lg:pl-12">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4">Accelerate Your Development Workflow</h3>
+                    <p class="text-gray-300 text-lg">Let AI assist with code generation, bug fixing, and optimization, allowing you to focus on innovation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Case/Industry Specific Section -->
+    <section class="py-20 bg-dark-900">
+        <div class="container mx-auto px-4 md:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Solutions for Every Creative Professional</h2>
+            
+            <div x-data="{ activeTab: 'marketers' }" class="max-w-6xl mx-auto">
+                <div class="flex flex-wrap justify-center gap-2 mb-12">
+                    <button @click="activeTab = 'marketers'" :class="{ 'bg-primary text-white': activeTab === 'marketers', 'bg-dark-800 text-gray-300': activeTab !== 'marketers' }" class="px-6 py-3 rounded-lg font-medium transition">For Marketers</button>
+                    <button @click="activeTab = 'developers'" :class="{ 'bg-primary text-white': activeTab === 'developers', 'bg-dark-800 text-gray-300': activeTab !== 'developers' }" class="px-6 py-3 rounded-lg font-medium transition">For Developers</button>
+                    <button @click="activeTab = 'creators'" :class="{ 'bg-primary text-white': activeTab === 'creators', 'bg-dark-800 text-gray-300': activeTab !== 'creators' }" class="px-6 py-3 rounded-lg font-medium transition">For Content Creators</button>
+                    <button @click="activeTab = 'designers'" :class="{ 'bg-primary text-white': activeTab === 'designers', 'bg-dark-800 text-gray-300': activeTab !== 'designers' }" class="px-6 py-3 rounded-lg font-medium transition">For Designers</button>
+                </div>
+                
+                <div class="bg-dark-800 rounded-xl p-8">
+                    <!-- Marketers Tab -->
+                    <div x-show="activeTab === 'marketers'" class="tab-content active">
+                        <div class="md:flex items-center">
+                            <div class="md:w-2/3 mb-8 md:mb-0">
+                                <h3 class="text-2xl font-bold mb-4">AI-Powered Marketing Solutions</h3>
+                                <p class="text-gray-300 mb-6">Create compelling ad copy, generate engaging social media content, and optimize your marketing campaigns with AI-driven insights that resonate with your audience.</p>
+                                <a href="#" class="inline-block bg-primary hover:bg-primary-dark text-white font-medium py-2 px-6 rounded-lg transition">Learn More</a>
+                            </div>
+                            <div class="md:w-1/3 flex justify-center">
+                                <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_ukaaZq.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Developers Tab -->
+                    <div x-show="activeTab === 'developers'" class="tab-content">
+                        <div class="md:flex items-center">
+                            <div class="md:w-2/3 mb-8 md:mb-0">
+                                <h3 class="text-2xl font-bold mb-4">Intelligent Coding Assistant</h3>
+                                <p class="text-gray-300 mb-6">Enhance your coding workflow with AI-powered code completion, bug detection, and optimization suggestions. Generate boilerplate code and focus on solving complex problems.</p>
+                                <a href="#" class="inline-block bg-primary hover:bg-primary-dark text-white font-medium py-2 px-6 rounded-lg transition">Learn More</a>
+                            </div>
+                            <div class="md:w-1/3 flex justify-center">
+                                <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_2cwDXD.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Content Creators Tab -->
+                    <div x-show="activeTab === 'creators'" class="tab-content">
+                        <div class="md:flex items-center">
+                            <div class="md:w-2/3 mb-8 md:mb-0">
+                                <h3 class="text-2xl font-bold mb-4">Content Generation & Optimization</h3>
+                                <p class="text-gray-300 mb-6">Break through creative blocks with AI-powered content ideas, draft generation, and SEO optimization. Create engaging content that captures your unique voice and style.</p>
+                                <a href="#" class="inline-block bg-primary hover:bg-primary-dark text-white font-medium py-2 px-6 rounded-lg transition">Learn More</a>
+                            </div>
+                            <div class="md:w-1/3 flex justify-center">
+                                <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_pmvvnoee.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Designers Tab -->
+                    <div x-show="activeTab === 'designers'" class="tab-content">
+                        <div class="md:flex items-center">
+                            <div class="md:w-2/3 mb-8 md:mb-0">
+                                <h3 class="text-2xl font-bold mb-4">Design Inspiration & Assistance</h3>
+                                <p class="text-gray-300 mb-6">Generate unique color palettes, typography combinations, and layout suggestions. Transform your concepts into visually stunning designs with AI-powered inspiration.</p>
+                                <a href="#" class="inline-block bg-primary hover:bg-primary-dark text-white font-medium py-2 px-6 rounded-lg transition">Learn More</a>
+                            </div>
+                            <div class="md:w-1/3 flex justify-center">
+                                <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_qpsnmyxi.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-dark-800">
+        <div class="container mx-auto px-4 md:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">What Our Users Say</h2>
+            
+            <div class="swiper testimonialSwiper max-w-4xl mx-auto">
+                <div class="swiper-wrapper">
+                    <!-- Testimonial 1 -->
+                    <div class="swiper-slide">
+                        <div class="bg-dark-700 p-8 rounded-xl text-center">
+                            <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-primary flex items-center justify-center text-2xl font-bold">JD</div>
+                            <p class="text-xl italic mb-6">"SynthMind AI has revolutionized my creative process! I can now generate content ideas in minutes instead of hours."</p>
+                            <p class="font-bold">Jane Doe, Lead Designer at InnovateCo</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="swiper-slide">
+                        <div class="bg-dark-700 p-8 rounded-xl text-center">
+                            <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-green-500 flex items-center justify-center text-2xl font-bold">JS</div>
+                            <p class="text-xl italic mb-6">"The code suggestions are incredibly accurate. It's like having a senior developer looking over my shoulder."</p>
+                            <p class="font-bold">John Smith, Senior Developer at TechSolutions</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="swiper-slide">
+                        <div class="bg-dark-700 p-8 rounded-xl text-center">
+                            <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-purple-500 flex items-center justify-center text-2xl font-bold">AJ</div>
+                            <p class="text-xl italic mb-6">"Our marketing team's productivity has increased by 40% since we started using SynthMind AI for content creation."</p>
+                            <p class="font-bold">Alex Johnson, Marketing Director at GrowthLabs</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination mt-8"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-20 bg-dark-900">
+        <div class="container mx-auto px-4 md:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Simple, Transparent Pricing</h2>
+            <p class="text-gray-400 text-center mb-16">Choose the plan that works best for your creative needs</p>
+            
+            <div x-data="{ annualBilling: false }" class="max-w-5xl mx-auto">
+                <div class="flex justify-center items-center mb-12">
+                    <span :class="{ 'text-gray-400': annualBilling, 'text-white': !annualBilling }">Monthly</span>
+                    <button @click="annualBilling = !annualBilling" class="mx-4 relative inline-flex h-6 w-11 items-center rounded-full bg-gray-600">
+                        <span class="sr-only">Toggle billing</span>
+                        <span :class="{ 'translate-x-6': annualBilling, 'translate-x-1': !annualBilling }" class="inline-block h-4 w-4 transform rounded-full bg-white transition"></span>
+                    </button>
+                    <span :class="{ 'text-white': annualBilling, 'text-gray-400': !annualBilling }">Annual <span class="text-primary">(Save 20%)</span></span>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Free Plan -->
+                    <div class="pricing-card bg-dark-800 p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold mb-4">Free</h3>
+                        <div class="mb-6">
+                            <span class="text-3xl font-bold" x-text="annualBilling ? '$0' : '$0'"></span>
+                            <span class="text-gray-400">/month</span>
+                        </div>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>5 AI-generated content pieces per month</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Basic design suggestions</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Community support</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="block w-full bg-gray-700 hover:bg-gray-600 text-white text-center font-medium py-3 px-6 rounded-lg transition">Get Started</a>
+                    </div>
+                    
+                    <!-- Pro Plan -->
+                    <div class="pricing-card popular bg-dark-800 p-8 rounded-xl relative">
+                        <div class="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-4 py-1 rounded-bl-lg rounded-tr-xl">MOST POPULAR</div>
+                        <h3 class="text-2xl font-bold mb-4">Pro</h3>
+                        <div class="mb-6">
+                            <span class="text-3xl font-bold" x-text="annualBilling ? '$16' : '$20'"></span>
+                            <span class="text-gray-400">/month</span>
+                        </div>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Unlimited AI content generation</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Advanced design tools</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Code assistance</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Priority support</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="block w-full bg-primary hover:bg-primary-dark text-white text-center font-medium py-3 px-6 rounded-lg transition">Sign Up Now</a>
+                    </div>
+                    
+                    <!-- Business Plan -->
+                    <div class="pricing-card bg-dark-800 p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold mb-4">Business</h3>
+                        <div class="mb-6">
+                            <span class="text-3xl font-bold" x-text="annualBilling ? '$40' : '$50'"></span>
+                            <span class="text-gray-400">/month</span>
+                        </div>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Everything in Pro, plus:</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Team collaboration</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Custom AI model training</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Dedicated account manager</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="block w-full bg-gray-700 hover:bg-gray-600 text-white text-center font-medium py-3 px-6 rounded-lg transition">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-dark-800">
+        <div class="container mx-auto px-4 md:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Frequently Asked Questions</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-4">
+                <!-- FAQ 1 -->
+                <div class="accordion-item bg-dark-700 rounded-lg">
+                    <button class="accordion-button w-full flex justify-between items-center p-6 text-left font-medium" onclick="toggleAccordion(this)">
+                        <span>How does SynthMind AI generate creative content?</span>
+                        <svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-gray-300">
+                            SynthMind AI uses advanced natural language processing and machine learning models trained on diverse creative works. It analyzes patterns, styles, and structures from high-quality content to generate original ideas, suggestions, and complete pieces tailored to your needs.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ 2 -->
+                <div class="accordion-item bg-dark-700 rounded-lg">
+                    <button class="accordion-button w-full flex justify-between items-center p-6 text-left font-medium" onclick="toggleAccordion(this)">
+                        <span>Is the content generated by SynthMind AI unique?</span>
+                        <svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-gray-300">
+                            Yes, all content generated by SynthMind AI is unique and created based on your specific inputs and parameters. Our AI doesn't simply copy existing content but creates original work by combining patterns and concepts in novel ways.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ 3 -->
+                <div class="accordion-item bg-dark-700 rounded-lg">
+                    <button class="accordion-button w-full flex justify-between items-center p-6 text-left font-medium" onclick="toggleAccordion(this)">
+                        <span>Can I use SynthMind AI for commercial purposes?</span>
+                        <svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-gray-300">
+                            Absolutely. All content created with SynthMind AI is yours to use for personal or commercial projects. We recommend reviewing the content to ensure it meets your specific requirements and making any necessary adjustments.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ 4 -->
+                <div class="accordion-item bg-dark-700 rounded-lg">
+                    <button class="accordion-button w-full flex justify-between items-center p-6 text-left font-medium" onclick="toggleAccordion(this)">
+                        <span>How does the free trial work?</span>
+                        <svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-6 pt-0 text-gray-300">
+                            Our free trial gives you full access to all Pro features for 14 days. No credit card is required to start your trial. At the end of the trial period, you can choose to upgrade to a paid plan or continue with our limited free plan.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-dark-900 border-t border-gray-800">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">SynthMind AI</h3>
+                    <p class="text-gray-400">Unlock your creative potential with AI-powered tools for writing, design, and development.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Product</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Features</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Pricing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Use Cases</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Integrations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Tutorials</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Press</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 SynthMind AI. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Demo Modal (Hidden by default) -->
+    <div id="demoModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-dark-800 rounded-xl p-8 max-w-2xl w-full mx-4 relative">
+            <button onclick="closeDemoModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <h3 class="text-2xl font-bold mb-4">See SynthMind AI in Action</h3>
+            <div class="aspect-video bg-black rounded-lg flex items-center justify-center">
+                <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_gn0tojcq.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+            </div>
+            <p class="mt-4 text-gray-300">Watch how SynthMind AI can transform your creative workflow in just minutes.</p>
+        </div>
+    </div>
+
+    <script>
+        // Neural network background animation
+        function createNeuralNetwork() {
+            const container = document.getElementById('neuralNetwork');
+            const nodeCount = 30;
+            const nodes = [];
+            
+            // Create nodes
+            for (let i = 0; i < nodeCount; i++) {
+                const node = document.createElement('div');
+                node.className = 'neural-node';
+                
+                // Random position
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                
+                node.style.left = `${x}%`;
+                node.style.top = `${y}%`;
+                node.style.opacity = Math.random() * 0.5 + 0.1;
+                
+                container.appendChild(node);
+                nodes.push({ element: node, x, y });
+            }
+            
+            // Create connections
+            nodes.forEach((node, i) => {
+                // Connect to a few other random nodes
+                const connectionCount = Math.floor(Math.random() * 3) + 2;
+                
+                for (let j = 0; j < connectionCount; j++) {
+                    const targetIndex = Math.floor(Math.random() * nodes.length);
+                    if (targetIndex !== i) {
+                        const targetNode = nodes[targetIndex];
+                        const line = document.createElement('div');
+                        line.className = 'neural-line';
+                        
+                        const dx = targetNode.x - node.x;
+                        const dy = targetNode.y - node.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+                        
+                        line.style.width = `${distance}%`;
+                        line.style.left = `${node.x}%`;
+                        line.style.top = `${node.y}%`;
+                        line.style.transform = `rotate(${angle}deg)`;
+                        line.style.opacity = Math.random() * 0.3 + 0.1;
+                        
+                        container.appendChild(line);
+                    }
+                }
+            });
+            
+            // Animate nodes
+            setInterval(() => {
+                nodes.forEach(node => {
+                    const pulse = Math.sin(Date.now() / 1000 + node.x * 10) * 0.3 + 0.7;
+                    node.element.style.opacity = pulse * 0.5;
+                    node.element.style.transform = `scale(${0.8 + pulse * 0.4})`;
+                });
+            }, 100);
+        }
+        
+        // Testimonial slider
+        function initTestimonialSlider() {
+            new Swiper('.testimonialSwiper', {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                autoplay: {
+                    delay: 5000,
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 1,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                    },
+                    1024: {
+                        slidesPerView: 2,
+                    },
+                }
+            });
+        }
+        
+        // Accordion functionality
+        function toggleAccordion(button) {
+            const content = button.nextElementSibling;
+            const isActive = content.classList.contains('active');
+            
+            // Close all accordions
+            document.querySelectorAll('.accordion-content').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.accordion-button svg').forEach(icon => {
+                icon.style.transform = 'rotate(0deg)';
+            });
+            
+            // Open this one if it wasn't active
+            if (!isActive) {
+                content.classList.add('active');
+                button.querySelector('svg').style.transform = 'rotate(180deg)';
+            }
+        }
+        
+        // Modal functionality
+        function openDemoModal() {
+            document.getElementById('demoModal').classList.remove('hidden');
+        }
+        
+        function closeDemoModal() {
+            document.getElementById('demoModal').classList.add('hidden');
+        }
+        
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            createNeuralNetwork();
+            initTestimonialSlider();
+            
+            // Add intersection observer for scroll animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.feature-card, .pricing-card').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SynthMind AI — Unlock Your Creative Potential</title>
+  <meta name="description" content="SynthMind AI helps you brainstorm, write, design, and innovate faster and smarter." />
+  <meta property="og:title" content="SynthMind AI — Unlock Your Creative Potential" />
+  <meta property="og:description" content="Brainstorm, write, design, and innovate faster and smarter with AI." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-image.jpg" />
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ["Inter", "ui-sans-serif", "system-ui", "-apple-system"],
+          },
+          colors: {
+            primary: {
+              DEFAULT: "#6C5CE7", // electric violet
+              50: "#f3f2fe",
+              100: "#e9e7ff",
+              200: "#cfc7ff",
+              300: "#b1a3ff",
+              400: "#947dff",
+              500: "#7a5fff",
+              600: "#6c5ce7",
+              700: "#5646c2",
+              800: "#41359a",
+              900: "#2b246f",
+            },
+            accent: "#22D3EE", // cyan
+          },
+          boxShadow: {
+            soft: "0 10px 30px rgba(0,0,0,0.15)",
+          },
+          backgroundImage: {
+            'grid': "linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px)",
+            'radial-fade': "radial-gradient(1200px 600px at 50% -10%, rgba(108,92,231,0.25), rgba(34,211,238,0.08) 40%, transparent 65%)",
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+  <!-- Alpine.js for light reactivity (tabs, toggles) -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <!-- Swiper.js for carousels -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+  <style>
+    :root { color-scheme: dark; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .motion-safe-only { animation: none !important; transition: none !important; }
+    }
+    /* Hide the canvas on prefers-reduced-motion and show a static gradient */
+    @media (prefers-reduced-motion: reduce) { #bg-canvas { display: none; } }
+
+    /* Simple caret for typing demo */
+    .caret::after { content: "|"; animation: blink 1s step-start infinite; margin-left: 2px; }
+    @keyframes blink { 50% { opacity: 0; } }
+  </style>
+</head>
+<body class="bg-[#0A0A0F] text-white font-display antialiased">
+  <!-- Header / Nav -->
+  <header class="fixed top-0 inset-x-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-black/30 bg-black/10 border-b border-white/10">
+    <div class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 group">
+        <span class="inline-block h-8 w-8 rounded-xl bg-gradient-to-br from-primary-500 to-accent shadow-soft"></span>
+        <span class="text-lg font-semibold tracking-wide">SynthMind <span class="text-primary-200">AI</span></span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm text-white/70">
+        <a href="#features" class="hover:text-white transition">Features</a>
+        <a href="#use-cases" class="hover:text-white transition">Use Cases</a>
+        <a href="#pricing" class="hover:text-white transition">Pricing</a>
+        <a href="#faq" class="hover:text-white transition">FAQ</a>
+      </nav>
+      <div class="hidden md:flex items-center gap-3">
+        <a href="#pricing" class="text-sm px-4 py-2 rounded-xl border border-white/15 hover:bg-white/10 transition">Sign in</a>
+        <a href="#cta" class="text-sm px-4 py-2 rounded-xl bg-primary-600 hover:bg-primary-500 transition shadow-soft">Start Free</a>
+      </div>
+      <button aria-label="Open Menu" class="md:hidden p-2 rounded-lg border border-white/15" x-data="{open:false}" @click="open=true" @keyup.escape="open=false">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        <div x-show="open" x-transition class="fixed inset-0 z-50 bg-black/60"></div>
+        <div x-show="open" x-transition class="fixed top-16 right-4 z-[60] w-64 rounded-2xl border border-white/10 bg-[#101018] p-4 space-y-2">
+          <a href="#features" class="block px-3 py-2 rounded-lg hover:bg-white/5">Features</a>
+          <a href="#use-cases" class="block px-3 py-2 rounded-lg hover:bg-white/5">Use Cases</a>
+          <a href="#pricing" class="block px-3 py-2 rounded-lg hover:bg-white/5">Pricing</a>
+          <a href="#faq" class="block px-3 py-2 rounded-lg hover:bg-white/5">FAQ</a>
+          <div class="pt-2 flex gap-2">
+            <a href="#pricing" class="flex-1 text-center text-sm px-3 py-2 rounded-xl border border-white/10 hover:bg-white/10">Sign in</a>
+            <a href="#cta" class="flex-1 text-center text-sm px-3 py-2 rounded-xl bg-primary-600 hover:bg-primary-500">Start Free</a>
+          </div>
+        </div>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="cta" class="relative pt-36 pb-24 overflow-hidden">
+    <!-- Background grid + radial fade -->
+    <div class="absolute inset-0 -z-10 bg-grid bg-[size:36px_36px] bg-[#0A0A0F]"></div>
+    <div class="absolute inset-0 -z-10 bg-radial-fade"></div>
+    <!-- Animated canvas background -->
+    <canvas id="bg-canvas" class="absolute inset-0 -z-10 w-full h-full"></canvas>
+
+    <div class="mx-auto max-w-7xl px-6 text-center">
+      <p class="inline-flex items-center gap-2 text-xs md:text-sm px-3 py-1 rounded-full border border-white/10 bg-white/5 text-white/70">
+        <span class="h-2 w-2 rounded-full bg-accent inline-block"></span>
+        Trusted by leading creators worldwide
+      </p>
+      <h1 class="mt-6 text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
+        Unleash Your Inner Genius with <span class="bg-gradient-to-r from-primary-400 via-accent to-white bg-clip-text text-transparent">AI-Powered Creativity</span>
+      </h1>
+      <p class="mt-4 text-white/70 max-w-2xl mx-auto text-base md:text-lg">
+        SynthMind AI helps you brainstorm, write, design, and innovate faster and smarter.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href="#pricing" class="group relative inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-primary-600 hover:bg-primary-500 transition shadow-soft focus:outline-none focus:ring-2 focus:ring-accent">
+          <span>Start Your Free Trial</span>
+          <span class="absolute inset-0 rounded-2xl ring-2 ring-primary-400/30 opacity-0 group-hover:opacity-100 transition"></span>
+        </a>
+        <button class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl border border-white/15 hover:bg-white/10 transition" data-open-modal="demoModal">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M6 4l10 6-10 6V4z"/></svg>
+          Watch Demo
+        </button>
+      </div>
+      <!-- Trust logos placeholder -->
+      <div class="mt-10 grid grid-cols-2 md:grid-cols-5 gap-6 items-center opacity-70">
+        <div class="h-8 bg-white/5 rounded"></div>
+        <div class="h-8 bg-white/5 rounded"></div>
+        <div class="h-8 bg-white/5 rounded"></div>
+        <div class="h-8 bg-white/5 rounded"></div>
+        <div class="h-8 bg-white/5 rounded"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Feature Showcase -->
+  <section id="features" class="py-24 border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="max-w-2xl mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold">Create more with less effort</h2>
+        <p class="mt-2 text-white/70">Scroll to see SynthMind in action. Smooth, performant, and built for flow.</p>
+      </div>
+
+      <div class="space-y-16">
+        <!-- Feature 1: AI Writing Assistant -->
+        <article class="grid md:grid-cols-2 gap-8 items-center feature" data-feature="writing">
+          <div class="order-2 md:order-1">
+            <h3 class="text-2xl font-semibold">Generate Ideas & Draft Content Instantly</h3>
+            <p class="mt-2 text-white/70">From blog posts to marketing copy, SynthMind AI provides instant suggestions and rephrases, overcoming writer's block.</p>
+          </div>
+          <div class="order-1 md:order-2">
+            <div class="rounded-2xl border border-white/10 bg-[#0f0f15] p-4 shadow-soft">
+              <div class="flex items-center gap-2 text-xs text-white/50 pb-2 border-b border-white/10">
+                <span class="h-3 w-3 rounded-full bg-red-500/70"></span>
+                <span class="h-3 w-3 rounded-full bg-yellow-500/70"></span>
+                <span class="h-3 w-3 rounded-full bg-green-500/70"></span>
+                <span class="ml-auto">editor.md</span>
+              </div>
+              <div class="mt-3 font-mono text-sm leading-relaxed text-white/90 min-h-[180px]">
+                <div id="typing-area" class="caret"></div>
+                <div id="suggestions" class="mt-3 hidden">
+                  <div class="inline-block px-2 py-1 rounded bg-accent/10 border border-accent/30 text-accent text-xs">AI Suggestion: Try a more vivid hook.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Feature 2: Design Inspiration Engine -->
+        <article class="grid md:grid-cols-2 gap-8 items-center feature" data-feature="design">
+          <div>
+            <h3 class="text-2xl font-semibold">Transform Concepts into Visual Masterpieces</h3>
+            <p class="mt-2 text-white/70">Input your vision, and our AI will suggest color palettes, typography pairings, and layout ideas tailored to your brand.</p>
+          </div>
+          <div>
+            <div class="rounded-2xl border border-white/10 p-4 bg-gradient-to-br from-white/5 to-white/[0.03] shadow-soft">
+              <div class="grid grid-cols-3 gap-3" id="design-grid">
+                <div class="h-24 rounded-xl bg-primary-600/40 transition-all"></div>
+                <div class="h-24 rounded-xl bg-accent/40 transition-all"></div>
+                <div class="h-24 rounded-xl bg-white/20 transition-all"></div>
+                <div class="h-24 rounded-xl bg-white/10 transition-all"></div>
+                <div class="h-24 rounded-xl bg-primary-500/30 transition-all"></div>
+                <div class="h-24 rounded-xl bg-accent/30 transition-all"></div>
+              </div>
+              <p class="mt-3 text-xs text-white/60">Elements morph to demonstrate AI-generated concepts.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Feature 3: Code & Development Co-pilot -->
+        <article class="grid md:grid-cols-2 gap-8 items-center feature" data-feature="code">
+          <div class="order-2 md:order-1">
+            <h3 class="text-2xl font-semibold">Accelerate Your Development Workflow</h3>
+            <p class="mt-2 text-white/70">Let AI assist with code generation, bug fixing, and optimization, allowing you to focus on innovation.</p>
+          </div>
+          <div class="order-1 md:order-2">
+            <div class="rounded-2xl border border-white/10 bg-[#0f0f15] p-4 shadow-soft">
+              <div class="flex items-center gap-2 text-xs text-white/50 pb-2 border-b border-white/10">
+                <span class="ml-auto">app.js</span>
+              </div>
+             <pre class="mt-3 font-mono text-sm text-white/90 min-h-[180px] relative overflow-x-auto">
+  <code id="code-area">
+// Fetch users and map names
+async function fetchNames() {
+  try {
+    const res = await fetch('/api/users');
+    const data = await res.json();
+    // Cache or process as needed
+    return data.map(user => user.name);
+  } catch (error) {
+    console.error('Failed to fetch users:', error);
+    return [];
+  }
+}
+
+// AI Suggestion: Use try/catch and cache
+  </code>
+</pre>
+
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases (Tabbed) -->
+  <section id="use-cases" class="py-24 border-t border-white/10" x-data="{tab:'marketers'}">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold">Tailored to your role</h2>
+          <p class="mt-2 text-white/70">Pick a tab to see how SynthMind AI fits your workflow.</p>
+        </div>
+        <div class="flex gap-2 bg-white/5 p-1 rounded-2xl border border-white/10 w-full md:w-auto" role="tablist">
+          <button :class="tab==='marketers'?'bg-white/10 text-white':'text-white/70'" class="px-4 py-2 rounded-xl" @click="tab='marketers'" role="tab" aria-selected="true">For Marketers</button>
+          <button :class="tab==='developers'?'bg-white/10 text-white':'text-white/70'" class="px-4 py-2 rounded-xl" @click="tab='developers'" role="tab">For Developers</button>
+          <button :class="tab==='creators'?'bg-white/10 text-white':'text-white/70'" class="px-4 py-2 rounded-xl" @click="tab='creators'" role="tab">For Content Creators</button>
+          <button :class="tab==='designers'?'bg-white/10 text-white':'text-white/70'" class="px-4 py-2 rounded-xl" @click="tab='designers'" role="tab">For Designers</button>
+        </div>
+      </div>
+
+      <div class="mt-10 grid md:grid-cols-2 gap-10 items-start">
+        <div>
+          <template x-if="tab==='marketers'">
+            <div>
+              <h3 class="text-2xl font-semibold">Turn briefs into campaigns</h3>
+              <p class="mt-2 text-white/70">Generate on-brand headlines, ad variations, and landing pages in minutes.</p>
+              <ul class="mt-4 space-y-2 text-white/70 list-disc list-inside">
+                <li>Instant copy ideas & A/B variations</li>
+                <li>SEO outlines and keyword clustering</li>
+                <li>Ready-to-export assets</li>
+              </ul>
+              <a href="#" class="mt-4 inline-block px-4 py-2 rounded-xl border border-white/15 hover:bg-white/10">Learn More</a>
+            </div>
+          </template>
+          <template x-if="tab==='developers'">
+            <div>
+              <h3 class="text-2xl font-semibold">Ship faster, with fewer bugs</h3>
+              <p class="mt-2 text-white/70">Use AI code completion, tests, refactors, and docstrings in your stack.</p>
+              <ul class="mt-4 space-y-2 text-white/70 list-disc list-inside">
+                <li>Inline suggestions & explanations</li>
+                <li>Auto-generated tests</li>
+                <li>Performance hints and diffs</li>
+              </ul>
+              <a href="#" class="mt-4 inline-block px-4 py-2 rounded-xl border border-white/15 hover:bg-white/10">Learn More</a>
+            </div>
+          </template>
+          <template x-if="tab==='creators'">
+            <div>
+              <h3 class="text-2xl font-semibold">Never stare at a blank page</h3>
+              <p class="mt-2 text-white/70">Outlines, scripts, captions, and hooks tailored to your voice.</p>
+              <ul class="mt-4 space-y-2 text-white/70 list-disc list-inside">
+                <li>Multi-platform content repurposing</li>
+                <li>Style transfer & tone controls</li>
+                <li>Batch planning tools</li>
+              </ul>
+              <a href="#" class="mt-4 inline-block px-4 py-2 rounded-xl border border-white/15 hover:bg-white/10">Learn More</a>
+            </div>
+          </template>
+          <template x-if="tab==='designers'">
+            <div>
+              <h3 class="text-2xl font-semibold">Concept to composition in seconds</h3>
+              <p class="mt-2 text-white/70">Palette, typography, and layout ideas matched to your brand system.</p>
+              <ul class="mt-4 space-y-2 text-white/70 list-disc list-inside">
+                <li>Smart theme recommendations</li>
+                <li>Component libraries & variants</li>
+                <li>Export to Figma or CSS</li>
+              </ul>
+              <a href="#" class="mt-4 inline-block px-4 py-2 rounded-xl border border-white/15 hover:bg-white/10">Learn More</a>
+            </div>
+          </template>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 aspect-video flex items-center justify-center">
+          <span class="text-white/60">Illustration or role-specific graphic</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-24 border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="flex items-end justify-between">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold">Loved by creative teams</h2>
+          <p class="mt-2 text-white/70">Real stories from real users.</p>
+        </div>
+        <div class="hidden md:flex gap-2" id="testimonial-nav"></div>
+      </div>
+
+      <div class="mt-8 swiper" id="testimonial-swiper" aria-label="Testimonials carousel">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <div class="h-full rounded-2xl border border-white/10 p-6 bg-white/5">
+              <div class="flex items-center gap-3">
+                <div class="h-10 w-10 rounded-full bg-white/20"></div>
+                <div>
+                  <p class="font-medium">Jane Doe</p>
+                  <p class="text-xs text-white/60">Lead Designer, InnovateCo</p>
+                </div>
+              </div>
+              <blockquote class="mt-4 text-white/80">“SynthMind AI has revolutionized my creative process!”</blockquote>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <div class="h-full rounded-2xl border border-white/10 p-6 bg-white/5">
+              <div class="flex items-center gap-3">
+                <div class="h-10 w-10 rounded-full bg-white/20"></div>
+                <div>
+                  <p class="font-medium">Rafi Ahmed</p>
+                  <p class="text-xs text-white/60">Head of Content, BrightLabs</p>
+                </div>
+              </div>
+              <blockquote class="mt-4 text-white/80">“From brief to output in minutes. Wild.”</blockquote>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="swiper-slide">
+            <div class="h-full rounded-2xl border border-white/10 p-6 bg-white/5">
+              <div class="flex items-center gap-3">
+                <div class="h-10 w-10 rounded-full bg-white/20"></div>
+                <div>
+                  <p class="font-medium">Sara Kim</p>
+                  <p class="text-xs text-white/60">Product Manager, FluxWorks</p>
+                </div>
+              </div>
+              <blockquote class="mt-4 text-white/80">“We ship more—without burning out the team.”</blockquote>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 flex items-center justify-center gap-4">
+          <div class="swiper-button-prev !static !m-0 !h-10 !w-10 rounded-xl border border-white/15 bg-white/5"></div>
+          <div class="swiper-pagination !static"></div>
+          <div class="swiper-button-next !static !m-0 !h-10 !w-10 rounded-xl border border-white/15 bg-white/5"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-24 border-t border-white/10" x-data="{annual:true, prices:{free:0, proM:29, proY:24, bizM:79, bizY:66}}">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold">Simple, transparent pricing</h2>
+          <p class="mt-2 text-white/70">Switch billing to see your savings.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-sm text-white/70">Monthly</span>
+          <button @click="annual=!annual" class="relative inline-flex h-8 w-14 items-center rounded-full bg-white/10 border border-white/10">
+            <span class="absolute left-1 top-1 h-6 w-6 rounded-full bg-white/70 transition" :class="annual ? 'translate-x-6' : ''"></span>
+          </button>
+          <span class="text-sm text-white">Annual <span class="text-accent">-20%</span></span>
+        </div>
+      </div>
+
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <!-- Free -->
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 flex flex-col">
+          <h3 class="text-xl font-semibold">Free</h3>
+          <p class="mt-2 text-white/60">Get started and explore.</p>
+          <p class="mt-6 text-3xl font-bold">$0</p>
+          <ul class="mt-4 space-y-2 text-white/70">
+            <li>Basic writing & design tools</li>
+            <li>Community support</li>
+            <li>Limited credits</li>
+          </ul>
+          <a href="#" class="mt-auto inline-block text-center px-4 py-2 rounded-xl border border-white/15 hover:bg-white/10">Sign Up Now</a>
+        </div>
+        <!-- Pro (Most Popular) -->
+        <div class="relative rounded-2xl border border-primary/50 bg-gradient-to-b from-primary/20 to-white/5 p-6 shadow-soft flex flex-col">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] tracking-widest px-3 py-1 rounded-full bg-primary-600 text-white/90 border border-white/20">MOST POPULAR</div>
+          <h3 class="text-xl font-semibold">Pro</h3>
+          <p class="mt-2 text-white/60">For serious creators</p>
+          <p class="mt-6 text-3xl font-bold">$<span x-text="annual ? prices.proY : prices.proM"></span><span class="text-sm text-white/60">/mo</span></p>
+          <ul class="mt-4 space-y-2 text-white/70">
+            <li>Unlimited projects</li>
+            <li>Advanced AI models</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="#" class="mt-auto inline-block text-center px-4 py-2 rounded-xl bg-primary-600 hover:bg-primary-500">Sign Up Now</a>
+        </div>
+        <!-- Business -->
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 flex flex-col">
+          <h3 class="text-xl font-semibold">Business</h3>
+          <p class="mt-2 text-white/60">For teams and companies</p>
+          <p class="mt-6 text-3xl font-bold">$<span x-text="annual ? prices.bizY : prices.bizM"></span><span class="text-sm text-white/60">/mo</span></p>
+          <ul class="mt-4 space-y-2 text-white/70">
+            <li>Team seats & roles</li>
+            <li>SSO & security controls</li>
+            <li>Dedicated success manager</li>
+          </ul>
+          <a href="#" class="mt-auto inline-block text-center px-4 py-2 rounded-xl border border-white/15 hover:bg-white/10">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-24 border-t border-white/10" x-data="{open:null}">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl md:text-4xl font-bold">Frequently asked questions</h2>
+        <p class="mt-2 text-white/70">Everything you need to know about SynthMind AI.</p>
+      </div>
+      <div class="mt-8 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5">
+        <div class="p-6">
+          <button class="w-full text-left flex items-center justify-between" @click="open===1?open=null:open=1" :aria-expanded="open===1">
+            <span class="font-medium">Can I try SynthMind AI for free?</span>
+            <span class="text-white/50">+</span>
+          </button>
+          <div x-show="open===1" x-transition class="mt-3 text-white/70">Yes, start with our Free plan. Upgrade anytime.</div>
+        </div>
+        <div class="p-6">
+          <button class="w-full text-left flex items-center justify-between" @click="open===2?open=null:open=2" :aria-expanded="open===2">
+            <span class="font-medium">Do you offer team features?</span>
+            <span class="text-white/50">+</span>
+          </button>
+          <div x-show="open===2" x-transition class="mt-3 text-white/70">Yes, the Business plan includes seats, SSO, and admin controls.</div>
+        </div>
+        <div class="p-6">
+          <button class="w-full text-left flex items-center justify-between" @click="open===3?open=null:open=3" :aria-expanded="open===3">
+            <span class="font-medium">Is there a student discount?</span>
+            <span class="text-white/50">+</span>
+          </button>
+          <div x-show="open===3" x-transition class="mt-3 text-white/70">We offer educational discounts—contact support for eligibility.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 py-16">
+    <div class="mx-auto max-w-7xl px-6 grid md:grid-cols-4 gap-8 items-start">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="inline-block h-8 w-8 rounded-xl bg-gradient-to-br from-primary-500 to-accent"></span>
+          <span class="text-lg font-semibold">SynthMind AI</span>
+        </div>
+        <p class="mt-3 text-white/60">Unlock your creative potential with intelligent assistance.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold">Company</h4>
+        <ul class="mt-3 space-y-2 text-white/70">
+          <li><a href="#" class="hover:text-white">About Us</a></li>
+          <li><a href="#" class="hover:text-white">Contact</a></li>
+          <li><a href="#" class="hover:text-white">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold">Legal</h4>
+        <ul class="mt-3 space-y-2 text-white/70">
+          <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+          <li><a href="#" class="hover:text-white">Security</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold">Follow</h4>
+        <div class="mt-3 flex gap-3">
+          <a href="#" class="h-9 w-9 rounded-lg border border-white/15 flex items-center justify-center hover:bg-white/10" aria-label="Twitter"></a>
+          <a href="#" class="h-9 w-9 rounded-lg border border-white/15 flex items-center justify-center hover:bg-white/10" aria-label="Instagram"></a>
+          <a href="#" class="h-9 w-9 rounded-lg border border-white/15 flex items-center justify-center hover:bg-white/10" aria-label="YouTube"></a>
+        </div>
+      </div>
+    </div>
+    <p class="mt-10 text-center text-white/40 text-sm">© <span id="year"></span> SynthMind AI. All rights reserved.</p>
+  </footer>
+
+  <!-- Demo Modal -->
+  <div id="demoModal" class="hidden fixed inset-0 z-[100] items-center justify-center">
+    <div class="absolute inset-0 bg-black/70" data-close-modal></div>
+    <div class="relative w-[92%] max-w-3xl rounded-2xl border border-white/10 bg-[#101018] p-4">
+      <button class="absolute top-3 right-3 p-2 rounded-lg border border-white/10 hover:bg-white/10" aria-label="Close" data-close-modal>&times;</button>
+      <div class="aspect-video bg-black/50 rounded-xl flex items-center justify-center">
+        <span class="text-white/60">Embed product demo video here</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts: minimal animations & interactions -->
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Modal logic
+    document.querySelectorAll('[data-open-modal]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-open-modal');
+        const modal = document.getElementById(id);
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      });
+    });
+    document.querySelectorAll('[data-close-modal]').forEach(el => {
+      el.addEventListener('click', () => {
+        const modal = el.closest('#demoModal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      });
+    });
+
+    // Background Canvas Animation (lightweight particles)
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    (function initCanvas(){
+      if(prefersReduced) return; // respect reduced motion
+      const c = document.getElementById('bg-canvas');
+      const ctx = c.getContext('2d');
+      let w, h, particles;
+      function resize(){ w = c.width = innerWidth; h = c.height = document.querySelector('section#cta').offsetHeight + 120; }
+      function createParticles(){
+        particles = Array.from({length: 80}, () => ({
+          x: Math.random()*w,
+          y: Math.random()*h,
+          vx: (Math.random()-0.5)*0.6,
+          vy: (Math.random()-0.5)*0.6,
+          r: Math.random()*2+0.5,
+        }));
+      }
+      function draw(){
+        ctx.clearRect(0,0,w,h);
+        ctx.fillStyle = 'rgba(108,92,231,0.15)';
+        particles.forEach(p=>{
+          p.x += p.vx; p.y += p.vy;
+          if(p.x<0||p.x>w) p.vx*=-1; if(p.y<0||p.y>h) p.vy*=-1;
+          ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+        });
+        // lines
+        ctx.strokeStyle = 'rgba(34,211,238,0.08)';
+        for(let i=0;i<particles.length;i++){
+          for(let j=i+1;j<particles.length;j++){
+            const a=particles[i], b=particles[j];
+            const dx=a.x-b.x, dy=a.y-b.y, dist=Math.hypot(dx,dy);
+            if(dist<120){
+              ctx.globalAlpha = 1 - dist/120;
+              ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); ctx.globalAlpha=1;
+            }
+          }
+        }
+        requestAnimationFrame(draw);
+      }
+      window.addEventListener('resize', () => { resize(); createParticles(); });
+      resize(); createParticles(); draw();
+    })();
+
+    // Typing simulation for Feature 1
+    const typingArea = document.getElementById('typing-area');
+    const suggestions = document.getElementById('suggestions');
+    const text = "Great ideas start with a single sentence. Let SynthMind guide your flow.";
+    let i=0;
+    function type(){
+      if(!typingArea) return;
+      if(i < text.length){
+        typingArea.textContent += text.charAt(i);
+        i++;
+        setTimeout(type, 35);
+      } else {
+        suggestions.classList.remove('hidden');
+      }
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting) { type(); io.disconnect(); } });
+    }, { threshold: 0.4 });
+    if(typingArea) io.observe(typingArea);
+
+    // Design morphs (Feature 2)
+    const grid = document.getElementById('design-grid');
+    let toggle = false;
+    function morph(){
+      if(!grid) return;
+      toggle = !toggle;
+      [...grid.children].forEach((el, idx) => {
+        el.style.transitionDuration = '800ms';
+        el.style.borderRadius = toggle ? '0.75rem' : '1.25rem';
+        el.style.transform = toggle ? `scale(${1 + (idx%3)*0.03}) rotate(${(idx%2?1:-1)*3}deg)` : 'scale(1) rotate(0deg)';
+        el.style.opacity = toggle ? (0.7 + (idx%3)*0.1) : 1;
+      });
+    }
+    setInterval(morph, 2200);
+
+    // Code autowrite (Feature 3)
+    const codeArea = document.getElementById('code-area');
+    const codeExtra = "\ntry {\n  const names = await fetchNames();\n  console.log(names);\n} catch (err) {\n  console.warn('Network issue, using cache');\n  return cache.get('users') || [];\n}";
+    const io2 = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ let j=0; const t = () => { if(j<codeExtra.length){ codeArea.textContent += codeExtra[j++]; setTimeout(t, 18);} }; t(); io2.disconnect(); }
+      })
+    }, {threshold:0.4});
+    if(codeArea) io2.observe(codeArea);
+
+    // GSAP ScrollTrigger (fade & slide for feature blocks)
+    window.addEventListener('load', () => {
+      if (window.gsap && !prefersReduced) {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.utils.toArray('.feature').forEach((el, i) => {
+          gsap.from(el, {
+            opacity: 0,
+            y: 40,
+            duration: 0.8,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 80%',
+            },
+          });
+        });
+      }
+    });
+
+    // Swiper init (Testimonials)
+    window.addEventListener('load', () => {
+      new Swiper('#testimonial-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 16,
+        loop: true,
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+        breakpoints: {
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

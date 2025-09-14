@@ -1,0 +1,36 @@
+.hero-container{
+display: flex;
+align-items: center;
+justify-content: space-around;
+padding: 25px;
+gap: 40px;
+background-color: lightgray;
+}
+.hero-container img{
+    width: 300px;
+    height: 300px;
+    border: 2px solid blue;
+    border-radius: 30px;
+}
+body{
+    max-width:1130px;
+    /* background-color: red; */
+    margin: 0 auto;
+}
+.left h1{
+    font-size: 2em;
+    color: #0e7a51;
+    text-transform: capitalize;
+}
+button{
+    padding: 10px 20px;
+    outline: none;
+    background-color: lightblue;
+    border-radius: 25px;
+    text-transform: capitalize;
+    font-size: 1.2em;
+}
+.left p{
+    font-size: 1em;
+    
+}

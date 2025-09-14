@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event bubble</title>
+    <style>
+        body{
+            background-color: #f32828;
+            margin: 2px;
+        }
+        section{
+            background-color: #f328e2;
+            margin: 2px;
+        }
+        ul{
+            background-color: #282bf3;
+            margin: 2px;
+        }
+        li{
+            background-color: #f3f328;
+            margin: 2px;
+        }
+        /* #item-1{
+            background-color: red;
+        }
+        #item-2{
+            background-color: green;
+        }
+        #item-3{
+            background-color: blue;
+        }
+        #item-4{
+            background-color: yellow;
+        }
+        #item-5{
+            background-color: orange;
+        }
+        #item-6{
+            background-color: black;
+        } */
+    </style>
+</head>
+<body id="body">
+    <head></head>
+    <h1> explore event bubble</h1>
+    <section id="container">
+        <ol id="list">
+        <li id="item-1">Lorem, ipsum.</li>
+        <li id="item-2">Esse, vel?</li>
+        <li id="item-3">Nihil, itaque!</li>
+        <li id="item-4">Fuga, inventore.</li>
+        <li id="item-5">Deleniti, rerum.</li>
+        <li id="item-6">Dolores, fuga.</li>
+    </ol>
+    </section>
+    <script>
+
+        // list item2 click event
+        document.getElementById('item-2')
+        .addEventListener('click', function(event){
+            console.log('item-2 clicked');
+            event.stopPropagation
+            event.stopImmediatePropagation
+        })
+
+        // ol click event
+        document.getElementById('list')
+        .addEventListener('click', function(){
+            console.log('ol clicked');
+        })
+          document.getElementById('container')
+        .addEventListener('click', function(){
+            console.log('container clicked');
+        })
+         document.getElementById('body')
+        .addEventListener('click', function(){
+            console.log('body clicked');
+        })
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>explore animayion</title>
+    <style>
+        .stage{
+            width: 600px;
+            height: 600px;
+            border: 2px solid rgb(27, 80, 160);
+            background-color: thistle;
+            /* margin: 20px auto;
+            position: relative; */
+        }
+        .ball{
+            width: 100px;
+            height: 100px;
+            /* border-radius: 50%; */
+            /* background-color: red; */
+            position: relative;
+            animation-name: move;
+            animation-duration: 5s;
+            animation-iteration-count:infinite;
+            animation-timing-function: ease-in-out;
+        }
+        @keyframes move{
+            0%{
+               top: 0px;
+               left: 0px;
+               transform: rotate(480deg);
+               background-color: rgb(221, 82, 66);
+            }
+            25%{
+                top: 0px;
+                left:500px;
+                transform: rotate(0deg);
+                background-color: seagreen;
+               
+            }
+            50%{
+                top: 500px;
+                left: 500px;
+                transform: rotate(180deg);
+                background-color: rgb(66, 76, 221);
+               
+            }
+            75%{
+                top: 500px;
+                left: 0px;
+                transform: rotate(580deg);
+                background-color: rgb(216, 53, 53);
+               
+            }
+            100%{
+                top: 0px;
+                left: 0px;
+                transform: rotate(480deg);
+                background-color: rgb(158, 16, 214);
+               
+            }
+        }
+        @keyframes name{
+            from {
+               
+                left: 0px;
+                transform: rotate(360deg);
+            }
+            to{
+               
+                left: 500px;
+                background-color: green;
+                
+                transform: rotate(0deg);
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <h2>explore animayion</h2>
+    <div class="stage">
+        <div class="ball"></div>
+    </div>
+</body>
+</html>

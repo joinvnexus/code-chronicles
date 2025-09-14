@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dm event summary</title>
+  </head>
+  <body>
+    <h1>Dm event summary</h1>
+    <input id="input-name" type="text" placeholder="enter your name" />
+    <button id="btn-add-name" onclick="addName()">add name</button>
+    <hr />
+    <button id="btn-add-name-2">add name 2</button>
+    <p></p>
+    <div id="name-container"></div>
+    <script>
+      function addName() {
+        // console.log('button click')
+        const nameInput = document.getElementById("input-name");
+        const newName = nameInput.value;
+        // console.log(nameInput.value)
+
+        //parent
+        const nameContainer = document.getElementById("name-container");
+
+        //create p
+        const para = document.createElement("p");
+        para.innerText = newName;
+
+        //appendChild
+        nameContainer.appendChild(para);
+        //clear input
+        nameInput.value = "";
+      }
+
+      const btnAddName2 = document
+        .getElementById("btn-add-name-2")
+        .addEventListener("key", function () {
+            const nameInput = document.getElementById('input-name');
+            const newName = nameInput.value;
+            const nameContainer = document.getElementById('name-container');
+            const para = document.createElement('p');
+            para.innerText = newName;
+            nameContainer.appendChild(para);
+            nameInput.value = '';
+
+        });
+    </script>
+  </body>
+</html>

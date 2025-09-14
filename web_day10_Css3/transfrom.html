@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transfrom </title>
+    <style>
+        .container, .inner{
+            width: 200px;
+            height: 200px;
+
+        }
+        .container{
+            /* background-color: red; */
+            margin: 10px;
+            border: 2px solid teal;
+            background-color: thistle;
+        }
+        .inner{
+            border: 2px solid blueviolet;
+            background-color: bisque;
+            /* transform: scale(0.5) translateX(100px) rotate(45deg); */
+            
+             /* skew(30deg); */
+            /* /* transform: translateX(100px); */
+            /* transform: rotate(45deg);  */
+            transition: all 0.5s ease-in-out;
+        }
+        .inner:hover{
+            transform: rotate(45deg) translateX(100px) scale(0.5);
+        }
+    </style>
+</head>
+<body>
+    <h2>explore transfrom translate </h2>
+    <div class="container">
+        <div class="inner">inner-1</div>
+    </div>
+    <div class="container">
+        <div class="inner">inner-2</div>
+    </div>
+    <div class="container">
+        <div class="inner">inner-3</div>
+    </div>
+    
+</body>
+</html>

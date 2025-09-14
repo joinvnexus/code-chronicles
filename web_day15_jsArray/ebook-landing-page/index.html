@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Mastery | Free Ebook</title>
+  <meta name="description" content="Download our free ebook on modern design principles">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6e45e2',
+            secondary: '#88d3ce',
+            accent: '#ff6b6b',
+          },
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 5s infinite',
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Lottie Player -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  
+  <!-- Locomotive Scroll -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="font-sans bg-gray-50 text-gray-800 overflow-x-hidden">
+  <div id="scroll-container" data-scroll-container>
+    <!-- Hero Section -->
+    <section class="min-h-screen relative overflow-hidden" data-scroll-section>
+  <!-- Animated gradient background -->
+  <div class="absolute inset-0 overflow-hidden z-0">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary via-purple-600 to-secondary opacity-90 animate-gradient"></div>
+    <div class="absolute top-0 left-0 w-full h-full opacity-20">
+      <div class="floating-shapes"></div>
+      <div class="floating-shapes delay-200"></div>
+      <div class="floating-shapes delay-400"></div>
+    </div>
+  </div>
+  
+  <div class="container mx-auto px-6 relative z-10 h-full flex items-center pt-20">
+    <div class="w-full lg:w-1/2 py-20">
+      <div class="mb-8" data-scroll data-scroll-speed="0.8">
+        <span class="inline-block bg-white bg-opacity-20 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
+          NEW RELEASE
+        </span>
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight">
+          Design <span class="text-accent">Mastery</span><br>in the <span class="typewrite" data-period="2000" data-type='[ "Digital Age", "Modern Era", "2024" ]'></span>
+        </h1>
+        <p class="text-xl md:text-2xl text-white opacity-90 mb-10 max-w-lg">
+          The definitive guide to modern UI/UX principles with actionable insights from industry leaders.
+        </p>
+      </div>
+      
+      <div class="flex flex-col sm:flex-row gap-4 mb-12" data-scroll data-scroll-speed="0.5">
+        <button class="cta-button bg-accent hover:bg-accent-dark text-white font-bold py-4 px-8 rounded-full text-lg transition-all transform hover:-translate-y-1 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+          </svg>
+          Download Free Ebook
+        </button>
+        <button class="cta-button-outline bg-transparent hover:bg-white hover:bg-opacity-10 text-white font-bold py-4 px-8 rounded-full text-lg transition-all border-2 border-white border-opacity-30 flex items-center justify-center gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          Watch Preview
+        </button>
+      </div>
+      
+      <div class="flex items-center gap-4 text-white opacity-80" data-scroll data-scroll-speed="0.3">
+        <div class="flex -space-x-2">
+          <img class="w-10 h-10 rounded-full border-2 border-white" src="/assets/images/avatar1.jpg" alt="User avatar">
+          <img class="w-10 h-10 rounded-full border-2 border-white" src="/assets/images/avatar2.jpg" alt="User avatar">
+          <img class="w-10 h-10 rounded-full border-2 border-white" src="/assets/images/avatar3.jpg" alt="User avatar">
+        </div>
+        <div>
+          <p class="text-sm">Join <span class="font-bold">5,000+ designers</span> who've improved their skills</p>
+          <div class="flex items-center">
+            <svg class="w-4 h-4 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+            </svg>
+            <span class="text-xs ml-1">4.9 (1.2k reviews)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hidden lg:block lg:w-1/2 relative" data-scroll data-scroll-speed="-1">
+      <div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-full max-w-xl">
+        <div id="hero-animation" class="w-full h-[500px] relative">
+          <!-- 3D Ebook model will be inserted here -->
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="ebook-3d-placeholder"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce" data-scroll data-scroll-speed="2">
+    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+    </svg>
+  </div>
+</section>
+
+    <!-- 3D Ebook Showcase -->
+    <section class="py-20 bg-white" data-scroll-section>
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16" data-scroll data-scroll-speed="0.5">
+      <span class="inline-block bg-primary bg-opacity-10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
+        INTERACTIVE PREVIEW
+      </span>
+      <h2 class="text-4xl font-bold mb-4">Explore the Ebook in 3D</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Rotate, zoom, and interact with our ebook preview. Click to flip through sample pages.
+      </p>
+    </div>
+    
+    <div class="flex flex-col lg:flex-row items-center justify-center gap-12">
+      <div id="ebook-3d-container" class="w-full lg:w-1/2 h-96 lg:h-[500px] relative" data-scroll data-scroll-speed="-0.5">
+        <div class="ebook-3d-controls">
+          <button class="ebook-zoom-in">+</button>
+          <button class="ebook-zoom-out">-</button>
+          <button class="ebook-reset">↻</button>
+        </div>
+        <div class="ebook-loading">
+          <div class="spinner"></div>
+          <p>Loading 3D Preview...</p>
+        </div>
+      </div>
+      
+      <div class="w-full lg:w-1/2" data-scroll data-scroll-speed="0.5">
+        <h3 class="text-2xl font-bold mb-6">What You'll Learn</h3>
+        <ul class="space-y-4 mb-8">
+          <li class="flex items-start gap-4 p-4 hover:bg-gray-50 rounded-lg transition-all">
+            <div class="flex-shrink-0 w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center">
+              <lottie-player src="/assets/animations/design-process.json" background="transparent" speed="1" style="width: 32px; height: 32px;" hover></lottie-player>
+            </div>
+            <div>
+              <h4 class="font-bold text-lg">Modern Design Processes</h4>
+              <p class="text-gray-600">Step-by-step workflows used by top design teams</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4 p-4 hover:bg-gray-50 rounded-lg transition-all">
+            <div class="flex-shrink-0 w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center">
+              <lottie-player src="/assets/animations/components.json" background="transparent" speed="1" style="width: 32px; height: 32px;" hover></lottie-player>
+            </div>
+            <div>
+              <h4 class="font-bold text-lg">Component Systems</h4>
+              <p class="text-gray-600">Build scalable design systems with reusable components</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4 p-4 hover:bg-gray-50 rounded-lg transition-all">
+            <div class="flex-shrink-0 w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center">
+              <lottie-player src="/assets/animations/accessibility.json" background="transparent" speed="1" style="width: 32px; height: 32px;" hover></lottie-player>
+            </div>
+            <div>
+              <h4 class="font-bold text-lg">Accessibility First</h4>
+              <p class="text-gray-600">Create inclusive designs that work for everyone</p>
+            </div>
+          </li>
+        </ul>
+        
+        <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+          <div class="flex items-start gap-4">
+            <svg class="w-6 h-6 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <div>
+              <h4 class="font-bold text-lg mb-2">Free Sample Chapter</h4>
+              <p class="text-gray-600 mb-4">Get immediate access to Chapter 3: "Color Theory for Modern Interfaces" when you sign up.</p>
+              <button class="text-primary font-semibold flex items-center gap-2 hover:underline">
+                Download Sample
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-gray-50" data-scroll-section>
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16" data-scroll>
+      <span class="inline-block bg-primary bg-opacity-10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
+        WHY CHOOSE THIS GUIDE
+      </span>
+      <h2 class="text-4xl font-bold mb-4">More Than Just an Ebook</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Packed with interactive elements, real-world examples, and practical exercises.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Feature 1 -->
+      <div class="feature-card bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2" data-scroll data-scroll-speed="0.3">
+        <div class="w-16 h-16 mb-6 bg-primary bg-opacity-10 rounded-xl flex items-center justify-center">
+          <lottie-player src="/assets/animations/interactive.json" background="transparent" speed="1" style="width: 36px; height: 36px;" hover></lottie-player>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Interactive Elements</h3>
+        <p class="text-gray-600 mb-4">3D models, clickable prototypes, and animated diagrams bring concepts to life.</p>
+        <ul class="space-y-2 text-sm text-gray-500">
+          <li class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+            </svg>
+            Rotatable 3D components
+          </li>
+          <li class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+            </svg>
+            Clickable prototypes
+          </li>
+          <li class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+            </svg>
+            Animated infographics
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Feature 2 -->
+      <div class="feature-card bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2" data-scroll data-scroll-speed="0.2">
+        <div class="w-16 h-16 mb-6 bg-primary bg-opacity-10 rounded-xl flex items-center justify-center">
+          <lottie-player src="/assets/animations/case-studies.json" background="transparent" speed="1" style="width: 36px; height: 36px;" hover></lottie-player>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Real-World Case Studies</h3>
+        <p class="text-gray-600 mb-4">Learn from detailed breakdowns of successful design systems at companies like Airbnb and IBM.</p>
+        <div class="flex flex-wrap gap-2 mt-4">
+          <span class="inline-block bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Airbnb Design</span>
+          <span class="inline-block bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">IBM Carbon</span>
+          <span class="inline-block bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full">Google Material</span>
+        </div>
+      </div>
+      
+      <!-- Feature 3 -->
+      <div class="feature-card bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2" data-scroll data-scroll-speed="0.1">
+        <div class="w-16 h-16 mb-6 bg-primary bg-opacity-10 rounded-xl flex items-center justify-center">
+          <lottie-player src="/assets/animations/exercises.json" background="transparent" speed="1" style="width: 36px; height: 36px;" hover></lottie-player>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Practical Exercises</h3>
+        <p class="text-gray-600 mb-4">Hands-on activities with downloadable Figma templates to practice what you learn.</p>
+        <div class="mt-4">
+          <div class="flex items-center gap-2 text-sm text-gray-500 mb-2">
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div class="bg-primary h-2 rounded-full" style="width: 75%"></div>
+            </div>
+            <span>Figma Templates</span>
+          </div>
+          <div class="flex items-center gap-2 text-sm text-gray-500">
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div class="bg-primary h-2 rounded-full" style="width: 90%"></div>
+            </div>
+            <span>Design Challenges</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="mt-16 text-center" data-scroll>
+      <button class="bg-primary hover:bg-opacity-90 text-white font-bold py-3 px-8 rounded-full text-lg transition-all transform hover:scale-105 inline-flex items-center gap-2">
+        See All Features
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-white" data-scroll-section>
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16" data-scroll>
+      <span class="inline-block bg-primary bg-opacity-10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
+        TRUSTED BY DESIGNERS
+      </span>
+      <h2 class="text-4xl font-bold mb-4">What Our Readers Say</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Don't just take our word for it - hear from designers who've transformed their work.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+      <!-- Testimonial 1 -->
+      <div class="testimonial-card bg-gray-50 p-8 rounded-2xl relative" data-scroll data-scroll-speed="0.2">
+        <div class="absolute top-0 left-8 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md">
+          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+          </svg>
+        </div>
+        <p class="text-gray-700 mb-6 italic">"This ebook completely transformed my design workflow. The 3D examples helped me understand complex spatial relationships in UI design that I'd struggled with for years."</p>
+        <div class="flex items-center">
+          <div class="w-12 h-12 rounded-full bg-gray-300 mr-4 overflow-hidden">
+            <img src="/assets/images/avatar1.jpg" alt="Sarah Johnson" class="w-full h-full object-cover">
+          </div>
+          <div>
+            <h4 class="font-bold">Sarah Johnson</h4>
+            <p class="text-sm text-gray-500">Senior UI Designer @Acme</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Testimonial 2 -->
+      <div class="testimonial-card bg-gray-50 p-8 rounded-2xl relative" data-scroll data-scroll-speed="0.1">
+        <div class="absolute top-0 left-8 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md">
+          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+          </svg>
+        </div>
+        <p class="text-gray-700 mb-6 italic">"The interactive exercises with Figma templates saved me dozens of hours. I was able to implement the techniques immediately in my current project."</p>
+        <div class="flex items-center">
+          <div class="w-12 h-12 rounded-full bg-gray-300 mr-4 overflow-hidden">
+            <img src="/assets/images/avatar2.jpg" alt="Michael Chen" class="w-full h-full object-cover">
+          </div>
+          <div>
+            <h4 class="font-bold">Michael Chen</h4>
+            <p class="text-sm text-gray-500">Product Designer @Startup</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Testimonial 3 -->
+      <div class="testimonial-card bg-gray-50 p-8 rounded-2xl relative" data-scroll data-scroll-speed="0">
+        <div class="absolute top-0 left-8 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md">
+          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+          </svg>
+        </div>
+        <p class="text-gray-700 mb-6 italic">"As a design lead, I've made this required reading for my team. The case studies alone are worth the price - but the interactive 3D models take it to another level."</p>
+        <div class="flex items-center">
+          <div class="w-12 h-12 rounded-full bg-gray-300 mr-4 overflow-hidden">
+            <img src="/assets/images/avatar3.jpg" alt="David Rodriguez" class="w-full h-full object-cover">
+          </div>
+          <div>
+            <h4 class="font-bold">David Rodriguez</h4>
+            <p class="text-sm text-gray-500">Design Lead @Fortune500</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center" data-scroll>
+      <div class="inline-flex items-center gap-4 bg-gray-50 px-6 py-3 rounded-full">
+        <div class="flex">
+          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+          </svg>
+          <!-- More stars -->
+        </div>
+        <span class="font-medium">4.9 out of 5 stars from 1,200+ designers</span>
+        <a href="#" class="text-primary font-semibold hover:underline flex items-center gap-1">
+          Read all reviews
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-primary to-secondary" data-scroll-section>
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold text-white mb-6" data-scroll>Ready to Master Design?</h2>
+        <p class="text-xl text-white opacity-90 mb-10 max-w-2xl mx-auto" data-scroll>
+          Download your free copy today and start creating stunning interfaces.
+        </p>
+        <button class="bg-white text-primary hover:bg-gray-100 font-bold py-4 px-12 rounded-full text-lg transition-all transform hover:scale-105 shadow-xl" data-scroll>
+          Get Instant Access
+        </button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12" data-scroll-section>
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-6 md:mb-0">
+            <h3 class="text-2xl font-bold mb-4">Design Mastery</h3>
+            <p class="text-gray-400">The ultimate guide to modern UI/UX</p>
+          </div>
+          
+          <div class="flex space-x-6">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
+              </svg>
+            </a>
+            <!-- More social icons -->
+          </div>
+        </div>
+        
+        <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2024 Design Mastery. All rights reserved.</p>
+          <div class="flex space-x-6">
+            <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+            <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/three-config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

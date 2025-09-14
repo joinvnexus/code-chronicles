@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS Grid Practice</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    /* Basic Grid */
+    .grid-basic {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .grid-basic div {
+      background: #4caf50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 5px;
+    }
+
+    /* Grid with Named Areas */
+    .grid-named {
+      display: grid;
+      grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+      grid-template-columns: 200px 1fr;
+      grid-template-rows: auto 1fr auto;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .header { grid-area: header; background: #2196f3; }
+    .sidebar { grid-area: sidebar; background: #f44336; }
+    .main { grid-area: main; background: #ff9800; }
+    .footer { grid-area: footer; background: #9c27b0; }
+
+    .grid-named div {
+      padding: 20px;
+      color: white;
+      border-radius: 5px;
+    }
+
+    /* Grid with Spanning */
+    .grid-span {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .grid-span .box1 {
+      grid-column: 1 / 3;
+      background: #673ab7;
+    }
+
+    .grid-span .box2 {
+      grid-row: 2 / 4;
+      background: #009688;
+    }
+
+    .grid-span div {
+      background: #607d8b;
+      padding: 20px;
+      color: white;
+      text-align: center;
+      border-radius: 5px;
+    }
+
+    /* Responsive Grid */
+    .grid-responsive {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+    }
+
+    .grid-responsive div {
+      background: #3f51b5;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>CSS Grid Practice</h1>
+
+  <section>
+    <h2>1. Basic Grid</h2>
+    <div class="grid-basic">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. Named Grid Areas</h2>
+    <div class="grid-named">
+      <div class="header">Header</div>
+      <div class="sidebar">Sidebar</div>
+      <div class="main">Main Content</div>
+      <div class="footer">Footer</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>3. Grid Spanning</h2>
+    <div class="grid-span">
+      <div class="box1">Span 2 Columns</div>
+      <div class="box2">Span 2 Rows</div>
+      <div>Box 3</div>
+      <div>Box 4</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>4. Responsive Grid (auto-fit)</h2>
+    <div class="grid-responsive">
+      <div>Item 1</div>
+      <div>Item 2</div>
+      <div>Item 3</div>
+      <div>Item 4</div>
+      <div>Item 5</div>
+      <div>Item 6</div>
+    </div>
+  </section>
+
+</body>
+</html>

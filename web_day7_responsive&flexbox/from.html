@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>from html</title>
+    <style>
+        nav a{
+            text-decoration: none;
+            color: black;
+            text-transform: capitalize;
+        }
+        nav{
+            display: flex;
+            justify-content: space-between;
+        }
+        .login-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+            /* height: 100vh; */
+            /* border: 1px solid red; */
+        }
+        .log-in{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 50%;
+            /* margin: 0 auto; */
+            justify-content: center;
+            border: 1px solid blue;
+            padding: 20px;
+        }
+    </style>
+  </head>
+  <body>
+    <nav>
+        <div>
+            <a href="">Home</a>
+      <a href="">profile</a>
+      <a href="">blog</a>
+      <a href="">about</a>
+        </div>
+      
+      <a href="">login</a>
+    </nav>
+    <div class="login-container">
+        <form action="" class="log-in">
+            <h3>this is from</h3>
+            <input type="email" name="email" id="" placeholder="email address" required>
+            <input type="password" name="password" id="" placeholder="password" required>
+            <input type="submit" value="submit">
+        </form>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document Object Model</title>
+  <style>
+    /* General styles */
+    h1 {
+      color: red;
+      text-transform: capitalize;
+    }
+
+    /* Specific title */
+    #food-title {
+      color: rgb(50, 204, 76);
+    }
+
+    /* Highlighted (foreign) items */
+    .foreign {
+      color: rgb(255, 0, 0);
+      font-weight: bold;
+    }
+    #title {
+      color: rgb(255, 15, 147);
+      text-transform: capitalize;
+      text-align: center;
+    }
+    .title{
+      color: rgb(43, 250, 240);
+      text-transform: uppercase ;
+      text-align: center;
+    }
+    .foreign {
+      color: rgb(255, 0, 0);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="title">Document Object Model</h1>
+    <!-- <h1 class="title">Document Object Model</h1> -->
+  </header>
+
+  <main>
+    <!-- Songs Section -->
+    <section class="songs">
+      <h1>Song Title</h1>
+      <p class="foreign">Song lyrics</p>
+      <p id="band">Song lyrics</p>
+      <p>Song lyrics</p>
+    </section>
+
+    <!-- Food Section -->
+    <section class="food">
+      <h1 id="food-title">Food I Like</h1>
+      <ul>
+        <li>Chicken</li>
+        <li>Chicken</li>
+        <li>Chicken</li>
+        <li class="foreign">Chicken</li>
+        <li class="foreign">Chicken</li>
+        <li class="foreign">Chicken</li>
+      </ul>
+    </section>
+  </main>
+
+  <script>
+
+    /** ------------------------
+     * DOM Manipulations
+     * ------------------------
+     */
+
+     const h1 = document.getElementById("title");
+    h1.innerText = "Updated Title";
+    h1.style.color = "blue";
+    h1.style.fontWeight = "bold";
+    h1.style.backgroundColor = "yellow";
+    h1.style.padding = "10px 20px";
+    h1.style.borderRadius = "5px";
+    h1.style.textAlign = "center";
+
+    h1.classList.add("title");
+    h1.classList.remove("title");
+
+    // Get by ID and update text
+    const foodTitle = document.getElementById("food-title");
+    foodTitle.innerText = "New Food Title";
+    foodTitle.style.color = "blue";
+
+    const band = document.getElementById("band");
+    band.innerText = "New Band Name";
+    band.style.color = "green";
+    band.style.fontWeight = "bold";
+
+
+    // Get first element by query selector
+    const firstForeign = document.querySelector(".foreign");
+    firstForeign.innerText = "Updated Foreign Item";
+
+    // Get all by class name and update
+    const allForeigns = document.getElementsByClassName("foreign");
+    for (let i = 0; i < allForeigns.length; i++) {
+      allForeigns[i].innerText = "Updated All Foreigns";
+    }
+
+    // Get all <li> by tag name and update
+    const listItems = document.getElementsByTagName("li");
+    for (let i = 0; i < listItems.length; i++) {
+      listItems[i].innerText = `Item ${i + 1}`;
+    }
+
+
+
+
+
+
+
+    //
+
+foodTitle.style.color
+
+foodTitle.style.color = 'yellow'
+
+foodTitle.style.padding = '10px 20px'
+
+foodTitle.style.backgroundColor = 'green'
+
+foodTitle.style.margin = '20px'
+
+foodTitle.style.borderRadius = '25px'
+
+foodTitle.style.fontSize = '3rem'
+
+const title = document.getElementById('food-title')
+
+  </script>
+</body>
+</html>

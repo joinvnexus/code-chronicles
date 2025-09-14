@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>grid-area-layout</title>
+    <style>
+      .header,
+      .nav,
+      .main,
+      .sidebar,
+      footer,
+      .advertise {
+        background-color: blanchedalmond;
+        border: 2px solid rgb(19, 171, 182);
+        padding: 10px;
+        border-radius: 5px;
+      }
+      .header {
+        grid-area: header;
+      }
+      .nav {
+        grid-area: nav;
+      }
+      .main {
+        grid-area: main;
+      }
+      .sidebar {
+        grid-area: sidebar;
+      }
+      .advertise {
+        grid-area: advertise;
+      }
+      .footer {
+        grid-area: footer;
+      }
+      /* .container{ */
+      .container{
+        display: grid;
+        gap: 10px;
+        grid-template-areas:
+          "header header header header"
+          "nav main main sidebar"
+          " nav main main advertise"
+          "footer footer footer footer"
+          ;
+      }
+      @media screen and ( max-width: 576px) {
+        .container{
+          grid-template-areas:
+          "header"
+          "nav"
+          "main"
+          "sidebar"
+          "advertise"
+          "footer"
+          ;
+        }
+
+        
+      }
+      @media screen and(min-width:577px) and (max-width:768px) {
+        .container{
+          grid-template-areas:
+          "header header header"
+          "nav nav nav"
+          "sidebar main main "
+          "sidebar main main "
+          " advertise footer footer"
+          ;
+        }
+        
+      }
+    </style>
+  </head>
+  <body class="container">
+    <header class="header">
+      <h4>The Header</h4>
+    </header>
+    <nav class="nav">
+      <ul>
+        <li><a href="#">Nav-1</a></li>
+        <li><a href="#">nav_2</a></li>
+        <li><a href="#">nav_3</a></li>
+      </ul>
+    </nav>
+    <main class="main">
+      <!-- article*2>h4{Main Article $}+p>lorem -->
+      <article>
+        <h4>Main Article 1</h4>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste modi
+          molestiae nostrum cumque id repellendus facilis tempore dolore, quis
+          doloremque earum blanditiis vel! Inventore omnis aliquid eligendi
+          alias nam adipisci!
+        </p>
+      </article>
+      <article>
+        <h4>Main Article 2</h4>
+        <p>
+          Ullam quia eaque hic, facilis velit a totam nostrum excepturi
+          laboriosam illo dolore modi fugiat voluptatum in nulla nobis iure
+          reprehenderit obcaecati officia veritatis. Assumenda facilis iste nisi
+          perspiciatis suscipit!
+        </p>
+      </article>
+    </main>
+    <aside>
+      <div class="sidebar">
+        <h4>SideBar</h4>
+      </div>
+      <div class="advertise">
+        <h4>Advertise</h4>
+      </div>
+    </aside>
+    <footer class="footer">The footer</footer>
+  </body>
+</html>

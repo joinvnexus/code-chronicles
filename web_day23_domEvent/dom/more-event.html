@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>more event</title>
+  </head>
+  <body>
+    <button id="btn-mouse">micky mouse minie</button>
+    <input type="text" id="input-mouse" placeholder="enter your name">
+    <input type="text" id="input-mouse-email" placeholder="enter your email">
+    <script>
+      // document.getElementById("btn-mouse").addEventListener("mouseenter", function(){
+      //     console.log("mouse enter");
+      // })
+
+    //   document
+    //     .getElementById("btn-mouse")
+    //     .addEventListener("mousemove", function () {
+    //       console.log("mouse leave");
+    //     });
+    //   document
+    //     .getElementById("btn-mouse")
+    //     .addEventListener("mouseout", function () {
+    //       console.log("mouse leave");
+    //     });
+
+    document.querySelector('#input-mouse').addEventListener('blur',function(){
+      console.log('focus in input');
+    })
+    document.querySelector('#input-mouse-email').addEventListener('focus',function(){
+      console.log('focus in input email');
+    })
+    document.querySelector('#input-mouse').addEventListener('blur',function(){
+      console.log('blur in input email');
+    })
+    document.querySelector('#input-mouse-email').addEventListener('focus',function(){
+      console.log('focus in input email');
+    })
+    </script>
+  </body>
+</html>

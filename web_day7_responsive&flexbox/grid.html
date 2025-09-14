@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>grid lauout</title>
+    <style>
+      .container {
+        display: grid;
+        /* grid-template-columns: 100px 200px 300px ; */
+        /* grid-template-columns: repeat(2, 50px ) 100px 150px ; */
+        /* grid-template-columns: repeat(6, 1fr) 2fr; */
+        /* grid-template-columns: 100px 200px auto; */
+
+        /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+
+             */
+        /* grid-template-columns: 200px 200px; */
+        grid-template-rows: repeat(20, 100px);
+        /* justify-content: center; */
+        /*  */
+      }
+      .item {
+        border: 2px solid blueviolet;
+        /* width: 100px;
+            height: 100px; */
+        /* display: flex;
+            justify-content: center;
+            align-items: center; */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>grid layout</h1>
+    <h2>🔹 What is CSS Grid?</h2>
+    <p>
+      CSS Grid is a layout system in CSS for creating two-dimensional layouts
+      (both rows and columns).
+    </p>
+    <ul>
+      <li>Grid Container: The element where display: grid is applied.</li>
+      <li>Grid Items: Direct children of the grid container.</li>
+      <li>Grid Lines: The lines that divide the grid.</li>
+      <li>Grid Tracks: Rows and columns between grid lines.</li>
+      <li>Grid Cell: A single unit in the grid.</li>
+      <li>Grid Area: A rectangular area spanning one or more cells.</li>
+    </ul>
+    <div class="container">
+      <div class="item">item-value</div>
+      <div class="item">item-value</div>
+      <div class="item">item-value</div>
+      <div class="item">item-value</div>
+      <div class="item">item-value</div>
+      <div class="item">item-value</div>
+      <div class="item">item-value</div>
+      <div class="item">item-value</div>
+      <div class="item">item-value</div>
+      <div class="item">item-value</div>
+      <div class="item">item-value</div>
+      <div class="item">item-value</div>
+      <div class="item">item-value</div>
+      <div class="item">item-value</div>
+      <div class="item">item-value</div>
+      <div class="item">item-value</div>
+      <div class="item">item-value</div>
+      <div class="item">item-value</div>
+    </div>
+  </body>
+</html>

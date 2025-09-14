@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket</title>
+    <style>
+        .field {
+            border: 1px solid black;
+            position: relative;
+            width: 600px; /* Set a width for the field */
+            height: 600px; /* Set a height for the field */
+            margin: 20px auto; /* Center the field */
+            overflow: hidden; /* Prevent overflow */
+        }
+
+        .bat {
+            transition: all 0.5s ease-in-out;
+            position: absolute; /* Position the bat absolutely */
+            top: 100px;
+            bottom: 0; /* Align the bat to the bottom */
+            width: 300px; /* Set the width of the bat */
+            /* background-color: red; */
+        }
+
+        .field:hover .bat {
+            transform: rotate(-60deg);
+            transform-origin: top right;
+        }
+
+        .bat:hover {
+            transform: rotate(-100deg) skew(-18deg);
+        }
+
+        .boll {
+            width: 40px;
+            height: 40px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute; /* Position the ball absolutely */
+            left:150px;
+            bottom: 100px; /* Start above the field */
+            transition: transform 0.5s ease-in-out 0.1s; /* Smooth transition for the ball */
+        }
+
+        .bat:hover + .boll {
+            transform: translate(150px, -150px); /* Move the ball when the bat is hovered */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="field">
+        <img src="image/bat.png" alt="Bat" class="bat">
+        <div class="boll"></div>
+    </div>
+</body>
+
+</html>

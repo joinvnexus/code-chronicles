@@ -1,0 +1,19 @@
+{
+  "name": "firebaselanding",
+  "version": "1.0.0",
+  "description": "  ",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  }
+}

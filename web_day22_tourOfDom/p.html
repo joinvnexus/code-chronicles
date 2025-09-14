@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>NeuralFlow - AI-Powered Business Intelligence</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            'neon-blue': '#00f5ff',
+                            'neon-purple': '#8b5cf6',
+                            'dark-bg': '#0a0a0f',
+                            'card-dark': '#1a1a2e'
+                        },
+                        animation: {
+                            'float': 'float 6s ease-in-out infinite',
+                            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                            'bounce-slow': 'bounce 3s infinite',
+                            'spin-slow': 'spin 8s linear infinite',
+                            'gradient': 'gradient 8s ease infinite',
+                            'blob': 'blob 7s infinite',
+                            'glow': 'glow 2s ease-in-out infinite alternate',
+                        }
+                    }
+                }
+            }
+        </script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+            * {
+                font-family: 'Inter', sans-serif;
+            }
+
+            .gradient-bg {
+                background: linear-gradient(-45deg, #0a0a0f, #1a1a2e, #16213e, #0f3460);
+                background-size: 400% 400%;
+                animation: gradient 15s ease infinite;
+            }
+
+            @keyframes gradient {
+                0% {
+                    background-position: 0% 50%;
+                }
+
+                50% {
+                    background-position: 100% 50%;
+                }
+
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
+
+            .glass {
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .glass-dark {
+                background: rgba(26, 26, 46, 0.3);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .neon-glow {
+                box-shadow: 0 0 20px rgba(0, 245, 255, 0.3),
+                    0 0 40px rgba(0, 245, 255, 0.2),
+                    0 0 80px rgba(0, 245, 255, 0.1);
+            }
+
+            .neon-text {
+                text-shadow: 0 0 10px rgba(0, 245, 255, 0.8),
+                    0 0 20px rgba(0, 245, 255, 0.5),
+                    0 0 40px rgba(0, 245, 255, 0.3);
+            }
+
+            @keyframes float {
+
+                0%,
+                100% {
+                    transform: translateY(0px) rotate(0deg);
+                }
+
+                33% {
+                    transform: translateY(-20px) rotate(1deg);
+                }
+
+                66% {
+                    transform: translateY(-10px) rotate(-1deg);
+                }
+            }
+
+            @keyframes blob {
+
+                0%,
+                100% {
+                    transform: translate(0px, 0px) scale(1);
+                }
+
+                33% {
+                    transform: translate(30px, -50px) scale(1.1);
+                }
+
+                66% {
+                    transform: translate(-20px, 20px) scale(0.9);
+                }
+            }
+
+            @keyframes glow {
+                from {
+                    box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+                }
+
+                to {
+                    box-shadow: 0 0 30px rgba(139, 92, 246, 0.8), 0 0 40px rgba(139, 92, 246, 0.3);
+                }
+            }
+
+            .particle {
+                position: absolute;
+                border-radius: 50%;
+                pointer-events: none;
+                opacity: 0.6;
+                animation: float 8s ease-in-out infinite;
+            }
+
+            .morphing-blob {
+                background: linear-gradient(45deg, #8b5cf6, #00f5ff);
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+                animation: blob 7s infinite;
+            }
+
+            .feature-card {
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+
+            .feature-card:hover {
+                transform: translateY(-10px) scale(1.02);
+            }
+
+            .pricing-card {
+                transition: all 0.3s ease;
+            }
+
+            .pricing-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            }
+
+            .scroll-indicator {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 4px;
+                background: linear-gradient(90deg, #8b5cf6, #00f5ff);
+                transform-origin: left;
+                transform: scaleX(0);
+                z-index: 1000;
+            }
+
+            .typing-animation {
+                border-right: 2px solid #00f5ff;
+                animation: blink 1s infinite;
+            }
+
+            @keyframes blink {
+
+                0%,
+                50% {
+                    border-right-color: #00f5ff;
+                }
+
+                51%,
+                100% {
+                    border-right-color: transparent;
+                }
+            }
+
+            .interactive-demo {
+                background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(0, 245, 255, 0.1));
+                border: 2px solid transparent;
+                background-clip: padding-box;
+                position: relative;
+            }
+
+            .interactive-demo::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                border-radius: inherit;
+                padding: 2px;
+                background: linear-gradient(135deg, #8b5cf6, #00f5ff);
+                mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                mask-composite: exclude;
+                -webkit-mask-composite: xor;
+            }
+        </style>
+    </head>
+
+    <body class="gradient-bg text-white overflow-x-hidden">
+        <!-- Scroll Progress Indicator -->
+        <div class="scroll-indicator" id="scrollProgress"></div>
+
+        <!-- Animated Background Particles -->
+        <div id="particles" class="fixed inset-0 pointer-events-none z-0">
+            <!-- Particles will be generated by JavaScript -->
+        </div>
+
+        <!-- Navigation -->
+        <nav class="glass fixed w-full z-50 transition-all duration-500" id="navbar">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <!-- Logo -->
+                    <div class="flex items-center space-x-3">
+                        <div
+                            class="w-10 h-10 neon-glow rounded-lg bg-gradient-to-r from-neon-purple to-neon-blue flex items-center justify-center">
+                            <i class="fas fa-brain text-white"></i>
+                        </div>
+                        <span class="text-2xl font-bold neon-text">NeuralFlow</span>
+                    </div>
+
+                    <!-- Desktop Menu -->
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#features" class="hover:text-neon-blue transition-colors duration-300 relative group">
+                            Features
+                            <span
+                                class="absolute bottom-0 left-0 w-0 h-0.5 bg-neon-blue transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#pricing" class="hover:text-neon-blue transition-colors duration-300 relative group">
+                            Pricing
+                            <span
+                                class="absolute bottom-0 left-0 w-0 h-0.5 bg-neon-blue transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#demo" class="hover:text-neon-blue transition-colors duration-300 relative group">
+                            Demo
+                            <span
+                                class="absolute bottom-0 left-0 w-0 h-0.5 bg-neon-blue transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#about" class="hover:text-neon-blue transition-colors duration-300 relative group">
+                            About
+                            <span
+                                class="absolute bottom-0 left-0 w-0 h-0.5 bg-neon-blue transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex items-center space-x-4">
+                        <button class="hidden md:block text-white hover:text-neon-blue transition-colors duration-300">
+                            Sign In
+                        </button>
+                        <button
+                            class="bg-gradient-to-r from-neon-purple to-neon-blue px-6 py-2 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300 neon-glow">
+                            Start Free Trial
+                        </button>
+                        <button class="md:hidden text-white" id="mobileMenuBtn">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu"
+                class="md:hidden bg-dark-bg bg-opacity-95 backdrop-blur-lg border-t border-gray-700 hidden">
+                <div class="px-4 py-6 space-y-4">
+                    <a href="#features" class="block text-lg hover:text-neon-blue transition-colors">Features</a>
+                    <a href="#pricing" class="block text-lg hover:text-neon-blue transition-colors">Pricing</a>
+                    <a href="#demo" class="block text-lg hover:text-neon-blue transition-colors">Demo</a>
+                    <a href="#about" class="block text-lg hover:text-neon-blue transition-colors">About</a>
+                    <button
+                        class="w-full bg-gradient-to-r from-neon-purple to-neon-blue px-6 py-3 rounded-full font-semibold mt-4">
+                        Start Free Trial
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+            <!-- Morphing Background Blobs -->
+            <div class="absolute top-20 left-10 w-72 h-72 morphing-blob opacity-20 animate-blob"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 morphing-blob opacity-10 animate-blob"
+                style="animation-delay: 2s;"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] morphing-blob opacity-5 animate-blob"
+                style="animation-delay: 4s;"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <div class="mb-8 animate-float">
+                    <span
+                        class="inline-flex items-center px-4 py-2 glass rounded-full text-sm font-medium text-neon-blue border border-neon-blue/30">
+                        <i class="fas fa-rocket mr-2"></i>
+                        Now with AI-Powered Analytics
+                    </span>
+                </div>
+
+                <h1 class="text-5xl md:text-7xl font-black mb-8 leading-tight">
+                    Transform Your
+                    <span
+                        class="block text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-blue neon-text">
+                        Business Intelligence
+                    </span>
+                </h1>
+
+                <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
+                    Harness the power of AI to unlock insights, automate decisions, and
+                    <span class="typing-animation" id="typingText">accelerate growth</span>
+                </p>
+
+                <div
+                    class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16">
+                    <button
+                        class="group bg-gradient-to-r from-neon-purple to-neon-blue px-8 py-4 rounded-full text-lg font-bold hover:scale-105 transition-all duration-300 neon-glow flex items-center">
+                        Start Free Trial
+                        <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                    <button
+                        class="group glass px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/10 transition-all duration-300 flex items-center">
+                        <i class="fas fa-play mr-3 text-neon-blue"></i>
+                        Watch Demo
+                    </button>
+                </div>
+
+                <!-- Trust Badges -->
+                <div class="flex flex-wrap justify-center items-center space-x-8 text-gray-400 text-sm">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-check text-green-400"></i>
+                        <span>Free 14-day trial</span>
+                    </div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-shield-alt text-blue-400"></i>
+                        <span>Enterprise security</span>
+                    </div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-headset text-purple-400"></i>
+                        <span>24/7 support</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <i class="fas fa-chevron-down text-neon-blue text-2xl opacity-70"></i>
+            </div>
+        </section>
+
+        <!-- Interactive Demo Section -->
+        <section id="demo" class="py-20 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                        See It In Action
+                    </h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                        Experience the power of AI-driven insights with our interactive dashboard demo
+                    </p>
+                </div>
+
+                <div class="interactive-demo rounded-3xl p-8 max-w-6xl mx-auto">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <!-- Live Charts -->
+                        <div class="lg:col-span-2">
+                            <div class="glass-dark rounded-2xl p-6">
+                                <div class="flex items-center justify-between mb-6">
+                                    <h3 class="text-xl font-semibold">Revenue Analytics</h3>
+                                    <div class="flex space-x-2">
+                                        <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                                        <span class="text-sm text-green-400">Live</span>
+                                    </div>
+                                </div>
+
+                                <!-- Animated Chart -->
+                                <div
+                                    class="relative h-64 bg-gradient-to-br from-neon-purple/20 to-neon-blue/20 rounded-xl overflow-hidden">
+                                    <canvas id="demoChart" class="w-full h-full"></canvas>
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div class="text-3xl font-bold text-neon-blue mb-2" id="revenueCounter">$0
+                                            </div>
+                                            <div class="text-sm text-gray-400">Monthly Revenue</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Metrics -->
+                                <div class="grid grid-cols-3 gap-4 mt-6">
+                                    <div class="glass p-4 rounded-xl text-center">
+                                        <div class="text-2xl font-bold text-green-400" id="metric1">+24%</div>
+                                        <div class="text-xs text-gray-400">Growth</div>
+                                    </div>
+                                    <div class="glass p-4 rounded-xl text-center">
+                                        <div class="text-2xl font-bold text-blue-400" id="metric2">1.2k</div>
+                                        <div class="text-xs text-gray-400">New Users</div>
+                                    </div>
+                                    <div class="glass p-4 rounded-xl text-center">
+                                        <div class="text-2xl font-bold text-purple-400" id="metric3">94%</div>
+                                        <div class="text-xs text-gray-400">Satisfaction</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AI Insights -->
+                        <div class="space-y-6">
+                            <div class="glass-dark rounded-2xl p-6">
+                                <h3 class="text-lg font-semibold mb-4 flex items-center">
+                                    <i class="fas fa-robot text-neon-blue mr-3"></i>
+                                    AI Insights
+                                </h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-2 h-2 bg-green-400 rounded-full mt-2 animate-pulse"></div>
+                                        <p class="text-sm text-gray-300">Revenue increased 24% this month</p>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-2 h-2 bg-yellow-400 rounded-full mt-2 animate-pulse"></div>
+                                        <p class="text-sm text-gray-300">Peak traffic at 2 PM daily</p>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-2 h-2 bg-blue-400 rounded-full mt-2 animate-pulse"></div>
+                                        <p class="text-sm text-gray-300">Mobile users up 18%</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="glass-dark rounded-2xl p-6">
+                                <h3 class="text-lg font-semibold mb-4 flex items-center">
+                                    <i class="fas fa-lightbulb text-yellow-400 mr-3"></i>
+                                    Recommendations
+                                </h3>
+                                <div class="space-y-3">
+                                    <div class="p-3 bg-gradient-to-r from-neon-purple/20 to-neon-blue/20 rounded-lg">
+                                        <p class="text-sm">Optimize ad spend for mobile users</p>
+                                    </div>
+                                    <div class="p-3 bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-lg">
+                                        <p class="text-sm">Launch afternoon promotion campaign</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-20 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                        Powerful Features for
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-blue">
+                            Modern Teams
+                        </span>
+                    </h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                        Everything you need to make data-driven decisions and scale your business
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="feature-card glass-dark rounded-2xl p-8 text-center group">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-r from-neon-purple to-neon-blue rounded-full flex items-center justify-center mx-auto mb-6 animate-glow">
+                            <i class="fas fa-brain text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">AI-Powered Analytics</h3>
+                        <p class="text-gray-400 mb-6">
+                            Advanced machine learning algorithms that automatically identify trends and patterns in your
+                            data
+                        </p>
+                        <button
+                            class="text-neon-blue hover:text-white transition-colors group-hover:translate-x-2 duration-300 flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+
+                    <div class="feature-card glass-dark rounded-2xl p-8 text-center group">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-6 animate-glow">
+                            <i class="fas fa-chart-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Real-time Dashboards</h3>
+                        <p class="text-gray-400 mb-6">
+                            Beautiful, interactive dashboards that update in real-time with customizable widgets and
+                            metrics
+                        </p>
+                        <button
+                            class="text-neon-blue hover:text-white transition-colors group-hover:translate-x-2 duration-300 flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+
+                    <div class="feature-card glass-dark rounded-2xl p-8 text-center group">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 animate-glow">
+                            <i class="fas fa-users text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Team Collaboration</h3>
+                        <p class="text-gray-400 mb-6">
+                            Share insights, create reports, and collaborate seamlessly with your team in real-time
+                        </p>
+                        <button
+                            class="text-neon-blue hover:text-white transition-colors group-hover:translate-x-2 duration-300 flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+
+                    <div class="feature-card glass-dark rounded-2xl p-8 text-center group">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 animate-glow">
+                            <i class="fas fa-shield-alt text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Enterprise Security</h3>
+                        <p class="text-gray-400 mb-6">
+                            Bank-level security with end-to-end encryption, SSO, and compliance certifications
+                        </p>
+                        <button
+                            class="text-neon-blue hover:text-white transition-colors group-hover:translate-x-2 duration-300 flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+
+                    <div class="feature-card glass-dark rounded-2xl p-8 text-center group">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-r from-teal-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-6 animate-glow">
+                            <i class="fas fa-plug text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">200+ Integrations</h3>
+                        <p class="text-gray-400 mb-6">
+                            Connect with all your favorite tools and platforms through our extensive integration library
+                        </p>
+                        <button
+                            class="text-neon-blue hover:text-white transition-colors group-hover:translate-x-2 duration-300 flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+
+                    <div class="feature-card glass-dark rounded-2xl p-8 text-center group">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-r from-red-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 animate-glow">
+                            <i class="fas fa-mobile-alt text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Mobile First</h3>
+                        <p class="text-gray-400 mb-6">
+                            Access your data anywhere with our responsive design and native mobile applications
+                        </p>
+                        <button
+                            class="text-neon-blue hover:text-white transition-colors group-hover:translate-x-2 duration-300 flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="py-20 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                        Simple, Transparent Pricing
+                    </h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+                        Choose the perfect plan for your team. Upgrade or downgrade at any time.
+                    </p>
+
+                    <!-- Pricing Toggle -->
+                    <div class="flex items-center justify-center mb-12">
+                        <span class="text-gray-400 mr-3">Monthly</span>
+                        <div class="relative">
+                            <input type="checkbox" id="pricingToggle" class="sr-only">
+                            <label for="pricingToggle" class="flex items-center cursor-pointer">
+                                <div class="relative w-14 h-8 bg-gray-600 rounded-full transition-colors duration-300">
+                                    <div
+                                        class="absolute top-1 left-1 w-6 h-6 bg-white rounded-full transition-transform duration-300">
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        <span class="text-gray-400 ml-3">Yearly</span>
+                        <span class="bg-green-500 text-green-900 px-2 py-1 rounded-full text-xs font-semibold ml-2">Save
+                            20%</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Starter Plan -->
+                    <div class="pricing-card glass-dark rounded-2xl p-8 relative">
+                        <div class="text-center">
+                            <h3 class="text-2xl font-bold mb-2">Starter</h3>
+                            <p class="text-gray-400 mb-6">Perfect for small teams</p>
+                            <div class="mb-8">
+                                <span class="text-4xl font-bold">$29</span>
+                                <span class="text-gray-400">/month</span>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                10 GB storage
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                Basic analytics
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                Email support
+                            </li>
+                            <li class="flex items-center text-gray-500">
+                                <i class="fas fa-times mr-3"></i>
+                                Advanced AI features
+                            </li>
+                        </ul>
+
+                        <button
+                            class="w-full bg-gradient-to-r from-gray-600 to-gray-700 text-white py-3 rounded-full font-semibold hover:from-gray-500 hover:to-gray-600 transition-all duration-300">
+                            Get Started
+                        </button>
+                    </div>
+
+                    <!-- Pro Plan (Featured) -->
+                    <div
+                        class="pricing-card glass-dark rounded-2xl p-8 relative border-2 border-neon-blue transform scale-105">
+                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                            <span
+                                class="bg-gradient-to-r from-neon-purple to-neon-blue px-6 py-2 rounded-full text-sm font-semibold neon-glow">
+                                Most Popular
+                            </span>
+                        </div>
+
+                        <div class="text-center">
+                            <h3 class="text-2xl font-bold mb-2">Pro</h3>
+                            <p class="text-gray-400 mb-6">For growing businesses</p>
+                            <div class="mb-8">
+                                <span class="text-4xl font-bold text-neon-blue">$79</span>
+                                <span class="text-gray-400">/month</span>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                Up to 25 users
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                100 GB storage
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                Advanced analytics
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                AI-powered insights
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                Priority support
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                Custom integrations
+                            </li>
+                        </ul>
+
+                        <button
+                            class="w-full bg-gradient-to-r from-neon-purple to-neon-blue text-white py-3 rounded-full font-semibold hover:scale-105 transition-all duration-300 neon-glow">
+                            Start Free Trial
+                        </button>
+                    </div>
+
+                    <!-- Enterprise Plan -->
+                    <div class="pricing-card glass-dark rounded-2xl p-8 relative">
+                        <div class="text-center">
+                            <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+                            <p class="text-gray-400 mb-6">For large organizations</p>
+                            <div class="mb-8">
+                                <span class="text-4xl font-bold">$199</span>
+                                <span class="text-gray-400">/month</span>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                Unlimited users
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                1 TB storage
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                White-label solution
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                Advanced security
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                24/7 phone support
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                Dedicated account manager
+                            </li>
+                        </ul>
+
+                        <button
+                            class="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white py-3 rounded-full font-semibold hover:from-purple-500 hover:to-purple-600 transition-all duration-300">
+                            Contact Sales
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-20 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                        Trusted by Industry Leaders
+                    </h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                        See what our customers are saying about NeuralFlow
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="glass-dark rounded-2xl p-8 relative">
+                        <div class="flex items-center mb-6">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-r from-neon-purple to-neon-blue rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-user text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Sarah Johnson</h4>
+                                <p class="text-gray-400 text-sm">CEO, TechStart</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-6">
+                            "NeuralFlow transformed how we make decisions. The AI insights are incredibly accurate and
+                            have helped us increase revenue by 40%."
+                        </p>
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+
+                    <div class="glass-dark rounded-2xl p-8 relative">
+                        <div class="flex items-center mb-6">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-user text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Michael Chen</h4>
+                                <p class="text-gray-400 text-sm">CTO, DataCorp</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-6">
+                            "The real-time dashboards are game-changing. Our team can now respond to market changes
+                            within minutes, not hours."
+                        </p>
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+
+                    <div class="glass-dark rounded-2xl p-8 relative">
+                        <div class="flex items-center mb-6">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-user text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Emily Rodriguez</h4>
+                                <p class="text-gray-400 text-sm">VP Analytics, GrowthCo</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-6">
+                            "Implementation was seamless and the support team is outstanding. Best investment we've made
+                            for our data infrastructure."
+                        </p>
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-neon-purple/20 to-neon-blue/20"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <h2 class="text-4xl md:text-6xl font-bold mb-8">
+                    Ready to Transform Your Business?
+                </h2>
+                <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto">
+                    Join thousands of companies using NeuralFlow to make smarter decisions and drive growth
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <button
+                        class="group bg-gradient-to-r from-neon-purple to-neon-blue px-10 py-4 rounded-full text-xl font-bold hover:scale-105 transition-all duration-300 neon-glow flex items-center">
+                        Start Your Free Trial
+                        <i class="fas fa-rocket ml-3 group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                    <button
+                        class="group glass px-10 py-4 rounded-full text-xl font-semibold hover:bg-white/10 transition-all duration-300 flex items-center">
+                        <i class="fas fa-calendar mr-3 text-neon-blue"></i>
+                        Book a Demo
+                    </button>
+                </div>
+
+                <p class="text-gray-400 mt-8">
+                    No credit card required • 14-day free trial • Cancel anytime
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-20 border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                    <!-- Company -->
+                    <div>
+                        <div class="flex items-center space-x-3 mb-6">
+                            <div
+                                class="w-8 h-8 neon-glow rounded-lg bg-gradient-to-r from-neon-purple to-neon-blue flex items-center justify-center">
+                                <i class="fas fa-brain text-white text-sm"></i>
+                            </div>
+                            <span class="text-xl font-bold neon-text">NeuralFlow</span>
+                        </div>
+                        <p class="text-gray-400 mb-6">
+                            Empowering businesses with AI-driven intelligence and analytics.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="#"
+                                class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-white/10 transition-colors">
+                                <i class="fab fa-twitter text-neon-blue"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-white/10 transition-colors">
+                                <i class="fab fa-linkedin text-neon-blue"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-white/10 transition-colors">
+                                <i class="fab fa-github text-neon-blue"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Product -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-6">Product</h3>
+                        <ul class="space-y-3">
+                            <li><a href="#" class="text-gray-400 hover:text-neon-blue transition-colors">Features</a>
+                            </li>
+                            <li><a href="#" class="text-gray-400 hover:text-neon-blue transition-colors">Pricing</a>
+                            </li>
+                            <li><a href="#"
+                                    class="text-gray-400 hover:text-neon-blue transition-colors">Integrations</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-neon-blue transition-colors">API</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-neon-blue transition-colors">Security</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Company -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-6">Company</h3>
+                        <ul class="space-y-3">
+                            <li><a href="#" class="text-gray-400 hover:text-neon-blue transition-colors">About</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-neon-blue transition-colors">Careers</a>
+                            </li>
+                            <li><a href="#" class="text-gray-400 hover:text-neon-blue transition-colors">Blog</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-neon-blue transition-colors">Press</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-neon-blue transition-colors">Partners</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Support -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-6">Support</h3>
+                        <ul class="space-y-3">
+                            <li><a href="#" class="text-gray-400 hover:text-neon-blue transition-colors">Help Center</a>
+                            </li>
+                            <li><a href="#"
+                                    class="text-gray-400 hover:text-neon-blue transition-colors">Documentation</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-neon-blue transition-colors">Contact Us</a>
+                            </li>
+                            <li><a href="#" class="text-gray-400 hover:text-neon-blue transition-colors">Status</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-neon-blue transition-colors">Community</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 mb-4 md:mb-0">
+                        © 2025 NeuralFlow. All rights reserved.
+                    </p>
+                    <div class="flex space-x-8">
+                        <a href="#" class="text-gray-400 hover:text-neon-blue transition-colors">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-neon-blue transition-colors">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-neon-blue transition-colors">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            // Initialize particles background
+            function createParticles() {
+                const particlesContainer = document.getElementById('particles');
+                const particleCount = 50;
+
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+
+                    const size = Math.random() * 4 + 1;
+                    const x = Math.random() * window.innerWidth;
+                    const y = Math.random() * window.innerHeight;
+                    const duration = Math.random() * 10 + 10;
+
+                    particle.style.width = size + 'px';
+                    particle.style.height = size + 'px';
+                    particle.style.left = x + 'px';
+                    particle.style.top = y + 'px';
+                    particle.style.background = Math.random() > 0.5 ? '#8b5cf6' : '#00f5ff';
+                    particle.style.animationDuration = duration + 's';
+
+                    particlesContainer.appendChild(particle);
+                }
+            }
+
+            // Typing animation
+            function typeWriter() {
+                const texts = ['accelerate growth', 'drive innovation', 'make smart decisions', 'scale efficiently'];
+                let textIndex = 0;
+                let charIndex = 0;
+                const typingElement = document.getElementById('typingText');
+
+                function type() {
+                    if (charIndex < texts[textIndex].length) {
+                        typingElement.textContent = texts[textIndex].substring(0, charIndex + 1);
+                        charIndex++;
+                        setTimeout(type, 100);
+                    } else {
+                        setTimeout(erase, 2000);
+                    }
+                }
+
+                function erase() {
+                    if (charIndex > 0) {
+                        typingElement.textContent = texts[textIndex].substring(0, charIndex - 1);
+                        charIndex--;
+                        setTimeout(erase, 50);
+                    } else {
+                        textIndex = (textIndex + 1) % texts.length;
+                        setTimeout(type, 500);
+                    }
+                }
+
+                type();
+            }
+
+            // Animated counter
+            function animateCounter(element, target, duration = 2000) {
+                let start = 0;
+                const startTime = performance.now();
+
+                function updateCounter(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+
+                    const current = Math.floor(start + (target - start) * progress);
+                    element.textContent = current;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCounter);
+                    }
+                }
+
+                requestAnimationFrame(updateCounter);
+            }
+
+            // Interactive demo animations
+            function initDemo() {
+                const revenueCounter = document.getElementById('revenueCounter');
+                const metrics = [
+                    { element: document.getElementById('metric1'), values: ['+18%', '+24%', '+31%', '+24%'] },
+                    { element: document.getElementById('metric2'), values: ['0.8k', '1.2k', '1.7k', '1.2k'] },
+                    { element: document.getElementById('metric3'), values: ['89%', '94%', '97%', '94%'] }
+                ];
+
+                let revenueValue = 0;
+                let targetRevenue = 124750;
+                let metricsIndex = 0;
+
+                // Animate revenue counter
+                function updateRevenue() {
+                    revenueValue += (targetRevenue - revenueValue) * 0.1;
+                    revenueCounter.textContent = '$' + Math.floor(revenueValue).toLocaleString();
+                
+                if (Math.abs(targetRevenue - revenueValue) > 1) {
+                    requestAnimationFrame(updateRevenue);
+                }
+            }
+            
+            // Update metrics periodically
+            function updateMetrics() {
+                metrics.forEach(metric => {
+                    metric.element.textContent = metric.values[metricsIndex % metric.values.length];
+                });
+                metricsIndex++;
+            }
+            
+            updateRevenue();
+            setInterval(updateMetrics, 3000);
+        }
+        
+        // Scroll progress indicator
+        function updateScrollProgress() {
+            const scrollIndicator = document.getElementById('scrollProgress');
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = scrollTop / docHeight;
+            
+            scrollIndicator.style.transform = `scaleX(${scrollPercent})`;
+        }
+        
+        // Navbar background on scroll
+        function updateNavbar() {
+            const navbar = document.getElementById('navbar');
+            const scrollTop = window.pageYOffset;
+            
+            if (scrollTop > 100) {
+                navbar.style.background = 'rgba(26, 26, 46, 0.95)';
+                navbar.style.backdropFilter = 'blur(20px)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.05)';
+                navbar.style.backdropFilter = 'blur(20px)';
+            }
+        }
+        
+        // Intersection Observer for animations
+        function setupAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements for animation
+            document.querySelectorAll('.feature-card, .pricing-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        }
+        
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            typeWriter();
+            initDemo();
+            setupAnimations();
+            
+            // Mobile menu toggle
+            document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+                const mobileMenu = document.getElementById('mobileMenu');
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Pricing toggle
+            const pricingToggle = document.getElementById('pricingToggle');
+            pricingToggle.addEventListener('change', function() {
+                const toggle = this.nextElementSibling.querySelector('div div');
+                if (this.checked) {
+                    toggle.style.transform = 'translateX(24px)';
+                    toggle.parentElement.style.backgroundColor = '#8b5cf6';
+                    // Update prices for yearly
+                } else {
+                    toggle.style.transform = 'translateX(0)';
+                    toggle.parentElement.style.backgroundColor = '#4b5563';
+                    // Update prices for monthly
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                                anchor.addEventListener('click', function (e) {
+                                    e.preventDefault();
+                                    const target = document.querySelector(this.getAttribute('href'));
+                                    if (target) {
+                                        target.scrollIntoView({
+                                            behavior: 'smooth',
+                                            block: 'start'
+                                        });
+                                    }
+                                });
+            });
+        });
+
+                            // Scroll event listeners
+                            window.addEventListener('scroll', function() {
+                                updateScrollProgress();
+                            updateNavbar();
+        });
+
+                            // Resize handler for particles
+                            window.addEventListener('resize', function() {
+                                document.getElementById('particles').innerHTML = '';
+                            createParticles();
+        });
+
+                            // Add some interactive hover effects
+                            document.addEventListener('mousemove', function(e) {
+            const cursor = document.querySelector('.cursor');
+                            if (cursor) {
+                                cursor.style.left = e.clientX + 'px';
+                            cursor.style.top = e.clientY + 'px';
+            }
+        });
+        </script>
+    </body>
+
+</html>

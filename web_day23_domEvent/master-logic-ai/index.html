@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Master Logic – Adaptive Form Engine</title>
+  <style>
+    :root { --bg:#0f1221; --card:#151935; --muted:#8a90a3; --text:#eef1ff; --accent:#6ee7b7; --accent2:#60a5fa; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji"; color:var(--text); background:radial-gradient(1200px 800px at 10% -10%, #1b2149 0, #0f1221 45%), radial-gradient(1000px 800px at 120% 120%, #111634 0, #0f1221 40%);}
+    h1 { font-size: clamp(1.25rem, 2vw + 1rem, 2rem); margin:0; }
+    .container { max-width:1100px; margin:0 auto; padding:24px; }
+    .grid { display:grid; grid-template-columns: 1.1fr 0.9fr; gap:20px; }
+    .card { background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,0.06); border-radius:20px; padding:18px; box-shadow: 0 10px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.05); backdrop-filter: blur(6px); }
+    .row { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+    label { display:block; font-weight:600; font-size:0.95rem; margin-bottom:6px; }
+    input, select, textarea { width:100%; background: #0f1224; border:1px solid rgba(255,255,255,0.08); color:var(--text); padding:10px 12px; border-radius:12px; outline:none; transition:.15s ease; }
+    input:focus, select:focus, textarea:focus { border-color: var(--accent2); box-shadow: 0 0 0 4px rgba(96,165,250,0.15); }
+    .muted { color:var(--muted); font-size:0.9rem; }
+    .hint { color:var(--muted); font-size:0.8rem; margin-top:6px; }
+    .hidden { display:none !important; }
+    .pill { display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); font-size:12px; }
+    .btn { cursor:pointer; border:none; border-radius:12px; padding:10px 14px; background:linear-gradient(180deg, var(--accent2), #3b82f6); color:#03102b; font-weight:700; box-shadow: 0 10px 16px rgba(59,130,246,0.3); }
+    .btn.secondary { background: linear-gradient(180deg, #6ee7b7, #22c55e); }
+    .btn.flat { background: #0f1224; color: var(--text); border:1px solid rgba(255,255,255,0.12); box-shadow:none; }
+    .section-title { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
+    .log { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:12px; white-space:pre-wrap; max-height:220px; overflow:auto; background:#0b0e1a; border-radius:12px; padding:12px; border:1px dashed rgba(255,255,255,0.12); }
+    .divider { height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); margin:14px 0; }
+    .tag { border:1px solid rgba(255,255,255,0.1); padding:6px 8px; border-radius:10px; font-size:12px; margin-right:6px; display:inline-block; }
+    .suggestions { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+    .suggestions button { padding:6px 10px; border-radius:999px; background:#111636; color:var(--text); border:1px solid rgba(255,255,255,0.12); cursor:pointer; }
+    .kpi { display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; }
+    .kpi .card { text-align:center; }
+    small.code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; color:#a3a9c9; }
+    @media (max-width: 920px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="section-title">
+      <h1>Master Logic — Adaptive Form Engine <span class="pill" title="AI-ready hook">AI‑ready</span></h1>
+      <div class="muted">Boundary‑pushing, user‑centric, explainable logic</div>
+    </div>
+
+    <div class="grid">
+      <!-- Left: Form -->
+      <div class="card" id="formCard">
+        <div class="row">
+          <div>
+            <label for="age">Age</label>
+            <input type="number" id="age" placeholder="Enter age" min="0" />
+            <div class="hint">Form adapts instantly based on your answers.</div>
+          </div>
+          <div>
+            <label for="country">Country</label>
+            <input id="country" placeholder="e.g., Bangladesh" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div id="career-field" class="hidden">
+            <label for="career">Career</label>
+            <input id="career" placeholder="e.g., Frontend Engineer" />
+            <div class="suggestions" id="career-suggestions"></div>
+          </div>
+          <div id="study-field" class="hidden">
+            <label for="study">Field of Study</label>
+            <input id="study" placeholder="e.g., Computer Science" />
+            <div class="suggestions" id="study-suggestions"></div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div id="retire-field" class="hidden">
+            <label for="retire">Retired?</label>
+            <select id="retire">
+              <option value="">Choose</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div id="interests-field" class="hidden">
+            <label for="interests">Interests (comma‑separated)</label>
+            <input id="interests" placeholder="e.g., AI, WebGL, Design Systems" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div id="budget-field" class="hidden">
+            <label for="budget">Monthly Learning Budget (USD)</label>
+            <input type="number" id="budget" min="0" placeholder="e.g., 25" />
+          </div>
+          <div id="time-field" class="hidden">
+            <label for="time">Weekly Time Available (hrs)</label>
+            <input type="number" id="time" min="0" placeholder="e.g., 5" />
+          </div>
+        </div>
+
+        <div class="divider"></div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+          <button class="btn" id="submit">Generate Plan</button>
+          <button class="btn secondary" id="aiAssist">AI Assist</button>
+          <button class="btn flat" id="undoBtn">Undo</button>
+          <button class="btn flat" id="redoBtn">Redo</button>
+          <span class="muted">Tip: Try changing <strong>Age</strong> to see adaptive logic.</span>
+        </div>
+
+        <div class="divider"></div>
+        <div id="summary" class="muted"></div>
+      </div>
+
+      <!-- Right: Explainability + Engine Controls -->
+      <div class="card">
+        <div class="section-title">
+          <strong>Logic & Explainability</strong>
+          <span class="pill" id="activeRulesCount">0 rules fired</span>
+        </div>
+        <div class="kpi">
+          <div class="card"><div class="muted">Confidence</div><div id="kpiConfidence" style="font-size:1.4rem; font-weight:800;">–</div></div>
+          <div class="card"><div class="muted">Fields Asked</div><div id="kpiAsked" style="font-size:1.4rem; font-weight:800;">0</div></div>
+          <div class="card"><div class="muted">Info Gain</div><div id="kpiGain" style="font-size:1.4rem; font-weight:800;">0.00</div></div>
+          <div class="card"><div class="muted">Personalization</div><div id="kpiPers" style="font-size:1.4rem; font-weight:800;">–</div></div>
+        </div>
+        <div class="divider"></div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+          <span class="tag">Epsilon‑greedy</span>
+          <span class="tag">Local learning</span>
+          <span class="tag">Rule DSL</span>
+          <span class="tag">Explainable</span>
+        </div>
+        <div class="divider"></div>
+        <div class="log" id="explain"></div>
+
+        <div class="divider"></div>
+        <details>
+          <summary><strong>Config (import/export)</strong></summary>
+          <div class="hint">You can tweak the rules at runtime. Paste JSON and click Apply.</div>
+          <textarea id="configEditor" rows="10" style="width:100%; margin-top:8px;"></textarea>
+          <div style="display:flex; gap:8px; margin-top:8px;">
+            <button class="btn" id="applyCfg">Apply</button>
+            <button class="btn flat" id="resetCfg">Reset</button>
+          </div>
+          <div class="hint" style="margin-top:8px;">Expose a real AI by defining <small class="code">window.AI_SUGGEST = async (ctx) => { /* call your API */ }</small></div>
+        </details>
+      </div>
+    </div>
+  </div>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Age-Based Pricing Calculator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #333;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .result {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      background: #e8f4ea;
+      border: 1px solid #b7e0c0;
+      color: #2d6a4f;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Age-Based Price Calculator</h2>
+
+    <label for="age">Enter Your Age</label>
+    <input type="number" id="age" placeholder="e.g. 60" />
+
+    <label for="price">Base Price (৳)</label>
+    <input type="number" id="price" placeholder="e.g. 500" value="500" />
+
+    <button onclick="calculatePrice()">Calculate Price</button>
+
+    <div id="output" class="result" style="display: none;"></div>
+  </div>
+
+<button onclick="startSSLPayment()">Pay with SSLCommerz</button>
+
+  <script>
+    function calculatePrice() {
+      const age = parseInt(document.getElementById("age").value);
+      const price = parseFloat(document.getElementById("price").value);
+      const output = document.getElementById("output");
+
+      if (isNaN(age) || isNaN(price)) {
+        output.innerText = "Please enter a valid age and price.";
+        output.style.display = "block";
+        output.style.background = "#ffe5e5";
+        output.style.color = "#b00020";
+        return;
+      }
+
+      let finalPrice;
+      let message;
+
+      if (age <= 12) {
+        finalPrice = 0;
+        message = "You can eat for free!";
+      } else if (age >= 60) {
+        const discount = price * 0.5;
+        finalPrice = price - discount;
+        message = `You get a 50% senior discount! You pay ৳${finalPrice.toFixed(2)}.`;
+      } else {
+        finalPrice = price;
+        message = `You pay the full price: ৳${finalPrice.toFixed(2)}.`;
+      }
+
+      output.innerText = message;
+      output.style.display = "block";
+      output.style.background = "#e8f4ea";
+      output.style.color = "#2d6a4f";
+    }
+  </script>
+
+</body>
+</html>

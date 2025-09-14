@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transition </title>
+    <style>
+        .box{
+            width: 200px ;
+            height: 200px;
+            border: 2p solid red;
+            margin: 10px;
+            background-color: thistle;
+            /* transition: width 0.5s ease-in, background-color 0.5s ease-in; */
+            /* transition: <property> <duration> <timing-function> <delay>; */
+            transition: all 0.5s ease-in-out;
+        }
+        .box:hover{
+            transform: rotate(45deg) translateX(100px) scale(0.5);
+            /* width: 300px;
+            background-color: red; */
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>transform: change the position of the element</li>
+        <li>transition: change the property of the element</li>
+        <li>transition-timing-function: change the speed of the transition</li>
+        <li>transition-duration: change the duration of the transition</li>
+    </ul>
+
+    <!--  -->
+    <div class="box">box-1"</div>
+    <div class="box">box-1"</div>
+    <div class="box">box-1"</div>
+    
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>comment box</title>
+    <style>
+      body{
+        font-family: sans-serif ;
+        font-smooth: antialiased !important;
+        text-transform: capitalize;
+
+      }
+      .comment {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+      }
+      section {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+      }
+      textarea {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+      }
+      button {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My Awesome Comment Box - Write what's in your mind!</h1>
+
+    <section>
+      <h3>All Comments Here</h3>
+
+      <!-- Comment list container -->
+      <div id="all-comments">
+        <!-- Example comments -->
+        <p class="comment">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+        </p>
+        <p class="comment">
+          Asperiores qui culpa, delectus consectetur necessitatibus blanditiis.
+        </p>
+        <p class="comment">
+          Ut mollitia nihil quo perspiciatis ex repudiandae nulla non soluta.
+        </p>
+      </div>
+
+      <!-- Textarea to write new comment -->
+      <textarea
+        id="comment-text-box"
+        cols="30"
+        rows="5"
+        placeholder="Write your comment here..."
+      ></textarea>
+
+      <!-- Button to submit comment -->
+      <button id="btn-post-comment">Send Comment</button>
+    </section>
+
+    <script>
+      // STEP 1: Set event listener on button
+      document
+        .getElementById("btn-post-comment")
+        .addEventListener("click", function () {
+          // STEP 2: Get the input value from textarea
+          const commentTextBox = document.getElementById("comment-text-box");
+          const newValue = commentTextBox.value;
+
+          // Validation: Check if textarea is empty
+          if (newValue.trim() === "") {
+            alert("⚠ Please write something before posting!");
+            return; // Stop function here
+          }
+
+          // STEP 3: Select the comment list container
+          const allComments = document.querySelector("#all-comments");
+
+          // STEP 4: Create a new paragraph element for the comment
+          const addComment = document.createElement("p");
+          addComment.classList.add("comment"); // Add styling class
+          addComment.innerText = newValue; // Set comment text
+
+          // STEP 5: Append the new comment to the container
+          allComments.appendChild(addComment);
+
+          // STEP 6: Clear the textarea after posting
+          commentTextBox.value = "";
+        });
+    </script>
+  </body>
+</html>

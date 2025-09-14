@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>innerHTML</title>
+        <style>
+            .players-container-2 {
+                border: 2px solid rgb(23, 245, 78);
+                padding: 10px;
+                margin: 10px;
+
+                background-color: skyblue;
+            }
+            .gap{
+                gap:10px;
+                background-color: yellowgreen;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1> hello world</h1>
+        <section id="players-container">
+            <h2>player</h2>
+            <ul>
+                <li>Messi</li>
+                <li>Ronaldo</li>
+                <li>Neymar</li>
+                <li>Mbappe</li>
+                <li>Lewandowski</li>
+                <li>Salah</li>
+                <!-- new player -->
+                <li>Mbappe</li>
+            </ul>
+
+        </section>
+        <section id="players-container-2">
+            <h2>player-2</h2>
+            <ul>
+                <li>Messi</li>
+                <li>Ronaldo</li>
+                <li>Neymar</li>
+                <li>Mbappe</li>
+                <li>Lewandowski</li>
+                <li>Salah</li>
+                <!-- new player -->
+                <li>Mbappe</li>
+            </ul>
+        </section>
+        <section id="players-container-3">
+           
+        </section>
+    </body>
+    <script>
+        // console.log(document.getElementById('players-container').innerHTML)
+        // console.log(document.getElementById('players-container').outerHTML)
+          const players =document.getElementById('players-container')
+        //   console.log(players.childNodes[3].childNodes[1].parentNode.parentNode.parentNode.parentNode.parentNode);
+        // console.log(document.getElementById('players-container').firstElementChild)
+        // console.log(document.getElementById('players-container').lastElementChild)
+        //  console.log(document.getElementById('players-container').nextElementSibling)
+        //console.log(document.getElementById('players-container').previousElementSibling)
+        // console.log(document.getElementById('players-container').parentElement)
+
+
+        // const section = document.getElementsByTagName('section')[0];
+
+
+        const section = document.querySelectorAll('section');
+        // console.log(section);
+        for (const s of section) {
+            // console.log(s);
+            // s.querySelector('ul').classList.add('players-container-2');
+
+            // s.style.textAlign = 'center';
+        }
+        for (const list of section) {
+            // console.log(list);
+            list.classList.add('gap');
+        }
+
+        // const section =
+        const newChild = document.createElement('div');
+        newChild.classList.add('players-container-2');
+        newChild.innerHTML = `
+            <h2>player-2</h2>
+            <ul>
+                <li>Messi</li>
+                <li>Ronaldo</li>
+                <li>Neymar</li>
+                <li>Mbappe</li>
+                <li>Lewandowski</li>
+                <li>Salah</li>
+                <!-- new player -->
+                <li>Mbappe</li>
+            </ul>
+        `;
+
+
+        // 1 parentNode
+        const mainContainer = document.getElementById('players-container-3');
+
+        // create child node 
+        const newChildItem = document.createElement('div');
+
+        // add class
+         newChildItem.classList.add('players-container-2');
+
+         // add inner html
+         newChildItem.innerHTML = `
+            <h2>player-3</h2>
+            <ul>
+                <li>Messi</li>
+                <li>Ronaldo</li>
+                <li>Neymar</li>
+                <li>Mbappe</li>
+                <li>Lewandowski</li>
+                <li>Salah</li>
+                <!-- new player -->
+                <li>Mbappe</li>
+            </ul>
+         `
+
+         // new
+         mainContainer.appendChild(newChildItem);
+    </script>
+
+</html>

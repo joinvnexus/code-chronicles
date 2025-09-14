@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppBoostVault - Unlock Free Apps & Tools</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --success: #4cc9f0;
+            --dark: #1d3557;
+            --light: #f8f9fa;
+            --text: #333333;
+            --gray: #6c757d;
+            --border: #dee2e6;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text);
+            background-color: #f0f2f5;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--success);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(29, 53, 87, 0.85), rgba(29, 53, 87, 0.9)), url('https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(to right, var(--accent), var(--success));
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(72, 149, 239, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(72, 149, 239, 0.6);
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .step-card {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(to bottom right, var(--accent), var(--primary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 30px;
+        }
+        
+        .step-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Featured Offers */
+        .featured-offers {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background-color: white;
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .offer-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .offer-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .offer-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--success);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .offer-img {
+            height: 180px;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .offer-img i {
+            font-size: 4rem;
+            color: var(--primary);
+        }
+        
+        .offer-content {
+            padding: 20px;
+        }
+        
+        .offer-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .offer-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .offer-payout {
+            font-weight: 600;
+            color: #28a745;
+        }
+        
+        .offer-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--secondary), var(--dark));
+            color: white;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .testimonial-rating {
+            color: #ffc107;
+            margin-top: 10px;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .newsletter-container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+        
+        /* Stats Section */
+        .stats {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        /* Locker Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+            animation: modalOpen 0.4s ease;
+        }
+        
+        @keyframes modalOpen {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .modal-header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .modal-header h3 {
+            font-size: 1.5rem;
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .offer-steps {
+            margin-bottom: 20px;
+        }
+        
+        .offer-step {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .offer-step:last-child {
+            border-bottom: none;
+        }
+        
+        .step-number {
+            width: 30px;
+            height: 30px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .modal-footer {
+            padding: 20px;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .steps {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--secondary);
+                flex-direction: column;
+                padding: 20px 0;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 70px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+                <span>AppBoostVault</span>
+            </div>
+            <nav>
+                <button class="mobile-menu-btn" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul id="navMenu">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Offers</a></li>
+                    <li><a href="#">Tools</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Unlock Premium Apps & Tools For Free</h1>
+                <p>Complete quick offers and get paid apps, exclusive tools, and premium features at absolutely no cost to you!</p>
+                <a href="#offers" class="cta-button">Get Started Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>How It Works</h2>
+                <p>Get premium apps and tools in just three simple steps</p>
+            </div>
+            <div class="steps">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Find Your App</h3>
+                    <p>Browse our extensive collection of premium apps, tools, and games that you want to unlock for free.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>Complete Offers</h3>
+                    <p>Select from quick and easy offers to complete. Most take less than 2 minutes to finish.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Download & Enjoy</h3>
+                    <p>Instantly unlock and download your premium app or tool. Enjoy your new software for free!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>25,000+</h3>
+                    <p>Active Users</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4,500+</h3>
+                    <p>Apps & Tools</p>
+                </div>
+                <div class="stat-item">
+                    <h3>98%</h3>
+                    <p>Success Rate</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>Support Available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Offers -->
+    <section class="featured-offers" id="offers">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Offers</h2>
+                <p>Unlock premium apps by completing these offers</p>
+            </div>
+            
+            <div class="filters">
+                <button class="filter-btn active">All</button>
+                <button class="filter-btn">Android</button>
+                <button class="filter-btn">iOS</button>
+                <button class="filter-btn">VPN</button>
+                <button class="filter-btn">Games</button>
+                <button class="filter-btn">Tools</button>
+            </div>
+            
+            <div class="offers-grid" id="offersContainer">
+                <!-- Offers will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Users Say</h2>
+                <p>Thousands of satisfied users unlock apps with AppBoostVault daily</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h4>Sarah Johnson</h4>
+                            <p>Android User</p>
+                        </div>
+                    </div>
+                    <p>"I got a premium VPN app just by completing a quick survey. This site is amazing and legit!"</p>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h4>Michael Chen</h4>
+                            <p>iOS Developer</p>
+                        </div>
+                    </div>
+                    <p>"Saved $50 on a premium app I needed for work. Completed an offer in 3 minutes and got instant access."</p>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h4>David Rodriguez</h4>
+                            <p>Gamer</p>
+                        </div>
+                    </div>
+                    <p>"Unlocked a $10 game completely free! The process was straightforward and the locker worked perfectly."</p>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-container">
+                <h2>Get Exclusive Offers</h2>
+                <p>Subscribe to our newsletter and receive special app unlocking opportunities and discounts</p>
+                
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="cta-button">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="logo">
+                        <i class="fas fa-robot"></i>
+                        <span>AppBoostVault</span>
+                    </div>
+                    <p style="margin: 15px 0; color: #adb5bd;">Unlock premium apps and tools for free by completing quick and easy offers.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Offers</a></li>
+                        <li><a href="#">Tools</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Android Apps</a></li>
+                        <li><a href="#">iOS Apps</a></li>
+                        <li><a href="#">VPN Services</a></li>
+                        <li><a href="#">Games</a></li>
+                        <li><a href="#">Productivity Tools</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 AppBoostVault. All rights reserved. | CPAlead ID: CP123456789</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Locker Modal -->
+    <div class="modal" id="lockerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-modal" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+                <h3>Unlock Your App</h3>
+                <p>Complete one offer to access your download</p>
+            </div>
+            <div class="modal-body">
+                <div class="offer-steps" id="offerSteps">
+                    <!-- Offer steps will be dynamically inserted here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p>By completing an offer, you agree to our <a href="#" style="color: var(--primary);">Terms of Service</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample offers data (simulating CPAlead API response)
+        const offers = [
+            {
+                id: 1,
+                name: "Premium VPN Pro",
+                description: "Unlock unlimited bandwidth and global servers",
+                category: "VPN",
+                platform: "Android, iOS",
+                icon: "fas fa-shield-alt",
+                payout: "$2.50",
+                steps: [
+                    "Install and run the app for 30 seconds",
+                    "Complete the registration process",
+                    "Verify your email address"
+                ]
+            },
+            {
+                id: 2,
+                name: "WhatsApp Plus MOD",
+                description: "Enhanced features and customization options",
+                category: "Tools",
+                platform: "Android",
+                icon: "fab fa-whatsapp",
+                payout: "$1.75",
+                steps: [
+                    "Sign up for a free trial",
+                    "Complete a 2-question survey",
+                    "Enter your email for verification"
+                ]
+            },
+            {
+                id: 3,
+                name: "Game Booster Pro",
+                description: "Optimize your gaming performance instantly",
+                category: "Games",
+                platform: "Android",
+                icon: "fas fa-gamepad",
+                payout: "$3.20",
+                steps: [
+                    "Download and install the recommended app",
+                    "Run it for at least 1 minute",
+                    "Complete the in-app registration"
+                ]
+            },
+            {
+                id: 4,
+                name: "Photo Editor Premium",
+                description: "Professional editing tools and filters",
+                category: "Tools",
+                platform: "iOS",
+                icon: "fas fa-camera",
+                payout: "$2.10",
+                steps: [
+                    "Subscribe to the newsletter",
+                    "Complete a quick personality quiz",
+                    "Verify your phone number"
+                ]
+            },
+            {
+                id: 5,
+                name: "Music Player Pro",
+                description: "Ad-free experience with premium features",
+                category: "Tools",
+                platform: "Android, iOS",
+                icon: "fas fa-music",
+                payout: "$1.95",
+                steps: [
+                    "Install the recommended game",
+                    "Reach level 3 in the game",
+                    "Enter your email for verification"
+                ]
+            },
+            {
+                id: 6,
+                name: "PDF Scanner Pro",
+                description: "Scan documents and convert to PDF instantly",
+                category: "Tools",
+                platform: "iOS",
+                icon: "fas fa-file-pdf",
+                payout: "$2.30",
+                steps: [
+                    "Sign up for a free account",
+                    "Complete a 5-question survey",
+                    "Verify your email address"
+                ]
+            }
+        ];
+
+        // DOM Elements
+        const offersContainer = document.getElementById('offersContainer');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const lockerModal = document.getElementById('lockerModal');
+        const closeModal = document.getElementById('closeModal');
+        const offerSteps = document.getElementById('offerSteps');
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        // Render offers
+        function renderOffers(filter = 'All') {
+            offersContainer.innerHTML = '';
+            
+            const filteredOffers = filter === 'All' 
+                ? offers 
+                : offers.filter(offer => offer.category === filter);
+            
+            filteredOffers.forEach(offer => {
+                const offerCard = document.createElement('div');
+                offerCard.className = 'offer-card';
+                offerCard.innerHTML = `
+                    <div class="offer-img">
+                        <i class="${offer.icon}"></i>
+                        <div class="offer-badge">${offer.payout} Payout</div>
+                    </div>
+                    <div class="offer-content">
+                        <h3>${offer.name}</h3>
+                        <p>${offer.description}</p>
+                        <div class="offer-meta">
+                            <span><i class="fas fa-mobile-alt"></i> ${offer.platform}</span>
+                            <span><i class="fas fa-tag"></i> ${offer.category}</span>
+                        </div>
+                        <div class="offer-actions">
+                            <span class="offer-payout">Earn ${offer.payout}</span>
+                            <button class="cta-button unlock-btn" data-id="${offer.id}">Unlock Now</button>
+                        </div>
+                    </div>
+                `;
+                offersContainer.appendChild(offerCard);
+            });
+            
+            // Add event listeners to unlock buttons
+            document.querySelectorAll('.unlock-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const offerId = this.getAttribute('data-id');
+                    openLockerModal(offerId);
+                });
+            });
+        }
+
+        // Open locker modal
+        function openLockerModal(offerId) {
+            const offer = offers.find(o => o.id == offerId);
+            
+            if (offer) {
+                offerSteps.innerHTML = '';
+                
+                offer.steps.forEach((step, index) => {
+                    const stepElement = document.createElement('div');
+                    stepElement.className = 'offer-step';
+                    stepElement.innerHTML = `
+                        <div class="step-number">${index + 1}</div>
+                        <div class="step-content">
+                            <h4>Step ${index + 1}</h4>
+                            <p>${step}</p>
+                        </div>
+                    `;
+                    offerSteps.appendChild(stepElement);
+                });
+                
+                lockerModal.style.display = 'flex';
+            }
+        }
+
+        // Close modal
+        closeModal.addEventListener('click', function() {
+            lockerModal.style.display = 'none';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === lockerModal) {
+                lockerModal.style.display = 'none';
+            }
+        });
+
+        // Filter buttons
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Filter offers
+                const filter = this.textContent;
+                renderOffers(filter);
+            });
+        });
+
+        // Mobile menu toggle
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('show');
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderOffers();
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

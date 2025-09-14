@@ -1,0 +1,22 @@
+#color{
+    background-color: blue;
+}
+.para{
+    border: 2px solid blueviolet;
+    padding: 10px 20px ;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+div img{
+    width: 300px;
+    height: 300px;
+}
+.blog{
+    background-color: green;
+}
+.blog .para, .text, .align {
+    border: 1px solid purple;
+}
