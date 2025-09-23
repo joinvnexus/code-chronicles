@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            button {
+                margin: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <button onclick="addNumToLs()">Save Number</button>
+        <button onclick="getNumFromLs()">Get Number</button>
+
+
+        <button onclick="setObjectToLs()">Save Object</button>
+        <button onclick="getObjectFromLs()">Get Object</button>
+
+        <button onclick="setArrayToLs()">Save Array</button>
+        <button onclick="getArrayFromLs()">Get Array</button>
+
+
+        <script src="js/local-storage.js"></script>
+        <!-- <script>
+            fetch("https://jsonplaceholder.typicode.com/todos/1")
+                .then(res => res.json())
+                .then(json => console.log("JSON:", json));
+
+            fetch("https://jsonplaceholder.typicode.com/todos/1")
+                .then(res => res.text())
+                .then(text => console.log("Text:", text));
+
+            fetch("https://picsum.photos/200") // random image
+                .then(res => res.blob())
+                .then(blob => {
+                    const imgURL = URL.createObjectURL(blob);
+                    document.body.innerHTML = `<img src="${imgURL}" />`;
+                    // URL.revokeObjectURL(imgURL);
+                    console.log("Blob:", blob);
+                });
+
+        </script> -->
+    </body>
+
+</html>
