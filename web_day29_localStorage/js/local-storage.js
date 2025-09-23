@@ -2,8 +2,17 @@ const addNumToLs = () => {
     const number = Math.ceil(Math.random() * 100);
     // localStorage.setItem("number", number);
     localStorage.setItem("number", number)
+    localStorage.setItem("num2", 50);
     // return number;
     console.log(number);
+}
+
+
+const getNumFromLs = () => {
+    const num = localStorage.getItem("number");
+    console.log("form  saved local storage", num);
+    const num2 = localStorage.getItem("number");
+    console.log("form  saved local storage", num2);
 }
 
 const setObjectToLs = () => {
@@ -32,12 +41,6 @@ const getObjectFromLs = () => {
     // const personObj = JSON.parse(localStorage.getItem("person"));
     console.log(personObj.name);
 }
-
-const getNumFromLs = () => {
-    const num = localStorage.getItem("number");
-    console.log("form  saved local storage", num);
-}
-
 
 
 const setArrayToLs = () => {
