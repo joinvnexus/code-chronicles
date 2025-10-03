@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Dev Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <header class="bg-blue-600 text-white p-4 flex justify-between items-center shadow-md">
+    <h1 class="text-xl font-bold">🚀 My Dev Dashboard</h1>
+    <nav>
+      <a href="#snippets" class="mx-2 hover:underline">Snippets</a>
+      <a href="#notes" class="mx-2 hover:underline">Notes</a>
+      <a href="#tasks" class="mx-2 hover:underline">Tasks</a>
+    </nav>
+  </header>
+
+  <main class="flex-1 container mx-auto p-6 space-y-10">
+
+    <!-- Snippets Section -->
+    <section id="snippets" class="bg-white rounded-2xl shadow p-6">
+      <h2 class="text-2xl font-bold mb-4">🗂️ Code Snippets</h2>
+      <textarea id="snippetInput" placeholder="Write your code snippet..."
+        class="w-full p-2 border rounded-md"></textarea>
+      <button onclick="saveSnippet()"
+        class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Save Snippet</button>
+      <ul id="snippetList" class="mt-4 space-y-2"></ul>
+    </section>
+
+    <!-- Notes Section -->
+    <section id="notes" class="bg-white rounded-2xl shadow p-6">
+      <h2 class="text-2xl font-bold mb-4">📝 Notes</h2>
+      <textarea id="noteInput" placeholder="Write your note..."
+        class="w-full p-2 border rounded-md"></textarea>
+      <button onclick="saveNote()"
+        class="mt-2 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Save Note</button>
+      <ul id="noteList" class="mt-4 space-y-2"></ul>
+    </section>
+
+    <!-- Tasks Section -->
+    <section id="tasks" class="bg-white rounded-2xl shadow p-6">
+      <h2 class="text-2xl font-bold mb-4">✅ Tasks</h2>
+      <input id="taskInput" type="text" placeholder="New Task"
+        class="w-full p-2 border rounded-md">
+      <button onclick="addTask()"
+        class="mt-2 bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Add Task</button>
+      <ul id="taskList" class="mt-4 space-y-2"></ul>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-center p-4 mt-6">
+    <p>Made by <a href="https://github.com/projoynaidu-cmd" target="_blank" class="underline">Projoy</a> ⚡</p>
+  </footer>
+
+  <script>
+    // Snippets
+    function saveSnippet() {
+      const input = document.getElementById("snippetInput").value;
+      if (!input) return;
+      let snippets = JSON.parse(localStorage.getItem("snippets")) || [];
+      snippets.push(input);
+      localStorage.setItem("snippets", JSON.stringify(snippets));
+      document.getElementById("snippetInput").value = "";
+      loadSnippets();
+    }
+    function loadSnippets() {
+      const list = document.getElementById("snippetList");
+      list.innerHTML = "";
+      let snippets = JSON.parse(localStorage.getItem("snippets")) || [];
+      snippets.forEach((s, i) => {
+        list.innerHTML += `<li class="p-2 bg-gray-100 rounded flex justify-between items-center">
+          <code class="text-sm">${s}</code>
+          <button onclick="deleteSnippet(${i})" class="text-red-600">❌</button>
+        </li>`;
+      });
+    }
+    function deleteSnippet(i) {
+      let snippets = JSON.parse(localStorage.getItem("snippets")) || [];
+      snippets.splice(i, 1);
+      localStorage.setItem("snippets", JSON.stringify(snippets));
+      loadSnippets();
+    }
+
+    // Notes
+    function saveNote() {
+      const input = document.getElementById("noteInput").value;
+      if (!input) return;
+      let notes = JSON.parse(localStorage.getItem("notes")) || [];
+      notes.push(input);
+      localStorage.setItem("notes", JSON.stringify(notes));
+      document.getElementById("noteInput").value = "";
+      loadNotes();
+    }
+    function loadNotes() {
+      const list = document.getElementById("noteList");
+      list.innerHTML = "";
+      let notes = JSON.parse(localStorage.getItem("notes")) || [];
+      notes.forEach((n, i) => {
+        list.innerHTML += `<li class="p-2 bg-yellow-100 rounded flex justify-between items-center">
+          <span>${n}</span>
+          <button onclick="deleteNote(${i})" class="text-red-600">❌</button>
+        </li>`;
+      });
+    }
+    function deleteNote(i) {
+      let notes = JSON.parse(localStorage.getItem("notes")) || [];
+      notes.splice(i, 1);
+      localStorage.setItem("notes", JSON.stringify(notes));
+      loadNotes();
+    }
+
+    // Tasks
+    function addTask() {
+      const input = document.getElementById("taskInput").value;
+      if (!input) return;
+      let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+      tasks.push({ text: input, done: false });
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+      document.getElementById("taskInput").value = "";
+      loadTasks();
+    }
+    function toggleTask(i) {
+      let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+      tasks[i].done = !tasks[i].done;
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+      loadTasks();
+    }
+    function deleteTask(i) {
+      let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+      tasks.splice(i, 1);
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+      loadTasks();
+    }
+    function loadTasks() {
+      const list = document.getElementById("taskList");
+      list.innerHTML = "";
+      let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+      tasks.forEach((t, i) => {
+        list.innerHTML += `<li class="p-2 bg-purple-100 rounded flex justify-between items-center">
+          <span class="${t.done ? 'line-through' : ''}">${t.text}</span>
+          <div>
+            <button onclick="toggleTask(${i})" class="text-green-600 mx-1">✔</button>
+            <button onclick="deleteTask(${i})" class="text-red-600">❌</button>
+          </div>
+        </li>`;
+      });
+    }
+
+    // Load data on page start
+    loadSnippets();
+    loadNotes();
+    loadTasks();
+  </script>
+</body>
+</html>
