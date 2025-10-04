@@ -2,6 +2,7 @@ import React from "react"
 
 export default function Sidebar({ sidebarOpen, activeTab, setActiveTab }) {
   const categories = [
+    
     { id: "snippets", label: "📂 Snippets" },
     { id: "notes", label: "📝 Notes" },
     { id: "tasks", label: "✅ Tasks" },
