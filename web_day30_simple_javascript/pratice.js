@@ -56,7 +56,7 @@ console.log(adults);
 const numbers1 = [1, 2, 3, 4, 5];
 let sum = 0;
 
-for (const num of numbers1) {
+numbers1.forEach((num) => {
   sum += num;
-}
+});
 console.log(sum);
