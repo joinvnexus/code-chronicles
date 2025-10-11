@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>counter</title>
+</head>
+<body>
+
+    <button id ="btn"> click me</button>
+
+    <script>
+        function createCounter(){
+            let click = 0;
+            return function(){
+                click++;
+                alert(`you clicked ${click} times`)
+            }
+
+        }
+
+        const counterClick = createCounter();
+
+        document.getElementById("btn").addEventListener("click", counterClick)
+    </script>
+    
+</body>
+</html>
