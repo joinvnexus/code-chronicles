@@ -1,40 +1,47 @@
-const postContainer = document.getElementById("posts");
-const loadBtn = document.getElementById("loadBtn");
+  const postContainer = document.getElementById("posts");
+    const loadMoreBtn = document.getElementById("loadMoreBtn");
 
-const displayData = (posts) => {
-  postContainer.innerHTML = "";
-  posts.slice(0, 5).forEach((post) => {
-    const postDiv = document.createElement("div");
-    postDiv.classList.add("post");
-    postDiv.innerHTML = `
-    <h3>${post.title}</h3>
-    <p>${post.body}</p>
-    `;
-    postContainer.appendChild(postDiv);
-  });
-};
+    let posts = [];       // All posts from API
+    let visibleCount = 0; // How many posts shown
 
-// fetch data
+    // 🔹 Fetch posts once
+    const fetchPosts = async () => {
+      postContainer.innerHTML = "<p>⏳ Loading posts...</p>";
+      try {
+        const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+        posts = await res.json();
+        visibleCount = 0;
+        postContainer.innerHTML = "";
+        showPosts(); // first 6 posts
+      } catch (error) {
+        postContainer.innerHTML = `<p style="color:red;">❌ Failed to load posts</p>`;
+        console.error(error);
+      }
+    };
 
-const fetchposts = async () => {
-  postContainer.innerHTML = "<p>⏳ Fetching posts... please wait 3 seconds</p>";
-  setTimeout(async () => {
-    try {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/posts"
-      );
-      const data = await response.json();
-      displayData(data);
-      console.log(data);
-    } catch (error) {
-      postContainer.innerHTML = `<p style="color:red;">❌ Failed to fetch data: ${error}</p>`;
+    // 🔹 Display posts dynamically
+    const showPosts = () => {
+      const slice = posts.slice(visibleCount, visibleCount + 6);
+      slice.forEach((post) => {
+        const div = document.createElement("div");
+        div.classList.add("post");
+        div.innerHTML = `
+          <h3>${post.title}</h3>
+          <p>${post.body}</p>
+        `;
+        postContainer.appendChild(div);
+      });
 
-      console.log(error);
-    }
-  }, 3000);
-};
+      visibleCount += 6;
 
-//button click
-loadBtn.addEventListener("click", fetchposts);
+      // Hide Load More if no posts left
+      if (visibleCount >= posts.length) {
+        loadMoreBtn.style.display = "none";
+      }
+    };
 
-//
+    // 🔹 Load more on button click
+    loadMoreBtn.addEventListener("click", showPosts);
+
+    // 🔹 Load initial data
+    fetchPosts();
