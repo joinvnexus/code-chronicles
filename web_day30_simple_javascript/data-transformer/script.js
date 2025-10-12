@@ -1,4 +1,4 @@
-const user = [
+const users = [
   { name: "Rafi", age: 17 },
   { name: "Projoy", age: 22 },
   { name: "Nadia", age: 25 },
@@ -7,37 +7,49 @@ const user = [
 ];
 
 const transformBtn = document.getElementById("transformBtn");
+const output = document.getElementById("output");
 
-transformBtn.addEventListener("click", () => {
-  // Step 1: Filter users above 18
-  const adults = user.filter((user) => {
-    return user.age >= 18 ;
-  });
-
-  // Step 2: Convert all adults names to uppercase using map()
-
-  const upperdCaseNames = adults.map((adult) => ({
-    ...adult,
-    name: adult.name.toUpperCase(),
-  }));
-
-  // Step 3: Calculate total age using reduce()
-
-  const totalAge = upperdCaseNames.reduce((sum, current) => {
-    return sum + current.age;
-  }, 0);
-console.log(totalAge);
-  //  // Step 4: Destructure one user
-  const [firstUser] = upperdCaseNames;
+// Function to display result
+function displayResult(data) {
+  const totalAge = data.reduce((sum, user) => sum + user.age, 0);
+  const [firstUser] = data;
 
   const result = `
-  ✅ Adult Users: ${upperdCaseNames.length}
-👤 First Adult: ${firstUser.name}
+✅ Adult Users: ${data.length}
+👤 First Adult: ${firstUser ? firstUser.name : "N/A"}
 📊 Total Age: ${totalAge}
 
 🔹 Transformed Data:
-${JSON.stringify(upperdCaseNames, null, 2)}
+${JSON.stringify(data, null, 2)}
 `;
 
-  document.getElementById("output").textContent = result;
+  output.textContent = result;
+}
+
+// Load data from localStorage on page load
+window.addEventListener("DOMContentLoaded", () => {
+  const saved = JSON.parse(localStorage.getItem("transformedUsers"));
+  if (saved && saved.length > 0) {
+    displayResult(saved);
+  } else {
+    output.textContent = "Waiting for action...";
+  }
+});
+
+// Button click event
+transformBtn.addEventListener("click", () => {
+  // Filter adults
+  const adults = users.filter(user => user.age >= 18);
+
+  // Uppercase names
+  const transformed = adults.map(user => ({
+    ...user,
+    name: user.name.toUpperCase(),
+  }));
+
+  // Save to localStorage
+  localStorage.setItem("transformedUsers", JSON.stringify(transformed));
+
+  // Display
+  displayResult(transformed);
 });
