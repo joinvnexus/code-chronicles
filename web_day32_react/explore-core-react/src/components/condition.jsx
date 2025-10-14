@@ -1,5 +1,5 @@
 import { useState } from "react"
-function condation() {
+function Condation() {
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
@@ -15,28 +15,30 @@ function condation() {
         }
     }
     return (
-        <div className="container">
-            <h2>My name is {name || "Guest"}</h2>
+        <div className="container mx-auto p-8 max-w-sm rounded-xl shadow-lg space-y-4">
+            <h2 className="text-2xl font-bold text-center">My name is {name || "Guest"}</h2>
 
-            <input type="text"
+            <input 
+                className="w-full p-2 border border-gray-300 rounded-md"
+                type="text"
                 placeholder="Enter Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
             />
 
             <input
+                className="w-full p-2 border border-gray-300 rounded-md"
                 type="password"
                 placeholder="Enter Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
 
-            <button onClick={handleLogin}>Submit</button>
+            <button className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleLogin}>Submit</button>
 
-            {/* {message && <p>{message}</p>} */}
-            <p>{message && <p>{message}</p>}</p>
+            {message && <p className="text-center font-semibold">{message}</p>}
 
         </div>
     )
 }
-export default condation
+export default Condation
