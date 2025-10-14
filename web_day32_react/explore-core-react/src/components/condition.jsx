@@ -15,7 +15,7 @@ function Condation() {
         }
     }
     return (
-        <div className="container mx-auto p-8 max-w-sm rounded-xl shadow-lg space-y-4">
+        <div className=" p-8 max-w-sm rounded-xl shadow-lg space-y-4">
             <h2 className="text-2xl font-bold text-center">My name is {name || "Guest"}</h2>
 
             <input 
