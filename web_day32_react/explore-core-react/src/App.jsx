@@ -8,6 +8,8 @@ import FormExample from './components/from.jsx';
 import UserList from './components/UserList.jsx';
 import Learn from './components/learn.jsx';
 import MyInfo from './components/MyInfo.jsx';
+import UserCard2 from './components/UserCard2.jsx';
+import ProductCard2 from './components/ProductCard2.jsx';
 
 function App() {
   return (
@@ -30,9 +32,33 @@ function App() {
         <Counter />
         <FormExample />
         <UserList />
-        <Learn/>
-        <MyInfo/>
-
+        <Learn />
+        <MyInfo />
+        <UserCard2
+          name="Projoy Naidu"
+          age="20"
+          country="Bangladesh"
+        />
+        <UserCard2
+          name="Riya Naidu"
+          age="20"
+          country="Bangladesh"
+        />
+        <UserCard2 
+          name="Rahul Naidu"
+          age="20"
+          country="Bangladesh"
+        />
+        <ProductCard2 
+          title="Product 1"
+          price="100"
+          inStock={true}
+        />
+        <ProductCard2 
+          title="Product 2"
+          price="200"
+          inStock={false}
+        />
       </div>
     </>
   );
