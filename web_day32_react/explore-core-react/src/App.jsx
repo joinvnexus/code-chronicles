@@ -10,6 +10,9 @@ import Learn from './components/learn.jsx';
 import MyInfo from './components/MyInfo.jsx';
 import UserCard2 from './components/UserCard2.jsx';
 import ProductCard2 from './components/ProductCard2.jsx';
+import Increment from './components/increment.jsx';
+import ToggleButton from './components/ToggleButton.jsx';
+import LikesToggle from './components/Likes.jsx';
 
 function App() {
   return (
@@ -59,6 +62,9 @@ function App() {
           price="200"
           inStock={false}
         />
+        <Increment />
+        <ToggleButton />
+        <LikesToggle />
       </div>
     </>
   );
