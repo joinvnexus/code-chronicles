@@ -6,6 +6,8 @@ import ProductCard from './page/ProductCard.jsx';
 import Counter from './components/Counter.jsx'
 import FormExample from './components/from.jsx';
 import UserList from './components/UserList.jsx';
+import Learn from './components/learn.jsx';
+import MyInfo from './components/MyInfo.jsx';
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
         <Counter />
         <FormExample />
         <UserList />
+        <Learn/>
+        <MyInfo/>
 
       </div>
     </>
