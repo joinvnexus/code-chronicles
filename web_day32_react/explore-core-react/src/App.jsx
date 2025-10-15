@@ -4,7 +4,8 @@ import Condation from './components/condition.jsx';
 import ProfileCard from './page/ProfileCard.jsx';
 import ProductCard from './page/ProductCard.jsx';
 import Counter from './components/Counter.jsx'
-
+import FormExample from './components/from.jsx';
+import UserList from './components/UserList.jsx';
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
           image="https://plus.unsplash.com/premium_photo-1664392147011-2a720f214e01?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=500"
         />
         <Counter />
+        <FormExample />
+        <UserList />
 
       </div>
     </>
