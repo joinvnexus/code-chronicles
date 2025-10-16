@@ -1,6 +1,6 @@
 import Condation from './components/condition.jsx';
-// import UserCard from './components/UserCard.jsx';
-// import Welcome from './components/welcome.jsx';
+import UserCard from './components/UserCard.jsx';
+import Welcome from './components/welcome.jsx';
 import ProfileCard from './page/ProfileCard.jsx';
 import ProductCard from './page/ProductCard.jsx';
 import Counter from './components/Counter.jsx'
@@ -21,7 +21,14 @@ function App() {
 
       <div className="flex flex-row flex-wrap items-center justify-center px-4 py-8 gap-4">
         <Condation />
-
+        <Welcome 
+        name="projoy"
+        />
+        <UserCard 
+        name= " naidu"
+        age= '22'
+        email="9aM0b@example.com"
+        />
         <ProfileCard
           name="Projoy Naidu"
           bio="Frontend Developer & Designer"
@@ -47,17 +54,17 @@ function App() {
           age="20"
           country="Bangladesh"
         />
-        <UserCard2 
+        <UserCard2
           name="Rahul Naidu"
           age="20"
           country="Bangladesh"
         />
-        <ProductCard2 
+        <ProductCard2
           title="Product 1"
           price="100"
           inStock={true}
         />
-        <ProductCard2 
+        <ProductCard2
           title="Product 2"
           price="200"
           inStock={false}
