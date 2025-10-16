@@ -4,3 +4,23 @@
   padding: 2rem;
   text-align: center;
 }
+
+.student{
+  border:  1px solid rgb(30, 169, 194) ;
+  padding: 10px;
+  margin: 10px;
+
+}
+.text{
+  color: rgb(15, 46, 189);
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.btn{
+  @apply px-4 py-2 rounded text-white font-semibold
+}
+.btn-primary{
+  @apply bg-blue-500 hover:bg-blue-700
+}
