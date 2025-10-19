@@ -1,19 +1,24 @@
-// import Condation from './components/condition.jsx';
-// import UserCard from './components/UserCard.jsx';
-// import Welcome from './components/welcome.jsx';
-// import ProfileCard from './page/ProfileCard.jsx';
-// import ProductCard from './page/ProductCard.jsx';
-// import Counter from './components/Counter.jsx'
-// import FormExample from './components/from.jsx';
-// import UserList from './components/UserList.jsx';
-// import Learn from './components/learn.jsx';
-// import MyInfo from './components/MyInfo.jsx';
-// import UserCard2 from './components/UserCard2.jsx';
-// import ProductCard2 from './components/ProductCard2.jsx';
-// import Increment from './components/increment.jsx';
-// import ToggleButton from './components/ToggleButton.jsx';
-//  import LikesToggle from './components/Likes.jsx';
- import Todos from './components/Todo.jsx';
+import Condation from './components/condition.jsx';
+import UserCard from './components/UserCard.jsx';
+import Welcome from './components/welcome.jsx';
+import ProfileCard from './page/ProfileCard.jsx';
+import ProductCard from './page/ProductCard.jsx';
+import Counter from './components/Counter.jsx'
+import FormExample from './components/from.jsx';
+import UserList from './components/UserList.jsx';
+import Learn from './components/learn.jsx';
+import MyInfo from './components/MyInfo.jsx';
+import UserCard2 from './components/UserCard2.jsx';
+import ProductCard2 from './components/ProductCard2.jsx';
+import Increment from './components/increment.jsx';
+import ToggleButton from './components/ToggleButton.jsx';
+import LikesToggle from './components/Likes.jsx';
+import Todos from './components/Todo.jsx';
+import LoginStatus from './components/LoginStatus.jsx';
+import Message from './components/if-else.jsx';
+import Greeting from './components/Greeting.jsx';
+import Discount from './components/Discount.jsx';
+
 
 
 function App() {
@@ -22,21 +27,18 @@ function App() {
     <>
       <h1 className="text-4xl font-bold">Vite + React</h1>
 
-      <Todos learning=" react" isDone={!true}/>
-      <Todos learning=" Javascript" isDone={true} time={time}/>
-      <Todos learning=" css" isDone={true} time={time}/>
-      <Todos learning=" html" isDone={true} time={time}/>
 
 
-      {/* <div className="flex flex-row flex-wrap items-center justify-center px-4 py-8 gap-4">
+
+      <div className="flex flex-row flex-wrap items-center justify-center px-4 py-8 gap-4">
         <Condation />
-        <Welcome 
-        name="projoy"
+        <Welcome
+          name="projoy"
         />
-        <UserCard 
-        name= " naidu"
-        age= '22'
-        email="9aM0b@example.com"
+        <UserCard
+          name=" naidu"
+          age='22'
+          email="9aM0b@example.com"
         />
         <ProfileCard
           name="Projoy Naidu"
@@ -81,8 +83,20 @@ function App() {
         <Increment />
         <ToggleButton />
         <LikesToggle />
-       
-      </div> */}
+        <Todos learning=" react" isDone={!true} />
+        <Todos learning=" Javascript" isDone={true} time={time} />
+        <Todos learning=" css" isDone={true} time={time} />
+        <Todos learning=" html" isDone={true} time={time} />
+
+        <div style={{ textAlign: "center" }}>
+          <h1>Conditional Rendering Example</h1>
+          <LoginStatus />
+
+        </div>
+        <Message />
+        <Greeting />
+        <Discount />
+      </div>
     </>
   );
 }
