@@ -18,16 +18,21 @@ import LoginStatus from './components/LoginStatus.jsx';
 import Message from './components/if-else.jsx';
 import Greeting from './components/Greeting.jsx';
 import Discount from './components/Discount.jsx';
+import Array from './components/array.jsx';
+import  UserList1 from "./components/UserList1.jsx";
 
 
 
 function App() {
   const time = 50;
+   const userData = [
+    { name: "Projoy", age: 20 },
+    { name: "Rahul", age: 25 },
+    { name: "Rohit", age: 30 },
+  ];
   return (
     <>
       <h1 className="text-4xl font-bold">Vite + React</h1>
-
-
 
 
       <div className="flex flex-row flex-wrap items-center justify-center px-4 py-8 gap-4">
@@ -96,6 +101,8 @@ function App() {
         <Message />
         <Greeting />
         <Discount />
+        <Array/>
+        <UserList1 users={ userData}/>
       </div>
     </>
   );
