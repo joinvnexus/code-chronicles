@@ -5,9 +5,9 @@ function Counter (){
     const [count, setCount] = useState(0)
 
     const handleClick = () =>{
-        const newCount = count + 1
-        setCount(newCount)
-        
+        // const newCount = count + 1
+        // setCount(newCount)
+        setCount(count + 1)
     }
     const counterStyle = {
         border: '2px solid blue',
