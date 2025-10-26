@@ -1,5 +1,7 @@
 import Counter from './components/Counter'
 import Players from './components/player'
+import Main from './components/main'
+// import EcommerceLanding from './components/EcommerceLanding'
 import './App.css'
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
       <h1>Vite + React</h1>
       <Counter />
       <Players/>
+      <Main />
+      {/* <EcommerceLanding /> */}
 
       {/* <button onClick="handleClick()">Click me</button> */}
 
