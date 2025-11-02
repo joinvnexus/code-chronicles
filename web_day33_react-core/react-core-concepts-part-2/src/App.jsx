@@ -1,53 +1,28 @@
-import Counter from './components/Counter'
-import Players from './components/player'
-import Main from './components/main'
-// import EcommerceLanding from './components/EcommerceLanding'
+import { Suspense } from "react"
+import Friends from "./components/friends"
 import './App.css'
 
-function App() {
-  function handleClick() {
-    alert('clicked')
-  }
-  const handleClick3 = () => {
-    alert('clicked3')
-  }
+const fetchusers = async() =>{
+  const res = await fetch('https://jsonplaceholder.typicode.com/users')
+  
+  return res.json();
 
-  const handleNumber = (num) =>{
-    const result = num + 5
-    // return result
-    alert(result)
-  }
+}
+const users = fetchusers();
+
+
+const App = () => {
+  
   return (
-    <>
-
-      <h1>Vite + React</h1>
-      <Counter />
-      <Players/>
-      <Main />
-      {/* <EcommerceLanding /> */}
-
-      {/* <button onClick="handleClick()">Click me</button> */}
-
-      {/* normal function */}
-      <button onClick={handleClick}>Click me</button>
-
-
-      {/* anonymous function */}
-      <button onClick={function handleClick2() {
-        alert('clicked2')
-
-      }}>Click me2</button>
-
-      {/* //arrow function */}
-      <button onClick={handleClick3}>Click me3</button>
-
-      {/* arrow function*/}
-      <button onClick={() => alert('clicked4')}>Click me4</button>
-
-      <button onClick={() => handleNumber(5)}>Click me5</button>
-
-    </>
+    <div>
+      <h1>App</h1>
+      <Suspense fallback={<div className="loaders"> loading...</div>}>
+      
+        <Friends friendsPromise={users} />
+       
+      </Suspense>
+    </div>
   )
 }
 
-export default App
+export default App;
