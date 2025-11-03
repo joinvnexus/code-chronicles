@@ -1,6 +1,8 @@
 import { use } from "react"
 import Friend from "./friend"
 
+
+
 const friends = ({ friendsPromise }) => {
 
     const friends = use(friendsPromise);
