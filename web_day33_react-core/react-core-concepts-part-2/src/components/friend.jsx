@@ -9,12 +9,23 @@ export default function Friend({ friend, post }) {
 
   return (
     <>
-      <div style={styleDiv}>
-        
-        <h2>{friend.name}</h2>
-        <p>{friend.email}</p>
-      </div>
-     
+      {
+        friend && (
+          <div style={styleDiv}>
+            <h2>{friend.name}</h2>
+            <p>{friend.email}</p>
+          </div>
+        )
+      }
+      {
+        post && (
+          <div style={styleDiv}>
+            <h2>{post.title}</h2>
+            <p>{post.body}</p>
+          </div>
+        )
+      }
+
     </>
   );
 }
