@@ -1,4 +1,5 @@
-import React from "react";
+import React,{Suspense, useEffect
+} from "react";
 import ProfileCard from "./components/pratice/ProfileCard";
 // import Welcome from "./components/pratice/wellcome";
 import ProductCard from "./components/pratice/ProductCard";

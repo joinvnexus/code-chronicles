@@ -1,13 +1,15 @@
 import { Suspense, useEffect } from "react"
-// import Friends from "./components/friends"
-// import Posts from './components/Posts'
+import Friends from "./components/friends"
+import Posts from './components/Posts'
 import './App.css'
 // import Team from './components/Team'
 import UserCard from './components/pratice/userCard'
+import DataFetcher from "./components/DataFetch"
+
 
 // const fetchusers = async() =>{
 //   const res = await fetch('https://jsonplaceholder.typicode.com/users')
-  
+
 //   return res.json();
 
 // }
@@ -16,47 +18,46 @@ import UserCard from './components/pratice/userCard'
 // console.log(users)
 
 
-// const fetchposts = async() => {
-//   const response = await fetch ('https://jsonplaceholder.typicode.com/posts')
-//   return response.json();
-// }
-
-// const post = fetchposts();
-
-// console.log(post)
-
-const loadData = async () => {
-  const res = await fetch ('https://jsonplaceholder.typicode.com/users')
-  return res.json();
+const fetchposts = async () => {
+  const response = await fetch('https://jsonplaceholder.typicode.com/posts')
+  return response.json();
 }
+  const post = fetchposts();
+  console.log(post)
 
-const users = loadData();
+  const loadData = async () => {
+    const res = await fetch('https://jsonplaceholder.typicode.com/users')
+    return res.json();
+  }
+
+  const users = loadData();
 
 
-const App = () => {
+  const App = () => {
 
 
+
+    return (
+      <div>
+        <h1>App</h1>
+        <DataFetcher />
+
+
+        {/* <Team/> */}
+        <Suspense fallback={<div className="loaders"> </div>}>
+
+          <Friends friendsPromise={users} />
+
+          <Posts postPromise={post}></Posts>
+
+        </Suspense>
+        <Suspense fallback={<div className="loaders"> </div>}>
+          <UserCard userPromise={users} />
+        </Suspense>
+
+
+      </div>
+    )
+  }
+  export default App;
   
-  return (
-    <div>
-      <h1>App</h1>
-
-
-      {/* <Team/> */}
-      {/* <Suspense fallback={<div className="loaders"> </div>}>
-      
-        <Friends friendsPromise={users} />
-
-         <Posts postPromise={post}></Posts>
-       
-      </Suspense> */}
-      <Suspense fallback={<div className="loaders"> </div>}>
-        <UserCard userPromise={users} />
-      </Suspense>
-
-     
-    </div>
-  )
-}
-
-export default App;
