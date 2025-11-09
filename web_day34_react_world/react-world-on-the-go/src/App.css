@@ -5,3 +5,140 @@
   /* background-color: red; */
 
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #eef2f3;
+}
+
+h1 {
+  text-align: center;
+  margin: 20px 0;
+  color: #2c3e50;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.2em;
+  color: #555;
+}
+
+.countries-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.country-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  /* background-color: red; */
+}
+
+.country-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 260px;
+  padding: 15px;
+  margin: 10px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  ;
+  margin-bottom: 10px;
+
+  cursor: pointer;
+  position: relative;
+}
+
+.card-header img {
+  width: 100px;
+  height: auto;
+  margin-right: 10px;
+  border-radius: 6px;
+}
+
+.card-header h2 {
+  margin: 10px 0;
+  color: #34495e;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  color: #2c3e50;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.card-details {
+  margin-top: 10px;
+  text-align: left;
+}
+
+.card-details p {
+  margin: 5px 0;
+  font-size: 0.9em;
+  color: #555;
+}
+
+/* --- Base Style for the Button --- */
+.visit-btn {
+  /* Common styles for both states */
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  min-width: 180px;
+  /* Ensures consistent width for better layout */
+}
+
+.visit-btn:hover {
+  transform: translateY(-1px);
+  /* Little lift on hover */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* --- NOT VISITED State --- */
+.not-visited {
+  background-color: #007bff;
+  /* Bright Blue */
+  color: white;
+}
+
+.not-visited:hover {
+  background-color: #0056b3;
+  /* Darker Blue on hover */
+}
+
+/* --- VISITED State --- */
+.visited {
+  background-color: #28a745;
+  /* Green */
+  color: white;
+  opacity: 0.9;
+}
+
+.visited:hover {
+  background-color: #1e7e34;
+  /* Darker Green on hover */
+  opacity: 1;
+}
