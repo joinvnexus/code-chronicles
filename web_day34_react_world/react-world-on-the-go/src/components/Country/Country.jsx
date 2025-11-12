@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa"; // optional: install with `npm install react-icons`
 
-const Country = ({ country, handleVisitedCountries }) => {
+const Country = ({ country, handleVisitedCountries, handleWishlist }) => {
 
   const [showDetails, setShowDetails] = useState(false);
   const [visited, setVisited] = useState(false);
@@ -11,6 +11,7 @@ const Country = ({ country, handleVisitedCountries }) => {
 
     handleVisitedCountries(country);
   };
+
 
   const currencyObj = country.currencies?.currencies;
 
@@ -84,7 +85,11 @@ const Country = ({ country, handleVisitedCountries }) => {
               Wikipedia
             </a>
           </button> */}
-          
+          <button className="visit-btn"
+            onClick={() => {
+              handleWishlist(country.flags.flags.png);
+            }}
+          >Add to Wishlist</button>
         </div>
       )}
     </li>

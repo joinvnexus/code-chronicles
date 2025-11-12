@@ -116,7 +116,7 @@ h3 {
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.2s ease, transform 0.1s ease;
-  min-width: 180px;
+  /* min-width: 180px; */
   /* Ensures consistent width for better layout */
 }
 
@@ -150,4 +150,20 @@ h3 {
   background-color: #1e7e34;
   /* Darker Green on hover */
   opacity: 1;
+}
+
+.wishlist img {
+  width: 50px;
+  height: 30px;
+  cursor: pointer;
+  object-fit: cover;
+
+}
+
+.wishlist {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+margin: 10px 0;
 }
