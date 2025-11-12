@@ -18,6 +18,17 @@ h1 {
   margin: 20px 0;
   color: #2c3e50;
 }
+h2 {
+  text-align: center;
+  text-transform: capitalize;
+  margin: 20px 0;
+  color: #2c3e50;
+}
+h3 {
+  text-align: center;
+  margin: 20px 0;
+  color: #2c3e50;
+}
 
 .loading {
   text-align: center;
@@ -57,9 +68,7 @@ h1 {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  ;
   margin-bottom: 10px;
-
   cursor: pointer;
   position: relative;
 }
