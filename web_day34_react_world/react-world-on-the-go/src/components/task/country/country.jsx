@@ -78,7 +78,7 @@ const Country = ({ country }) => {
               </button>
               <button
                className="visit-btn"
-               onClick={}
+            //    onClick={}
                >
                 Add to Wishlist
                 </button>
