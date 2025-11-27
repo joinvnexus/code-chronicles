@@ -81,11 +81,7 @@ const products = [
   },
 ];
 
-
-
 //console.log(result);
-
-
 
 const newData = {
   id: 11,
@@ -96,21 +92,21 @@ const newData = {
   rating: 4.5,
 };
 
-const updateddata =[...products,newData]
+const updateddata = [...products, newData];
 console.log(updateddata);
 
 const num = 20;
-/* 
-if(num) {
-  console.log("true")
-} else{
-   console.log("false")
 
-} */
+if (num) {
+  console.log("true");
+} else {
+  console.log("false");
+}
 
-  // num ? console.log("true") : console.log("false");
+num ? console.log("true") : console.log("false");
 
-  // const result = (num >=10  && num <= 20) ? console.log("true") : console.log("false")
+const result =
+  num >= 10 && num <= 20 ? console.log("true") : console.log("false");
 const isActive = false;
 
 const showUser = (Active) => {
