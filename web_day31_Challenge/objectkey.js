@@ -97,7 +97,7 @@ const newData = {
 };
 
 const updateddata =[...products,newData]
-//console.log(updateddata);
+console.log(updateddata);
 
 const num = 20;
 /* 
